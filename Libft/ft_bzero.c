@@ -6,11 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:54:02 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/11 21:58:45 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:23:52 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bzero(void *s, size_t n)
+#include <string.h>
+
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 

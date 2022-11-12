@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:19:05 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/11 20:32:13 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:21:27 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

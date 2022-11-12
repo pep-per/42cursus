@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:27:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/11 20:12:07 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:22:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

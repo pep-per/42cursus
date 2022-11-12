@@ -6,26 +6,30 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:47:40 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/11 16:47:44 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/12 23:13:27 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strdup(char *src)
-{
-	char	*dest;
-	int		len;
-	int		i;
+#include <string.h>
 
-	len = ft_strlen(src);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (dest == 0)
+char	*ft_strdup(const char *s1)
+{
+	char	*dst;
+	size_t	len;
+	size_t	i;
+
+	len = 0;
+	while (s1[len])
+		len++;
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dst)
 		return (0);
 	i = 0;
-	while (src[i])
+	while (s1[i])
 	{
-		dest[i] = src[i];
+		dst[i] = s1[i];
 		i++;
 	}
-	dest[i] = 0;
-	return (dest);
+	dst[i] = 0;
+	return (dst);
 }

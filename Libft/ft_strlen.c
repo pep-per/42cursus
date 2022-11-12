@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:46:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/11 19:44:51 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/12 21:23:06 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string.h>
 
 size_t	ft_strlen(const char *s)
 {
