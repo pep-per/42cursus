@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:54:02 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/12 21:23:52 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:41:11 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

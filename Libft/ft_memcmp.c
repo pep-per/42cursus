@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:01:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/12 23:15:47 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:41:59 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

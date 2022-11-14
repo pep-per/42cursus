@@ -6,11 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 21:40:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/12 18:15:37 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:42:32 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

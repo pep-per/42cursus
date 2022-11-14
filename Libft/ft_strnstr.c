@@ -6,9 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 23:15:54 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/12 23:21:50 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:43:17 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	find_needle(const char *haystack, const char *needle)
 {

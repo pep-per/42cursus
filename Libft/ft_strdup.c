@@ -6,11 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:47:40 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/12 23:13:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 15:42:47 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
