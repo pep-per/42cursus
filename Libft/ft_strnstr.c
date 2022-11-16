@@ -6,39 +6,39 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 23:15:54 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/14 15:43:17 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:21:46 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_needle(const char *haystack, const char *needle)
+static int	find_needle(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 
 	i = 0;
-	while (needle[i] && haystack[i] == needle[i])
-	{
-		if (needle[i] != haystack)
-			return (0);
+	while (i < len && haystack[i] == needle[i] && needle[i])
 		i++;
-	}
-	return (1);
+	if (needle[i] == 0)
+		return (1);
+	return (0);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 
-	if (*needle == 0 || len == 0)
-		return (haystack);
+	if (*needle == 0)
+		return ((char *)haystack);
 	i = 0;
-	while (haystack[i] && len)
+	while (i < len && haystack[i])
 	{
-		if(find_needle(&haystack[i], needle))
-			return (&haystack[i]);
-		len--;
+		if (haystack[i] == needle[0])
+		{
+			if (find_needle(&haystack[i], needle, len - i))
+				return ((char *)&haystack[i]);
+		}
 		i++;
 	}
-	return (0);	
+	return (0);
 }

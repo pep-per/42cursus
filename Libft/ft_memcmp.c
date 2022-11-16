@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:01:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/14 15:41:59 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:02:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	unsigned char	*str2;
 	size_t			i;
 
-	str1 = s1;
-	str2 = s2;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
 	while (i < n && str1 != str2)
 	{

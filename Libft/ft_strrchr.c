@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:35:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/14 15:43:22 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:22:37 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	char	*p;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (--i >= 0)
+	p = 0;
+	while (*s)
 	{
-		if (s[i] == (char)c)
-			return (s[i]);
+		if (*s == (char)c)
+			p = (char *)s;
+		s++;
 	}
-	return (0);
+	if ((char)c == '\0')
+		return ((char *)s);
+	else
+		return (p);
 }
