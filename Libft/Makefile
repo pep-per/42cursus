@@ -8,27 +8,36 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 		ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 		ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 		ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
-BONUS_SRCS = ft_lstnew_bonus.c
+BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
 HEADER = libft.h
 CC = cc
 CFLAGS = -c -Wall -Wextra -Werror
+AR = ar -rc
 
 all : $(NAME)
+	sleep 1
 
+bonus : all
+
+ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
+$(NAME) : $(OBJS) $(BONUS_OBJS)
+		$(AR) $@ $^
+else
 $(NAME) : $(OBJS)
-	ar -rc $@ $^
-
-bonus : $(OBJS)
+		$(AR) $@ $^
+endif
 
 %.o : %.c
 	$(CC) $(CFLAGS) $< -o $@ -I $(HEADER)
 
 clean :
-	rm -rf $(OBJS)
+	rm -rf $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+.PHONY: all re clean fclean bonus

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:01:04 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/16 22:25:08 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/19 23:28:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	**ft_split(char const *s, char c)
 	size_t	word_count;
 	size_t	i;
 
-	if (!s)
-		return (0);
 	word_count = 0;
 	count_word(s, c, &word_count);
 	words = (char **)malloc(sizeof(char *) * (word_count + 1));
