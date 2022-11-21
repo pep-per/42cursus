@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 20:19:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/21 20:55:18 by jiyeolee         ###   ########.fr       */
+/*   Created: 2022/11/21 16:46:48 by jiyeolee          #+#    #+#             */
+/*   Updated: 2022/11/21 16:59:10 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char			*new;
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	len1;
-	unsigned int	len2;
-
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	new = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!new)
-		return (0);
-	i = 0;
-	while (i < len1)
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
 	{
-		new[i] = (char)s1[i];
-		i++;
+		lst = lst->next;
 	}
-	j = 0;
-	while (j < len2)
-	{
-		new[i++] = (char)s2[j++];
-	}
-	new[i] = 0;
-	return (new);
+	return (lst);
 }

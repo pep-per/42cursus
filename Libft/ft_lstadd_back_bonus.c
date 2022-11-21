@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 20:19:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/21 20:55:18 by jiyeolee         ###   ########.fr       */
+/*   Created: 2022/11/21 17:05:27 by jiyeolee          #+#    #+#             */
+/*   Updated: 2022/11/21 17:28:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char			*new;
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	len1;
-	unsigned int	len2;
+	t_list	*last;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	new = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!new)
-		return (0);
-	i = 0;
-	while (i < len1)
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		new[i] = (char)s1[i];
-		i++;
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
-	j = 0;
-	while (j < len2)
-	{
-		new[i++] = (char)s2[j++];
-	}
-	new[i] = 0;
-	return (new);
 }
