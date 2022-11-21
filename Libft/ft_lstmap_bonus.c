@@ -6,13 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:13:56 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/21 21:42:59 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/11/21 21:45:47 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	delete_clear(t_list *head, void (*del)(void *), void *tmp)
+static void	delete_clear(t_list *head, void (*del)(void *), void *tmp)
 {
 	del(tmp);
 	ft_lstclear(&head, del);
