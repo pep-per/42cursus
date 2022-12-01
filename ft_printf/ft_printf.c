@@ -1,71 +1,88 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/30 15:11:50 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:17:01 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	parse_type(int c, t_tags *tags, va_list args, int (*flag[])(t_tags *tags))
+void	init_tags(t_tags *tags)
 {
-	if (c == 'c')
-		return ();
+	tags->type = 0;
+	tags->width = 0;
+	tags->dot = -1;
+	tags->minus = 0;
+	tags->zero = 0;
+	tags->hash = 0;
+	tags->space = 0;
+}
+
+int	parse_type(const char *format, int i, t_tags *tags, va_list args)
+{
+	if (format[i] == 'c')
+		return (apply_options(ft_putchar_fd(va_arg(args, int), 1));
 	else if (c == 's')
 		return ();
-
-	if (str[i] == 'c')
-		res_len += ft_putchar(va_arg(ap, int));
 }
 
-void	apply_flags(int (*flag[])(t_tags *tags))
+void	apply_options(const char *format, int i, t_tags *tags, va_list args)
 {
-	// 함수 포인터 배열 초기화
-	flag[0] = &f_width;
-	flag[1] = &f_precision;
-	flag[2] = &f_num;
+	ft_putchar_fd(va_arg(args, int), 1));
 }
+// void	apply_options(int (*flag[])(t_tags *tags))
+// {
+// 	int		(*flag[3])(t_tags *tags);
 
-int	parse_flags(int c, t_tags *tags, va_list args)
+// }
+
+void	parse_flag(int c, t_tags *tags, va_list args)
 {
+	//init_flag(tags);
 	if (c == '0')
-		tags->zero = 1;
-}
-
-int	parse_format(const char *format, t_tags *tags, va_list args)
-{
-	int		i;
-	int		len;
-	int		(*flag[3])(t_tags *tags);
-
-	i = 0;
-	len = 0;
-	init_flags(flag);
-	while (format[i])
 	{
-		if (format[i] == 'c' || format[i] == 'p' || format[i] == 'd' \
-			|| format[i] == 'd' || format[i] == 'i' || format[i] == 'u' \
-			|| format[i] == 'x' || format[i] == 'X' || format[i] == '%')
-			len += parse_type(format[i], tags, args, flag);
-		else
-		{
-
-			// 구조체에 플래그 할당
-			if (parse_flags(format[i], tags, args) == -1)
-				return (-1);
-			else
-
-		}
-		i++;
+		tags->zero = 1;
+	}
+	else if (c == '-')
+	{
+		
 	}
 	//write 실패 시  -1 리턴
 	//해석 실패 시 - 1 리턴
 	//오버플로우 - 1 리턴
+}
+
+int	parse_format(const char *format, va_list args, int *len)
+{
+	t_tags	*tags;
+	int		i;
+	int		result;
+
+	init_tags(tags);
+	i = 0;
+	while (format[i])
+	{
+		if (format[i] == 'c' || format[i] == 's' || format[i] == 'p' \
+			|| format[i] == 'd' || format[i] == 'i' || format[i] == 'u' \
+			|| format[i] == 'x' || format[i] == 'X' || format[i] == '%')
+		{
+			result = parse_type(format, i, tags, args);
+			if (result == -1)
+				return (-1);
+			else
+			{
+				*len += result;
+				return (i + result);
+			}
+		}
+		parse_flag(format[i], tags, args);
+		i++;
+	}
 	return (i);
 }
 
@@ -73,28 +90,24 @@ int	input_format(const char *format, va_list args)
 {
 	int		len;
 	int		i;
-	t_tags	*tags;
 
 	len = 0;
 	i = 0;
-	//tags 초기화
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1))
 		{
 			format++;
-			i = parse_format(format, tags, args);
+			i = parse_format(format, args, &len);
 			if (i == -1)
 				return (-1);
-			len += i;
 			format += i;
-			//tags 초기화
 		}
 		else
 		{
-			len += 1;
 			if (write(1, format, 1) == -1)
 				return (-1);
+			len += 1;
 		}
 		format++;
 	}
@@ -109,6 +122,7 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	len = input_format(format, args);
 	va_end(args);
+	// free 꼭해야하나?
 	free((char *)format);
 	return (len);
 }
