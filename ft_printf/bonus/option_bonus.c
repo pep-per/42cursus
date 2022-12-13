@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   option_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 16:47:40 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/09 07:22:14 by jiyeolee         ###   ########.fr       */
+/*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
+/*   Updated: 2022/12/14 02:56:11 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf_bonus.h"
 
-char	*ft_strdup(const char *s1)
+int	apply_option_width(t_tags *tags)
 {
-	char	*dst;
-	size_t	len;
-	size_t	i;
+	int	w;
 
-	len = 0;
-	while (s1[len])
-		len++;
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dst)
-		return (0);
-	i = 0;
-	while (s1[i])
+	w = tags->width;
+	while (w--)
 	{
-		dst[i] = s1[i];
-		i++;
+		if (tags->zero == 1 && tags->minus == 0
+			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
+		{
+			if (ft_putchar('0') == -1)
+				return (-1);
+		}
+		else
+		{
+			if (ft_putchar(' ') == -1)
+				return (-1);
+		}
 	}
-	dst[i] = 0;
-	return (dst);
+	return (1);
 }
+
+// int	apply_option_precision(t_tags *tags)
+// {
+// 	return (1);
+// }

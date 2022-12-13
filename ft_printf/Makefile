@@ -1,30 +1,41 @@
 NAME = libftprintf.a
-SRCS = printf.c
+SRCS = ft_printf.c
+BONUS_SRCS = ./bonus/ft_printf_bonus.c ./bonus/type_bonus.c ./bonus/option_bonus.c ./bonus/parsing_tag_bonus.c
 OBJS = $(SRCS:.c=.o)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 CC = cc
 CFLAGS = -c -Wall -Wextra -Werror
 AR = ar -rc
-
-libft : make libft.a -C ./Libft
+libft = make -C ./Libft libft.a
 
 all : $(NAME)
 
-$(NAME) : libftprintf.a $(OBJS)
-		libft
-		cp ./Libft/libft.a libftprintf.a 
+bonus : $(NAME)
+
+ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
+$(NAME) : $(BONUS_OBJS)
+		$(libft)
+		cp ./Libft/libft.a $@
 		$(AR) $@ $^
+else
+$(NAME) : $(OBJS)
+		$(libft)
+		cp ./Libft/libft.a $@
+		$(AR) $@ $^
+endif
 
 %.o : %.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean :
-	rm -rf $(OBJS)
+		make -C ./Libft clean
+		rm -rf $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-	rm -rf $(NAME)
+		rm -rf $(NAME) ./Libft/libft.a
 
 re :
-	fclean
-	all
+	make fclean
+	make all
 
-.PHONY: all re clean fclean libft
+.PHONY: all re clean fclean bonus

@@ -6,110 +6,83 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/01 21:17:01 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:32:43 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	init_tags(t_tags *tags)
+static int	apply_type_p(void *arg)
 {
-	tags->type = 0;
-	tags->width = 0;
-	tags->dot = -1;
-	tags->minus = 0;
-	tags->zero = 0;
-	tags->hash = 0;
-	tags->space = 0;
+	if (!arg)
+		return (ft_put_hexa(0, 0, 1));
+	return (ft_put_hexa((size_t)arg, 0, 1));
 }
 
-int	parse_type(const char *format, int i, t_tags *tags, va_list args)
+static int	parse_type(char c, va_list args)
 {
-	if (format[i] == 'c')
-		return (apply_options(ft_putchar_fd(va_arg(args, int), 1));
+	char	*arg;
+
+	if (c == 'c')
+		return (ft_putchar((char)va_arg(args, int)));
 	else if (c == 's')
-		return ();
-}
-
-void	apply_options(const char *format, int i, t_tags *tags, va_list args)
-{
-	ft_putchar_fd(va_arg(args, int), 1));
-}
-// void	apply_options(int (*flag[])(t_tags *tags))
-// {
-// 	int		(*flag[3])(t_tags *tags);
-
-// }
-
-void	parse_flag(int c, t_tags *tags, va_list args)
-{
-	//init_flag(tags);
-	if (c == '0')
 	{
-		tags->zero = 1;
+		arg = va_arg(args, char *);
+		if (!arg)
+			return (ft_putstr("(null)"));
+		return (ft_putstr(arg));
 	}
-	else if (c == '-')
-	{
-		
-	}
-	//write 실패 시  -1 리턴
-	//해석 실패 시 - 1 리턴
-	//오버플로우 - 1 리턴
+	else if (c == 'p')
+		return (apply_type_p(va_arg(args, void *)));
+	else if (c == 'd' || c == 'i')
+		return (ft_itoa(va_arg(args, int)));
+	else if (c == 'u')
+		return (ft_uitoa(va_arg(args, unsigned int)));
+	else if (c == 'x')
+		return (ft_put_hexa(va_arg(args, unsigned int), 0, 0));
+	else if (c == 'X')
+		return (ft_put_hexa(va_arg(args, unsigned int), 1, 0));
+	else
+		return (ft_putchar('%'));
 }
 
-int	parse_format(const char *format, va_list args, int *len)
+static int	parse_format(char *format, va_list args, int *i)
 {
-	t_tags	*tags;
-	int		i;
-	int		result;
-
-	init_tags(tags);
-	i = 0;
-	while (format[i])
+	while (format[++(*i)])
 	{
-		if (format[i] == 'c' || format[i] == 's' || format[i] == 'p' \
-			|| format[i] == 'd' || format[i] == 'i' || format[i] == 'u' \
-			|| format[i] == 'x' || format[i] == 'X' || format[i] == '%')
-		{
-			result = parse_type(format, i, tags, args);
-			if (result == -1)
-				return (-1);
-			else
-			{
-				*len += result;
-				return (i + result);
-			}
-		}
-		parse_flag(format[i], tags, args);
-		i++;
+		if (format[*i] == 'c' || format[*i] == 's' || format[*i] == 'p' \
+			|| format[*i] == 'd' || format[*i] == 'i' || format[*i] == 'u' \
+			|| format[*i] == 'x' || format[*i] == 'X' || format[*i] == '%')
+			return (parse_type(format[*i], args));
 	}
-	return (i);
+	return (0);
 }
 
-int	input_format(const char *format, va_list args)
+static int	input_format(char *format, va_list args)
 {
 	int		len;
 	int		i;
+	int		count;
 
 	len = 0;
 	i = 0;
-	while (*format)
+	count = 0;
+	while (format[i])
 	{
-		if (*format == '%' && *(format + 1))
+		if (format[i] == '%' && format[i + 1])
 		{
-			format++;
-			i = parse_format(format, args, &len);
-			if (i == -1)
+			count = parse_format(format, args, &i);
+			if (count == -1)
 				return (-1);
-			format += i;
+			len += count;
 		}
 		else
 		{
-			if (write(1, format, 1) == -1)
+			if (ft_putchar(format[i]) == -1)
 				return (-1);
 			len += 1;
 		}
-		format++;
+		i++;
 	}
 	return (len);
 }
@@ -119,10 +92,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 	int		len;
 
-	va_start(args, format);
-	len = input_format(format, args);
+	va_start(args, (char *)format);
+	len = input_format((char *)format, args);
 	va_end(args);
-	// free 꼭해야하나?
-	free((char *)format);
 	return (len);
 }

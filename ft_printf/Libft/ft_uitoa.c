@@ -1,62 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 04:43:48 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/14 00:04:15 by jiyeolee         ###   ########.fr       */
+/*   Created: 2022/12/08 22:40:29 by jiyeolee          #+#    #+#             */
+/*   Updated: 2022/12/10 14:24:05 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	num_length(long long num)
+static unsigned int	num_length(unsigned int n)
 {
 	unsigned int	len;
 
 	len = 0;
-	if (num < 0)
-	{
-		num = -num;
-		len++;
-	}
-	else if (num == 0)
+	if (n == 0)
 		len = 1;
-	while (num > 0)
+	while (n > 0)
 	{
-		num /= 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
 }
 
-int	ft_itoa(int n)
+int	ft_uitoa(unsigned int n)
 {
-	long long		num;
 	unsigned int	len;
 	unsigned int	i;
 	char			*str;
 
-	num = (long long)n;
-	len = num_length(num);
+	len = num_length(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
-	if (num < 0)
-	{
-		num = -num;
-		str[0] = '-';
-	}
-	else if (num == 0)
+	if (n == 0)
 		str[0] = '0';
 	str[len] = 0;
 	i = len - 1;
-	while (num > 0)
+	while (n > 0)
 	{
-		str[i--] = (num % 10) + '0';
-		num /= 10;
+		str[i--] = (n % 10) + '0';
+		n /= 10;
 	}
 	return (ft_putstr_free(str));
 }

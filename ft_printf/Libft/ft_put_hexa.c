@@ -1,62 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_put_hexa.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 04:43:48 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/14 00:04:15 by jiyeolee         ###   ########.fr       */
+/*   Created: 2022/12/09 00:28:44 by jiyeolee          #+#    #+#             */
+/*   Updated: 2022/12/14 02:54:20 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	num_length(long long num)
+unsigned int	num_length(size_t n)
 {
 	unsigned int	len;
 
 	len = 0;
-	if (num < 0)
-	{
-		num = -num;
-		len++;
-	}
-	else if (num == 0)
+	if (n == 0)
 		len = 1;
-	while (num > 0)
+	while (n > 0)
 	{
-		num /= 10;
+		n /= 16;
 		len++;
 	}
 	return (len);
 }
 
-int	ft_itoa(int n)
+int	hexa_to_str(size_t n, char *hexa, int is_address)
 {
-	long long		num;
 	unsigned int	len;
 	unsigned int	i;
 	char			*str;
 
-	num = (long long)n;
-	len = num_length(num);
+	len = num_length(n);
+	if (is_address)
+		len += 2;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
-	if (num < 0)
-	{
-		num = -num;
-		str[0] = '-';
-	}
-	else if (num == 0)
-		str[0] = '0';
 	str[len] = 0;
 	i = len - 1;
-	while (num > 0)
+	if (n == 0)
+		str[i] = '0';
+	while (n > 0)
 	{
-		str[i--] = (num % 10) + '0';
-		num /= 10;
+		str[i--] = hexa[n % 16];
+		n /= 16;
+	}
+	if (is_address)
+	{
+		str[0] = '0';
+		str[1] = 'x';
 	}
 	return (ft_putstr_free(str));
+}
+
+int	ft_put_hexa(size_t n, int is_upper, int is_address)
+{
+	char	*hexa;
+
+	if (is_upper)
+		hexa = "0123456789ABCDEF";
+	else
+		hexa = "0123456789abcdef";
+	return (hexa_to_str(n, hexa, is_address));
 }
