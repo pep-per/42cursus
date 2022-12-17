@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 20:26:31 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/06 22:46:06 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:57:27 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "./Libft/libft.h"
+
+int	ft_printf(const char *format, ...);
 
 #endif

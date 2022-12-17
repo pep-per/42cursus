@@ -6,13 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:40:29 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/10 14:24:05 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:14:24 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned int	num_length(unsigned int n)
+unsigned int	num_length_ui(unsigned int n)
 {
 	unsigned int	len;
 
@@ -27,13 +27,15 @@ static unsigned int	num_length(unsigned int n)
 	return (len);
 }
 
-int	ft_uitoa(unsigned int n)
+int	ft_uitoa(void *arg)
 {
+	unsigned int	n;
 	unsigned int	len;
 	unsigned int	i;
 	char			*str;
 
-	len = num_length(n);
+	n = *((unsigned int *)arg);
+	len = num_length_ui(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);

@@ -6,70 +6,69 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/14 05:15:23 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:46:29 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	init_tags(t_tags *tags)
-{
-	tags->type = 0;
-	tags->width = 0;
-	tags->precision = -1;
-	tags->minus = 0;
-	tags->plus = 0;
-	tags->zero = 0;
-	tags->hash = 0;
-	tags->space = 0;
-}
 
-static int	parse_type(char c, va_list args, t_tags *tags)
+static int	parse_type_char(va_list args, t_tags *tags, int (*ft_put[])(void *))
 {
+	int		type;
+	char	c;
 	char	*arg;
+	char	*str;
 
-	if (c == 'c')
-		return (apply_type_c((char)va_arg(args, int), tags));
-	else if (c == 's')
+	type = tags->type;
+	c = '%';
+	if (type == 'c' || type == '%')
+	{
+		if (type == 'c')
+			c = (char)va_arg(args, int);
+		return (apply_type_char(&c, tags, ft_put[0]));
+	}
+	else
 	{
 		arg = va_arg(args, char *);
-		return (apply_type_s(arg, tags));
+		if (!arg)
+			return (apply_type_char(ft_strdup("(null)"), tags, ft_put[1]));
+		str = ft_strdup(arg);
+		if (!str)
+			return (-1);
+		if (tags->precision != -1)
+			str[tags->precision] = 0;
+		return (apply_type_char(str, tags, ft_put[1]));
 	}
-	else if (c == 'p')
-		return (apply_type_p(va_arg(args, void *), tags));
-	else if (c == 'd' || c == 'i')
-		return (apply_type_d(va_arg(args, int), tags));
-	else if (c == 'u')
-		return (apply_type_u(va_arg(args, unsigned int), tags));
-	else if (c == 'x')
-		return (apply_type_x(va_arg(args, unsigned int), 0, tags));
-	else if (c == 'X')
-		return (apply_type_x(va_arg(args, unsigned int), 1, tags));
-	else
-		return (ft_putchar('%'));
 }
 
-static void	parse_option(char c, t_tags *tags)
+static int	parse_type_num(va_list args, t_tags *tags, int (*ft_put[])(void *))
 {
-	if (!is_num(c) && !is_option(c))
-		return ;
-	if (c == '-')
-		tags->minus = 1;
-	if (c == '+')
-		tags->plus = 1;
-	if (c == '#')
-		tags->hash = 1;
-	if (c == ' ')
-		tags->space = 1;
-	if (c == '.')
-		tags->precision = 0;
-	if (c == '0' && tags->width == 0 && tags->minus == 0
-		&& tags->precision == -1)
-		tags->zero = 1;
-	else if (is_num(c) && tags->precision == -1)
-		tags->width = 10 * (tags->width) + (c - '0');
-	else if (is_num(c))
-		tags->precision = 10 * (tags->precision) + (c - '0');
+	int				type;
+	int				i;
+	unsigned int	ui;
+	void			*arg;
+
+	type = tags->type;
+	if (type == 'p')
+	{
+		arg = va_arg(args, void *);
+		return (convert_to_hexa(arg, tags, ft_put[2]));
+	}
+	else if (type == 'd' || type == 'i')
+	{
+		i = va_arg(args, int);
+		return (convert_to_decimal(&i, tags, ft_put[5]));
+	}
+	else
+	{
+		ui = va_arg(args, unsigned int);
+		if (type == 'u')
+			return (convert_to_decimal(&ui, tags, ft_put[6]));
+		else if (type == 'x')
+			return (convert_to_hexa(&ui, tags, ft_put[3]));
+		return (convert_to_hexa(&ui, tags, ft_put[4]));
+	}
 }
 	//write 실패 시  -1 리턴
 	//해석 실패 시 - 1 리턴
@@ -78,17 +77,27 @@ static void	parse_option(char c, t_tags *tags)
 static int	parse_format(char *format, va_list args, int *i)
 {
 	t_tags	*tags;
+	int		(*ft_put[6])(void *arg);
 
+	tags = (t_tags *)malloc(sizeof(t_tags));
 	init_tags(tags);
+	init_ft_put(ft_put);
 	while (format[++(*i)])
 	{
 		if (is_type(format[*i]))
 		{
 			tags->type = (int)format[*i];
-			return (parse_type(format[*i], args, tags));
+			if (tags->type == 'c' || tags->type == 's')
+				return (parse_type_char(args, tags, ft_put));
+			else
+				return (parse_type_num(args, tags, ft_put));
 		}
 		else
+		{
 			parse_option(format[*i], tags);
+			if (tags->type == -1)
+				return (-1);
+		}
 	}
 	return (0);
 }

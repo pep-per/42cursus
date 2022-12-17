@@ -6,95 +6,163 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:45:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/14 05:06:53 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:47:09 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_type_c(char c, t_tags *tags)
-{
-	int	width;
+// int	apply_type_c(char c, t_tags *tags)
+// {
+// 	int	width;
 
+// 	width = tags->width;
+// 	if (width == 0)
+// 		return (ft_putchar(c));
+// 	if (tags->minus == 1)
+// 		if (ft_putchar(c) == -1)
+// 			return (-1);
+// 	tags->width -= 1;
+// 	if (apply_option_width(tags) == -1)
+// 		return (-1);
+// 	if (tags->minus == 0)
+// 		if (ft_putchar(c) == -1)
+// 			return (-1);
+// 	return (width);
+// }
+
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}		
+	return (0);
+}
+
+
+int	is_type(char c)
+{
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' \
+			|| c == 'u' || c == 'x' || c == 'X' || c == '%');
+}
+
+int	apply_type_char(void *arg, t_tags *tags, int (*ft_put)(void *))
+{
+	unsigned int	width;
+	unsigned int	len;
+	char			*str;
+
+	len = 1;
+	str = (char *)arg;
+	if (tags->type == 's')
+		len = ft_strlen(str);
 	width = tags->width;
-	if (width == 0)
-		return (ft_putchar(c));
-	if (tags->minus == 1)
-		if (ft_putchar(c) == -1)
+	if (tags->precision != -1 && tags->type == 's')
+	{
+		str[tags->precision] = 0;
+		if (apply_option_precision(tags, len) == -1)
 			return (-1);
-	tags->width -= 1;
-	if (apply_option_width(tags) == -1)
+	}
+	if (width <= (unsigned int)tags->precision)
+		return (ft_put(arg));
+	if (tags->type == 's' && ft_strncmp(str, "(null)", len) != 0)
+		tags->width -= tags->precision;
+	if (apply_option_width(arg, tags, ft_put) == -1)
 		return (-1);
-	if (tags->minus == 0)
-		if (ft_putchar(c) == -1)
-			return (-1);
 	return (width);
 }
 
-int	apply_type_s(char *str, t_tags *tags)
+int	convert_to_decimal(void *arg, t_tags *tags, int (*ft_put)(void *))
 {
-	int	width;
-	int	len;
-	int	max;
+	unsigned int	width;
+	unsigned int	len;
 
-	if (!str)
-		str = ft_strdup("(null)");
+	if (tags->type == 'u')
+		len = num_length_ui(*((unsigned int *)arg));
+	else
+		len = num_length_i(*((int *)arg));
 	width = tags->width;
-	len = ft_strlen(str);
-	max = tags->precision;
-	str[max] = 0;
-	if (width == 0 || width <= len)
-		return (ft_putstr(str));
-	if (tags->minus == 1)
-		if (ft_putstr(str) == -1)
+	if (*((int *)arg) == 0 && tags->precision == 0)
+		return (width);
+	if (tags->precision != -1)
+		if (apply_option_precision(tags, len) == -1)
 			return (-1);
+	if (width <= (unsigned int)tags->precision)
+		return (ft_put(arg));
+	tags->width -= tags->precision;
+	if (apply_option_width(arg, tags, ft_put) == -1)
+		return (-1);
+	return (width);
+}
+
+static int	mark_0x(t_tags *tags, unsigned int *len)
+{
+	char	mark[3];
+
+	mark[0] = '0';
+	if (tags->type == 'X')
+		mark[1] = 'X';
+	else
+		mark[1] = 'x';
+	mark[2] = 0;
+	*len += 2;
+	return (ft_putstr(mark));
+}
+
+int	convert_to_hexa(void *arg, t_tags *tags, int (*ft_put)(void *))
+{
+	unsigned int	width;
+	unsigned int	len;
+	size_t			num;
+
+	num = *(size_t *)arg;
+	if (tags->type == 'p')
+		num = (size_t)arg;
+	len = num_length_hexa(num);
+	width = tags->width;
+	if (num == 0 && tags->precision == 0)
+		return (width);
+	if (tags->hash == 1 && tags->type != 'p')
+		if (mark_0x(tags, &len) == -1)
+			return (-1);
+	if (tags->precision != -1 && tags->type != 'p')
+		if (apply_option_precision(tags, len) == -1)
+			return (-1);
+	if (tags->width <= (int)len)
+		return (ft_put(arg));
 	tags->width -= len;
-	if (apply_option_width(tags) == -1)
+	if (apply_option_width(arg, tags, ft_put) == -1)
 		return (-1);
-	if (tags->minus == 0)
-		if (ft_putstr(str) == -1)
-			return (-1);
 	return (width);
 }
 
-int	apply_type_p(void *arg, t_tags *tags)
-{
-	int	width;
-	int	len;
+// int	apply_type_s(char *str, t_tags *tags)
+// {
+// 	int	width;
+// 	int	len;
+// 	int	max;
 
-	if (!arg)
-		return (ft_put_hexa(0, 0, 1));
-	width = tags->width;
-	len = num_length((size_t)arg);
-	if (width == 0 || width <= len)
-		return (ft_put_hexa((size_t)arg, 0, 1));
-	if (tags->minus == 1)
-		if (ft_put_hexa((size_t)arg, 0, 1) == -1)
-			return (-1);
-	tags->width -= len;
-	if (apply_option_width(tags) == -1)
-		return (-1);
-	if (tags->minus == 0)
-		if (ft_put_hexa((size_t)arg, 0, 1) == -1)
-			return (-1);
-	return (width);
-}
-
-int	apply_type_d(int n, t_tags *tags)
-{
-	int	width;
-
-	return (ft_itoa(n));
-}
-
-int	apply_type_u(unsigned int ui, t_tags *tags)
-{
-	return (ft_uitoa(ui));
-
-}
-
-int	apply_type_x(unsigned int ui, int is_upper, t_tags *tags)
-{
-	return (ft_put_hexa(ui, is_upper, 0));
-
-}
+// 	width = tags->width;
+// 	len = ft_strlen(str);
+// 	max = tags->precision;
+// 	str[max] = 0;
+// 	if (width <= len)
+// 		return (ft_putstr_free(str));
+// 	if (tags->minus == 1)
+// 		if (ft_putstr_free(str) == -1)
+// 			return (-1);
+// 	tags->width -= len;
+// 	if (apply_option_width(tags) == -1)
+// 		return (-1);
+// 	if (tags->minus == 0)
+// 		if (ft_putstr_free(str) == -1)
+// 			return (-1);
+// 	return (width);
+// }

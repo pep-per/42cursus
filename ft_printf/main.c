@@ -8,10 +8,10 @@ int main(void)
 	int r1;
 	int r2;
 
-	r1 = printf("%23s", NULL);
+	r1 = printf("^.^/%11.20s^.^/", 4311635440);
 	printf("\n");
 	printf("printf cnt : %d\n", r1);
-	r2 = ft_printf("%23s", NULL);
+	r2 = ft_printf("^.^/%11.20s^.^/", 4311635440);
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
 
@@ -32,3 +32,9 @@ int main(void)
 // 	printf("ft_printf cnt: %d\n", ft_cnt);
 // 	printf("printf cnt: %d\n", cnt);
 // }
+
+
+
+// [ERROR] diff on output for format "\\!/%22.10s\\!/" and arg: ""
+// expected: [\\!/                      \\!/]
+//      got: [\\!/            \\!/\x00\x00------<\x00]

@@ -6,44 +6,44 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/10 17:32:43 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/17 15:14:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	apply_type_p(void *arg)
-{
-	if (!arg)
-		return (ft_put_hexa(0, 0, 1));
-	return (ft_put_hexa((size_t)arg, 0, 1));
-}
-
 static int	parse_type(char c, va_list args)
 {
-	char	*arg;
+	int				i;
+	char			*str;
+	unsigned int	ui;
 
-	if (c == 'c')
-		return (ft_putchar((char)va_arg(args, int)));
-	else if (c == 's')
+	if (c == 'p')
+		return (ft_put_address(va_arg(args, void *)));
+	if (c == 'c' || c == 'd' || c == 'i')
 	{
-		arg = va_arg(args, char *);
-		if (!arg)
-			return (ft_putstr("(null)"));
-		return (ft_putstr(arg));
+		i = va_arg(args, int);
+		if (c == 'c')
+			return (ft_putchar((char)i));
+		return (ft_itoa(&i));
 	}
-	else if (c == 'p')
-		return (apply_type_p(va_arg(args, void *)));
-	else if (c == 'd' || c == 'i')
-		return (ft_itoa(va_arg(args, int)));
-	else if (c == 'u')
-		return (ft_uitoa(va_arg(args, unsigned int)));
-	else if (c == 'x')
-		return (ft_put_hexa(va_arg(args, unsigned int), 0, 0));
-	else if (c == 'X')
-		return (ft_put_hexa(va_arg(args, unsigned int), 1, 0));
-	else
-		return (ft_putchar('%'));
+	if (c == 's')
+	{
+		str = va_arg(args, char *);
+		if (!str)
+			return (ft_putstr("(null)"));
+		return (ft_putstr(str));
+	}
+	if (c == 'u' || c == 'x' || c == 'X')
+	{
+		ui = va_arg(args, unsigned int);
+		if (c == 'x')
+			return (ft_put_hexa_lower(&ui));
+		else if (c == 'X')
+			return (ft_put_hexa_upper(&ui));
+		return (ft_uitoa(&ui));
+	}
+	return (ft_putchar('%'));
 }
 
 static int	parse_format(char *format, va_list args, int *i)
