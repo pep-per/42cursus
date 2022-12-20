@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:28:44 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 14:05:45 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:19:05 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	hexa_to_str(size_t n, char *hexa, int is_address)
 	return (ft_putstr_free(str));
 }
 
-int	ft_put_address(void *arg)
+int	ft_put_address(va_list args)
 {
 	char	*hexa;
 

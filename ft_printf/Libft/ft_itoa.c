@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:43:48 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 12:42:19 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:21:35 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ unsigned int	num_length_i(long long num)
 	return (len);
 }
 
-int	ft_itoa(void *arg)
+int	ft_itoa(va_list args)
 {
 	long long		num;
 	unsigned int	len;
 	unsigned int	i;
 	char			*str;
 
-	num = *((long long *)arg);
+	num = (long long)va_arg(args, int);
 	len = num_length_i(num);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)

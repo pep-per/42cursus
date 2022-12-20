@@ -6,18 +6,18 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 18:24:09 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:34:35 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_option_width(void *arg, t_tags *tags, int (*ft_put)(void *))
+int	apply_option_width(va_list args, t_tags *tags, int (*ft_put)(va_list args))
 {
 	int		w;
 
 	if (tags->minus == 1)
-		if (ft_put(arg) == -1)
+		if (ft_put(args) == -1)
 			return (-1);
 	w = tags->width;
 	while (w--)
@@ -35,7 +35,7 @@ int	apply_option_width(void *arg, t_tags *tags, int (*ft_put)(void *))
 		}
 	}
 	if (tags->minus == 0)
-		if (ft_put(arg) == -1)
+		if (ft_put(args) == -1)
 			return (-1);
 	return (1);
 }

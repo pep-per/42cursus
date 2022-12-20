@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:45:17 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 15:16:50 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:42:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -22,18 +23,19 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-int		ft_isdigit(int c);
-char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *s);
-int		ft_itoa(void *arg);
-int		ft_putchar(char c);
-int		ft_put_to_char(void *arg);
-int		ft_putstr(char *s);
-int		ft_putstr_free(void *arg);
-int		ft_uitoa(void *arg);
-int		ft_put_address(void *arg);
-int		ft_put_hexa_lower(void *arg);
-int		ft_put_hexa_upper(void *arg);
+int				ft_isdigit(int c);
+char			*ft_strdup(const char *s1);
+size_t			ft_strlen(const char *s);
+int				ft_itoa(va_list args);
+
+int				ft_putchar(char c);
+int				ft_put_to_char(va_list args);
+int				ft_putstr(va_list args);
+int				ft_putstr_free(va_list args);
+int				ft_uitoa(va_list args);
+int				ft_put_address(va_list args);
+int				ft_put_hexa_lower(va_list args);
+int				ft_put_hexa_upper(va_list args);
 unsigned int	num_length_hexa(size_t n);
 unsigned int	num_length_ui(unsigned int n);
 unsigned int	num_length_i(long long num);

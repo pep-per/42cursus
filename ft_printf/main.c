@@ -1,17 +1,17 @@
-#include "./bonus/ft_printf_bonus.h"
+// #include "./bonus/ft_printf_bonus.h"
 #include <stdio.h>
 #include <limits.h>
-//#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 int main(void)
 {
 	int r1;
 	int r2;
 
-	r1 = printf("^.^/%11.20s^.^/", 4311635440);
+	r1 = printf(" %p ", -1);
 	printf("\n");
 	printf("printf cnt : %d\n", r1);
-	r2 = ft_printf("^.^/%11.20s^.^/", 4311635440);
+	r2 = ft_printf(" %p ", -1);
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
 

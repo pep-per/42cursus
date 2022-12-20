@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:41:29 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 15:28:01 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:31:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_tags(t_tags *tags)
 	tags->space = 0;
 }
 
-void	init_ft_put(int (*ft_put[])(void *))
+void	init_ft_put(int (*ft_put[])(va_list args))
 {
 	ft_put[0] = &ft_put_to_char;
 	ft_put[1] = &ft_putstr_free;

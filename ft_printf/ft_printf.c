@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 15:14:58 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:02:59 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	parse_type(char c, va_list args)
 	{
 		i = va_arg(args, int);
 		if (c == 'c')
-			return (ft_putchar((char)i));
+			return (ft_put_to_char(&i));
 		return (ft_itoa(&i));
 	}
 	if (c == 's')

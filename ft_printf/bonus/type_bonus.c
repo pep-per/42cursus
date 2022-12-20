@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:45:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 18:47:09 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 20:50:36 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,46 +46,65 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
-
 int	is_type(char c)
 {
 	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' \
 			|| c == 'u' || c == 'x' || c == 'X' || c == '%');
 }
 
-int	apply_type_char(void *arg, t_tags *tags, int (*ft_put)(void *))
+int	apply_type_char(va_list args, t_tags *tags, \
+					int (*ft_put)(va_list args))
+{
+	unsigned int	width;
+
+	width = tags->width;
+	tags->width -= 1;
+	if (apply_option_width(args, tags, ft_put) == -1)
+		return (-1);
+	return (width);
+}
+
+int	apply_type_str(va_list args, t_tags *tags, \
+					int (*ft_put)(va_list args))
 {
 	unsigned int	width;
 	unsigned int	len;
+	unsigned int	precise_len;
+	char			*arg;
 	char			*str;
 
-	len = 1;
-	str = (char *)arg;
-	if (tags->type == 's')
-		len = ft_strlen(str);
+	arg = va_arg(args, char *);
+	if (!arg)
+		str = ft_strdup("(null)");
+	if (!str)
+		return (-1);
+	len = ft_strlen(str);
 	width = tags->width;
-	if (tags->precision != -1 && tags->type == 's')
+	if (tags->precision != -1)
 	{
 		str[tags->precision] = 0;
 		if (apply_option_precision(tags, len) == -1)
 			return (-1);
 	}
-	if (width <= (unsigned int)tags->precision)
-		return (ft_put(arg));
-	if (tags->type == 's' && ft_strncmp(str, "(null)", len) != 0)
-		tags->width -= tags->precision;
+	precise_len == tags->precision;
+	if (width <= precise_len)
+		return (ft_put(args));
+	// if (ft_strncmp(str, "(null)", len) != 0)
+	tags->width -= precise_len;
 	if (apply_option_width(arg, tags, ft_put) == -1)
 		return (-1);
 	return (width);
 }
 
-int	convert_to_decimal(void *arg, t_tags *tags, int (*ft_put)(void *))
+int	convert_to_decimal(va_list args, t_tags *tags, int (*ft_put)(va_list args))
 {
 	unsigned int	width;
 	unsigned int	len;
+	unsigned int	ui;
+	int				i;
 
 	if (tags->type == 'u')
-		len = num_length_ui(*((unsigned int *)arg));
+		len = num_length_ui(*((unsigned int *)args));
 	else
 		len = num_length_i(*((int *)arg));
 	width = tags->width;
@@ -116,16 +135,15 @@ static int	mark_0x(t_tags *tags, unsigned int *len)
 	return (ft_putstr(mark));
 }
 
-int	convert_to_hexa(void *arg, t_tags *tags, int (*ft_put)(void *))
+int	convert_to_hexa(va_list args, t_tags *tags, int (*ft_put)(va_list args))
 {
 	unsigned int	width;
 	unsigned int	len;
 	size_t			num;
 
-	num = *(size_t *)arg;
+	num = va_arg(args, unsigned int);
 	if (tags->type == 'p')
-		num = (size_t)arg;
-	len = num_length_hexa(num);
+	len = num_length_hexa((size_t)num);
 	width = tags->width;
 	if (num == 0 && tags->precision == 0)
 		return (width);
@@ -136,9 +154,9 @@ int	convert_to_hexa(void *arg, t_tags *tags, int (*ft_put)(void *))
 		if (apply_option_precision(tags, len) == -1)
 			return (-1);
 	if (tags->width <= (int)len)
-		return (ft_put(arg));
+		return (ft_put(args));
 	tags->width -= len;
-	if (apply_option_width(arg, tags, ft_put) == -1)
+	if (apply_option_width(args, tags, ft_put) == -1)
 		return (-1);
 	return (width);
 }
