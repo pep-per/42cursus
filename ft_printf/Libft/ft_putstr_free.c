@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:38:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/20 16:13:08 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 21:22:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,22 @@ int	ft_putstr(char *s)
 	return (i);
 }
 
-int	ft_putstr_free(va_list args)
-{
-	char	*s;
-	int		i;
+// int	ft_putstr_free(va_list args)
+// {
+// 	char	*s;
+// 	int		i;
 
-	s = va_arg(args, char *);
-	i = 0;
-	while (s[i])
-	{
-		if (ft_putchar(s[i]) == -1)
-		{
-			free(s);
-			return (-1);
-		}
-		i++;
-	}
-	free(s);
-	return (i);
-}
+// 	s = va_arg(args, char *);
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		if (ft_putchar(s[i]) == -1)
+// 		{
+// 			free(s);
+// 			return (-1);
+// 		}
+// 		i++;
+// 	}
+// 	free(s);
+// 	return (i);
+// }

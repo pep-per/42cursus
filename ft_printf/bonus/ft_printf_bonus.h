@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:14:23 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/20 16:15:52 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 22:31:57 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_BONUS_H
 
 # include <unistd.h>
-//# include <stdarg.h>
+# include <stdarg.h>
 # include "../Libft/libft.h"
 
 typedef struct s_tags
@@ -37,8 +37,9 @@ void	init_ft_put(int (*ft_put[])(va_list args));
 int		is_option(char c);
 void	parse_option(char c, t_tags *tags);
 int		apply_option_precision(t_tags *tags, unsigned int len);
-int		apply_option_width(va_list args, t_tags *tags, \
-							int (*ft_put)(va_list args));
+// int		apply_option_width(va_list args, t_tags *tags, \
+// 							int (*ft_put)(va_list args));
+int		apply_option_width(t_tags *tags);
 
 int		is_type(char c);
 int		apply_type_char(va_list args, t_tags *tags, \

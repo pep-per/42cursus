@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:45:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/20 20:50:36 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/20 22:32:05 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ int	is_type(char c)
 }
 
 int	apply_type_char(va_list args, t_tags *tags, \
-					int (*ft_put)(va_list args))
+					int (*ft_put)(va_list args, t_tags *tags))
 {
 	unsigned int	width;
 
 	width = tags->width;
 	tags->width -= 1;
-	if (apply_option_width(args, tags, ft_put) == -1)
+	if (ft_put(args, tags) == -1)
 		return (-1);
 	return (width);
 }
 
 int	apply_type_str(va_list args, t_tags *tags, \
-					int (*ft_put)(va_list args))
+					int (*ft_put)(va_list args, t_tags *tags))
 {
 	unsigned int	width;
 	unsigned int	len;
@@ -73,25 +73,18 @@ int	apply_type_str(va_list args, t_tags *tags, \
 	char			*arg;
 	char			*str;
 
-	arg = va_arg(args, char *);
-	if (!arg)
-		str = ft_strdup("(null)");
-	if (!str)
-		return (-1);
-	len = ft_strlen(str);
-	width = tags->width;
+	
 	if (tags->precision != -1)
 	{
-		str[tags->precision] = 0;
 		if (apply_option_precision(tags, len) == -1)
 			return (-1);
 	}
 	precise_len == tags->precision;
 	if (width <= precise_len)
-		return (ft_put(args));
+		return (ft_put(args, tags));
 	// if (ft_strncmp(str, "(null)", len) != 0)
 	tags->width -= precise_len;
-	if (apply_option_width(arg, tags, ft_put) == -1)
+	if (ft_put(args, tags) == -1)
 		return (-1);
 	return (width);
 }
