@@ -6,56 +6,82 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/20 22:31:59 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/24 13:45:07 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_option_width(t_tags *tags)
+int	apply_width(t_tags *tags)
 {
-	int		w;
+	int	w;
 
-	w = tags->width;
-	while (w--)
+	w = tags->width - tags->precision;
+	while (w-- > 0)
 	{
 		if (tags->zero == 1 && tags->minus == 0
 			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
 		{
-			if (ft_putchar('0') == -1)
+			if (write(1, "0", 1) == -1)
 				return (-1);
 		}
 		else
 		{
-			if (ft_putchar(' ') == -1)
+			if (write(1, " ", 1) == -1)
 				return (-1);
 		}
 	}
 	return (1);
 }
 
+//부호는 빼고 계산
+// 오버플로우 일떄도 s 옵션은 출력
 
-int	apply_option_precision(t_tags *tags, int len)
+void	precise_len(t_tags *tags, int len)
 {
 	int	p;
+	int	w;
 
 	p = tags->precision;
+	w = tags->width;
 	if (p == 0)
+	{
 		tags->zero = 0;
+		if (tags->type != 's')
+			tags->precision = len;
+	}
 	else if (p > len)
 	{
-		while (p-- == len)
-		{
-			if (ft_putchar('0') == -1)
-				return (-1);
-		}
-		// if (len != 0)
-		// 	tags->width -= tags->precision;
+		tags->precision = len;
 	}
+	else if (w > len)
+	{
+		tags->width = len;
+	}
+}
+
+int	apply_sign_precision(t_tags *tags, int len, long long num)
+{
+	int		p;
+	char	c;
+
+	p = tags->precision - len;
+	while (p-- > 0)
+	{
+		if (write(1, "0", 1) == -1)
+			return (-1);
+	}
+	if (num < 0)
+		c = '-';
 	else
 	{
-		tags->precision += len;
+		if (tags->space == 1)
+			c = ' ';
+		else
+			c = '+';
 	}
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }
 
@@ -113,19 +139,17 @@ int	apply_option_precision(t_tags *tags, int len)
 
 void	atoi_handle_overflow(int *num, char c, t_tags *tags)
 {
-	int	total;
+	long long	total;
 
 	total = 10 * (*num) + (c - '0');
-	if (total < 0)
+	if (total > 2147483647)
+	{
 		tags->type = -1;
+		if (tags->precision == -1)
+			tags->width = -1;
+	}
 	else
 		*num = total;
-}
-
-int	is_option(char c)
-{
-	return (c == '-' || c == '+' || c == '0' \
-			|| c == '#' || c == ' ' || c == '.');
 }
 
 void	parse_option(char c, t_tags *tags)
@@ -144,7 +168,7 @@ void	parse_option(char c, t_tags *tags)
 		tags->hash = 1;
 	if (c == ' ')
 		tags->space = 1;
-	if (c == '.')
+	if (c == '.' && tags->precision == -1)
 		tags->precision = 0;
 	if (c == '0' && tags->width == 0 && tags->precision == -1)
 		tags->zero = 1;

@@ -1,6 +1,7 @@
 NAME = libftprintf.a
 SRCS = ft_printf.c
-BONUS_SRCS = ./bonus/ft_printf_bonus.c ./bonus/type_bonus.c ./bonus/option_bonus.c ./bonus/init_bonus.c
+BONUS_SRCS = ./bonus/ft_printf_bonus.c ./bonus/type_bonus.c ./bonus/option_bonus.c \
+			./bonus/init_bonus.c ./bonus/ft_put_bonus.c
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 CC = cc

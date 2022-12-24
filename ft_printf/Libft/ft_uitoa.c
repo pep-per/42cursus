@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:40:29 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 10:14:24 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/24 05:42:32 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,24 @@ unsigned int	num_length_ui(unsigned int n)
 	return (len);
 }
 
-int	ft_uitoa(void *arg)
+int	ft_uitoa(void *p, unsigned int len)
 {
-	unsigned int	n;
-	unsigned int	len;
+	unsigned int	num;
 	unsigned int	i;
 	char			*str;
 
-	n = *((unsigned int *)arg);
-	len = num_length_ui(n);
+	num = *((unsigned int *)p);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
-	if (n == 0)
+	if (num == 0)
 		str[0] = '0';
 	str[len] = 0;
 	i = len - 1;
-	while (n > 0)
+	while (num > 0)
 	{
-		str[i--] = (n % 10) + '0';
-		n /= 10;
+		str[i--] = (num % 10) + '0';
+		num /= 10;
 	}
-	return (ft_putstr_free(str));
+	return (ft_putstr_free(str, len));
 }
