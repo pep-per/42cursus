@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 21:01:08 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 09:44:57 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/27 06:27:48 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	ft_put_address(void *p, unsigned int len)
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
-	return (hexa_to_str((size_t)p, len, hexa, 1));
+	// if (!p)
+	// 	return (hexa_to_str(0, len, hexa, 1));
+	return (hexa_to_str((size_t)p, len, hexa));
 }
 
 int	ft_put_hexa_lower(void *p, unsigned int len)
@@ -44,7 +46,7 @@ int	ft_put_hexa_lower(void *p, unsigned int len)
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
-	return (hexa_to_str(*((unsigned int *)p), len, hexa, 0));
+	return (hexa_to_str(*((unsigned int *)p), len, hexa));
 }
 
 int	ft_put_hexa_upper(void *p, unsigned int len)
@@ -52,7 +54,7 @@ int	ft_put_hexa_upper(void *p, unsigned int len)
 	char	*hexa;
 
 	hexa = "0123456789ABCDEF";
-	return (hexa_to_str(*((unsigned int *)p), len, hexa, 0));
+	return (hexa_to_str(*((unsigned int *)p), len, hexa));
 }
 
 // int	ft_strncmp(char *s1, char *s2, size_t n)
@@ -71,14 +73,24 @@ int	ft_put_hexa_upper(void *p, unsigned int len)
 
 int	mark_0x(t_tags *tags)
 {
-	char	mark[2];
+	char	*mark;
 
+	mark = (char *)malloc(sizeof(char) * 2);
+	if (!mark)
+		return (-1);
 	mark[0] = '0';
 	if (tags->type == 'X')
 		mark[1] = 'X';
 	else
 		mark[1] = 'x';
-	return (write(1, mark, 2));
+	// mark[2] = 0;
+	if (write(1, mark, 2) == -1)
+	{
+		free(mark);
+		return (-1);
+	}
+	free(mark);
+	return (1);
 }
 
 // int	ft_putstr_free(va_list args, t_tags *tags)

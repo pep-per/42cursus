@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 22:38:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 12:20:44 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/27 05:24:11 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ int	ft_putstr_free(void *p, unsigned int len)
 	}
 	free(p);
 	return (1);
+}
+
+int	ft_putstr(void *p, unsigned int len)
+{
+	return (write(1, (char *)p, len));
 }
 // int	ft_putstr(char *s)
 // {

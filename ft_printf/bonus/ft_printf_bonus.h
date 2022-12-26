@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:14:23 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 09:42:42 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/27 06:26:10 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include "../Libft/libft.h"
+
+
+#include <stdio.h>
+
 
 typedef struct s_tags
 {
@@ -37,24 +41,36 @@ int		is_type(char c);
 int		is_option(char c);
 
 void	parse_option(char c, t_tags *tags);
-int		apply_sign_precision(t_tags *tags, int len, long long num);
-void	precise_len(t_tags *tags, int len);
-int		apply_width(t_tags *tags);
+// int		apply_sign_precision(t_tags *tags, int len, long long num);
+int		apply_precision(t_tags *tags, int len);
+
+int		check_precise_len(t_tags *tags, int len);
+
+int		apply_width(t_tags *tags, int len);
+int		apply_width_str(t_tags *tags, int len, char *str);
 
 int		apply_type_char(va_list args, t_tags *tags);
+// int		apply_type_str(va_list args, t_tags *tags, \
+// 						int (*ft_put)(void *p, unsigned int len));
+// int		apply_type_str(va_list args, t_tags *tags);
 int		apply_type_str(va_list args, t_tags *tags, \
 						int (*ft_put)(void *p, unsigned int len));
+
 int		convert_to_decimal(va_list args, t_tags *tags, \
-						int (*ft_put)(void *p, unsigned int len));
+							int (*ft_put)(void *p, unsigned int len));
 int		convert_to_hexa(va_list args, t_tags *tags, \
 						int (*ft_put)(void *p, unsigned int len));
 int		convert_to_adress(va_list args, t_tags *tags, \
-					int (*ft_put)(void *p, unsigned int len));
+							int (*ft_put)(void *p, unsigned int len));
 
 int		ft_put_address(void *p, unsigned int len);
 int		ft_put_hexa_lower(void *p, unsigned int len);
 int		ft_put_hexa_upper(void *p, unsigned int len);
 int		mark_0x(t_tags *tags);
+
+int		handle_null_strlen(char *arg, char *str);
+int		handle_null_ft_put(char *arg, char *str, int len, \
+						int (*ft_put)(void *p, unsigned int len));
 
 // int	apply_type_c(char c, t_tags *tags);
 // int	apply_type_s(char *str, t_tags *tags);

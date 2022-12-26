@@ -6,20 +6,21 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 13:45:07 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/27 08:07:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_width(t_tags *tags)
+int	apply_width(t_tags *tags, int len)
 {
 	int	w;
 
-	w = tags->width - tags->precision;
+	// w = tags->width - tags->precision;
+	w = tags->width - len;
 	while (w-- > 0)
 	{
-		if (tags->zero == 1 && tags->minus == 0
+		if (tags->zero == 1 && tags->minus == 0 && tags->precision == -1 \
 			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
 		{
 			if (write(1, "0", 1) == -1)
@@ -34,36 +35,44 @@ int	apply_width(t_tags *tags)
 	return (1);
 }
 
+int	apply_width_str(t_tags *tags, int len, char *str)
+{
+	if (apply_width(tags, len) == -1)
+	{
+		free(str);
+		return (-1);
+	}
+	return (1);
+}
 //부호는 빼고 계산
 // 오버플로우 일떄도 s 옵션은 출력
 
-void	precise_len(t_tags *tags, int len)
+int	check_precise_len(t_tags *tags, int len)
 {
 	int	p;
-	int	w;
+	int	precise_len;
 
 	p = tags->precision;
-	w = tags->width;
-	if (p == 0)
+	if (len == 0)
 	{
-		tags->zero = 0;
-		if (tags->type != 's')
-			tags->precision = len;
+		precise_len = 0;
 	}
-	else if (p > len)
+	else if (p == -1 || p >= len)
 	{
-		tags->precision = len;
+		precise_len = len;
 	}
-	else if (w > len)
+	else
 	{
-		tags->width = len;
+		precise_len = p;
 	}
+	if (tags->width < precise_len)
+		tags->width = precise_len;
+	return (precise_len);
 }
 
-int	apply_sign_precision(t_tags *tags, int len, long long num)
+int	apply_precision(t_tags *tags, int len)
 {
 	int		p;
-	char	c;
 
 	p = tags->precision - len;
 	while (p-- > 0)
@@ -71,17 +80,6 @@ int	apply_sign_precision(t_tags *tags, int len, long long num)
 		if (write(1, "0", 1) == -1)
 			return (-1);
 	}
-	if (num < 0)
-		c = '-';
-	else
-	{
-		if (tags->space == 1)
-			c = ' ';
-		else
-			c = '+';
-	}
-	if (write(1, &c, 1) == -1)
-		return (-1);
 	return (1);
 }
 
@@ -142,7 +140,7 @@ void	atoi_handle_overflow(int *num, char c, t_tags *tags)
 	long long	total;
 
 	total = 10 * (*num) + (c - '0');
-	if (total > 2147483647)
+	if (total >= 2147483647)
 	{
 		tags->type = -1;
 		if (tags->precision == -1)
@@ -151,6 +149,25 @@ void	atoi_handle_overflow(int *num, char c, t_tags *tags)
 	else
 		*num = total;
 }
+
+int	handle_null_strlen(char *arg, char *str)
+{
+	if (!arg)
+		return ((int)ft_strlen(str));
+	else
+		return ((int)ft_strlen(arg));
+}
+
+int	handle_null_ft_put(char *arg, char *str, int len, \
+						int (*ft_put)(void *p, unsigned int len))
+{
+	if (!arg)
+		return (ft_put(str, len));
+	else
+		return (ft_put(arg, len));
+}
+
+
 
 void	parse_option(char c, t_tags *tags)
 {

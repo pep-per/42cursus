@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 00:28:44 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 09:48:02 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2022/12/27 06:25:47 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ unsigned int	num_length_hexa(size_t n)
 	return (len);
 }
 
-int	hexa_to_str(size_t n, unsigned int len, char *hexa, int is_address)
+int	hexa_to_str(size_t n, unsigned int len, char *hexa)
 {
 	unsigned int	i;
 	char			*str;
 
-	if (is_address)
-		len += 2;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
@@ -45,11 +43,6 @@ int	hexa_to_str(size_t n, unsigned int len, char *hexa, int is_address)
 	{
 		str[i--] = hexa[n % 16];
 		n /= 16;
-	}
-	if (is_address)
-	{
-		str[0] = '0';
-		str[1] = 'x';
 	}
 	return (ft_putstr_free(str, len));
 }
