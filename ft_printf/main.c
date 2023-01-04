@@ -8,10 +8,10 @@ int main(void)
 	int r1;
 	int r2;
 
-	r1 = printf("42%023.4d42", 0);
+	r1 = printf("!%#2.3x!", 0);
 	printf("\n");
 	printf("printf cnt : %d\n", r1);
-	r2 = ft_printf("42%023.4d42", 0);
+	r2 = ft_printf("!%#2.3x!", 0);
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
 

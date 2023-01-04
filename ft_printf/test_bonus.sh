@@ -1,4 +1,4 @@
-cc main.c ./bonus/*.c ./Libft/*.c
+cc -fsanitize=address -g3 main.c ./bonus/*.c ./Libft/*.c
 ./a.out
 read next
 make fclean

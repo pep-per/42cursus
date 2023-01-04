@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 21:01:08 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/27 06:27:48 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/04 22:10:21 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	mark_0x(t_tags *tags)
 		mark[1] = 'X';
 	else
 		mark[1] = 'x';
-	// mark[2] = 0;
 	if (write(1, mark, 2) == -1)
 	{
 		free(mark);

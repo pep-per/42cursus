@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/27 08:07:58 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:24:49 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ int	check_precise_len(t_tags *tags, int len)
 	}
 	if (tags->width < precise_len)
 		tags->width = precise_len;
+	// if (tags->precision > len)
+	// 	precise_len = tags->precision;
+
 	return (precise_len);
 }
 
