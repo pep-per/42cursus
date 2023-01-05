@@ -1,6 +1,6 @@
 NAME = libft.a
 SRCS = ft_isdigit.c ft_strlen.c ft_itoa.c ft_strdup.c \
-		ft_putstr_free.c ft_uitoa.c ft_put_hexa.c
+		ft_putstr_free.c ft_uitoa.c ft_put_hexa.c ft_memset.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -c -Wall -Wextra -Werror

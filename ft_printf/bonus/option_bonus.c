@@ -6,38 +6,45 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/04 18:24:49 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 05:27:48 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_width(t_tags *tags, int len)
+int	fill_width(t_tags *tags, int total)
 {
-	int	w;
+	int		w;
+	char	*blank;	
+	int		c;
+	int		i;
 
-	// w = tags->width - tags->precision;
-	w = tags->width - len;
-	while (w-- > 0)
+	w = tags->width - total;
+	if (w <= 0)
+		return (1);
+	blank = (char *)malloc(sizeof(char) * w);
+	if (!blank)
+		return (-1);
+	c = ' ';
+	if (tags->zero == 1 && tags->minus == 0 && tags->precision == -1 \
+		&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
 	{
-		if (tags->zero == 1 && tags->minus == 0 && tags->precision == -1 \
-			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
-		{
-			if (write(1, "0", 1) == -1)
-				return (-1);
-		}
-		else
-		{
-			if (write(1, " ", 1) == -1)
-				return (-1);
-		}
+		c = '0';
 	}
+	i = 0;
+	while (i < w)
+		blank[i++] = c;
+	// blank = ft_memset(blank, c, w);
+	if (ft_putstr_free(blank, w) == -1)
+		return (-1);
 	return (1);
 }
 
-int	apply_width_str(t_tags *tags, int len, char *str)
+int	fill_width_str(t_tags *tags, int total, char *str)
 {
-	if (apply_width(tags, len) == -1)
+	if (tags->width < total)
+		tags->width = total;
+	if (fill_width(tags, total) == -1)
 	{
 		free(str);
 		return (-1);
@@ -47,140 +54,94 @@ int	apply_width_str(t_tags *tags, int len, char *str)
 //부호는 빼고 계산
 // 오버플로우 일떄도 s 옵션은 출력
 
-int	check_precise_len(t_tags *tags, int len)
+int	fill_width_hexa(t_tags *tags, int total, unsigned int num)
 {
-	int	p;
-	int	precise_len;
-
-	p = tags->precision;
-	if (len == 0)
+	if (tags->minus == 0 && !(tags->hash == 1 && tags->zero == 1 \
+		&& tags->precision == -1))
 	{
-		precise_len = 0;
+		if (fill_width(tags, total) == -1)
+			return (-1);
 	}
-	else if (p == -1 || p >= len)
+	if (tags->hash == 1 && num != 0)
+		if (mark_0x(tags) == -1)
+			return (-1);
+	if (tags->minus == 0 && tags->hash == 1 && tags->zero == 1 \
+		&& tags->precision == -1)
 	{
-		precise_len = len;
-	}
-	else
-	{
-		precise_len = p;
-	}
-	if (tags->width < precise_len)
-		tags->width = precise_len;
-	// if (tags->precision > len)
-	// 	precise_len = tags->precision;
-
-	return (precise_len);
-}
-
-int	apply_precision(t_tags *tags, int len)
-{
-	int		p;
-
-	p = tags->precision - len;
-	while (p-- > 0)
-	{
-		if (write(1, "0", 1) == -1)
+		if (fill_width(tags, total) == -1)
 			return (-1);
 	}
 	return (1);
 }
 
-// int	apply_option_width(va_list args, t_tags *tags, int (*ft_put)(va_list args))
-// {
-// 	int		w;
-
-// 	if (tags->minus == 1)
-// 		if (ft_put(args) == -1)
-// 			return (-1);
-// 	w = tags->width;
-// 	while (w--)
-// 	{
-// 		if (tags->zero == 1 && tags->minus == 0
-// 			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
-// 		{
-// 			if (ft_putchar('0') == -1)
-// 				return (-1);
-// 		}
-// 		else
-// 		{
-// 			if (ft_putchar(' ') == -1)
-// 				return (-1);
-// 		}
-// 	}
-// 	if (tags->minus == 0)
-// 		if (ft_put(args) == -1)
-// 			return (-1);
-// 	return (1);
-// }
-
-// int	apply_option_precision(t_tags *tags, unsigned int len)
-// {
-// 	unsigned int	p;
-
-// 	p = tags->precision;
-// 	if (p == 0)
-// 		tags->zero = 0;
-// 	else if (p > len)
-// 	{
-// 		while (p-- == len)
-// 		{
-// 			if (ft_putchar('0') == -1)
-// 				return (-1);
-// 		}
-// 		// if (len != 0)
-// 		// 	tags->width -= tags->precision;
-// 	}
-// 	else
-// 	{
-// 		tags->precision += len;
-// 	}
-// 	return (1);
-// }
-
-void	atoi_handle_overflow(int *num, char c, t_tags *tags)
+int	handle_str_precision(t_tags *tags, int len)
 {
-	long long	total;
+	int	p;
 
-	total = 10 * (*num) + (c - '0');
-	if (total >= 2147483647)
+	p = tags->precision;
+	if (len == 0)
+		return (0);
+	else if (p == -1 || p >= len)
+		return (len);
+	else
+		return (p);
+	// if (tags->precision > len)
+	// 	precise_len = tags->precision;
+}
+
+int	handle_digit_precision(t_tags *tags, int len, long long num)
+{
+	int	p;
+	int	result;
+
+	p = tags->precision;
+	result = len;
+	if (p > len)
+		result = p;
+	if (p == 0 && num == 0)
+		result = 0;
+	if (tags->type == 'x' || tags->type == 'X')
+		if (tags->hash == 1 && num != 0)
+			result += 2;
+	if (tags->type == 'i' || tags->type == 'd')
+		if (tags->plus || tags->space || (num < 0))
+			result += 1;
+	return (result);
+}
+
+int	fill_precision(t_tags *tags, int len)
+{
+	int	p;
+	char			*blank;
+	int		i;
+
+	p = tags->precision - len;
+	if (p <= 0)
+		return (1);
+	blank = (char *)malloc(sizeof(char) * p);
+	if (!blank)
+		return (-1);
+	// blank = ft_memset(blank, '0', p);
+	i = 0;
+	while (i < p)
 	{
-		tags->type = -1;
-		if (tags->precision == -1)
-			tags->width = -1;
+		blank[i] = '0';
+		i++;
 	}
-	else
-		*num = total;
+	if (ft_putstr_free(blank, p) == -1)
+		return (-1);
+	return (1);
 }
 
-int	handle_null_strlen(char *arg, char *str)
+void	parse_option(int c, t_tags *tags)
 {
-	if (!arg)
-		return ((int)ft_strlen(str));
-	else
-		return ((int)ft_strlen(arg));
-}
-
-int	handle_null_ft_put(char *arg, char *str, int len, \
-						int (*ft_put)(void *p, unsigned int len))
-{
-	if (!arg)
-		return (ft_put(str, len));
-	else
-		return (ft_put(arg, len));
-}
-
-
-
-void	parse_option(char c, t_tags *tags)
-{
-	if (!ft_isdigit((int)c) && !is_option(c))
+	if (!ft_isdigit(c) && !is_option(c))
 		return ;
 	if (c == '-')
 	{
 		tags->minus = 1;
-		if (tags->precision != -1)
-			tags->precision = -1;
+		// if (tags->precision != -1)
+		// 	tags->precision = -1;
 	}
 	if (c == '+')
 		tags->plus = 1;

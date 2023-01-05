@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:14:23 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 05:03:12 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:21:01 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,16 @@ void	init_ft_put(int (*ft_put[])(void *p, unsigned int len));
 int		is_type(char c);
 int		is_option(char c);
 
-void	parse_option(int c, t_tags *tags);
+void	parse_option(char c, t_tags *tags);
+int		apply_precision(t_tags *tags, int len);
 
-int		fill_precision(t_tags *tags, int len);
+int		check_precise_len(t_tags *tags, int len);
 
-int		handle_str_precision(t_tags *tags, int len);
-int		handle_digit_precision(t_tags *tags, int len, long long num);
+int		apply_width(t_tags *tags, int len);
+int		apply_width_str(t_tags *tags, int len, char *str);
 
-int		fill_width(t_tags *tags, int total);
-int		fill_width_str(t_tags *tags, int total, char *str);
-int		fill_width_hexa(t_tags *tags, int total, unsigned int num);
-
-int		convert_to_char(va_list args, t_tags *tags);
-int		convert_to_str(va_list args, t_tags *tags, \
+int		apply_type_char(va_list args, t_tags *tags);
+int		apply_type_str(va_list args, t_tags *tags, \
 						int (*ft_put)(void *p, unsigned int len));
 
 int		convert_to_decimal(va_list args, t_tags *tags, \

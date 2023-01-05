@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 04:43:48 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/24 09:41:19 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 05:46:44 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ unsigned int	num_length_i(long long num)
 
 	len = 0;
 	if (num < 0)
-	{
 		num = -num;
-		//len++;
-	}
 	else if (num == 0)
 		len = 1;
 	while (num > 0)
@@ -43,10 +40,7 @@ int	ft_itoa(void *p, unsigned int len)
 	if (!str)
 		return (-1);
 	if (num < 0)
-	{
 		num = -num;
-		//str[0] = '-';
-	}
 	else if (num == 0)
 		str[0] = '0';
 	str[len] = 0;

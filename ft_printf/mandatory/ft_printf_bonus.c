@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 03:57:15 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:27:03 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	parse_type(va_list args, t_tags *tags, \
 {
 	tags->type = type;
 	if (type == 'c' || type == '%')
-		return (convert_to_char(args, tags));
+		return (apply_type_char(args, tags));
 	else if (type == 's')
-		return (convert_to_str(args, tags, ft_put[0]));
+		return (apply_type_str(args, tags, ft_put[0]));
 	else if (type == 'p')
 		return (convert_to_adress(args, tags, ft_put[1]));
 	else if (type == 'd' || type == 'i')
@@ -47,12 +47,12 @@ static int	parse_format(char *format, va_list args, int *i)
 	{
 		if (is_type(format[*i]))
 		{
-			if (tags->type == -1 && format[*i] != 's')
+			if (tags->type == -1)
 			{
 				free(tags);
 				return (-1);
 			}
-			result = parse_type(args, tags, format[*i], ft_put);
+			result = parse_type(args, tags, (int)format[*i], ft_put);
 			free(tags);
 			return (result);
 		}
@@ -83,7 +83,7 @@ static int	input_format(char *format, va_list args)
 		}
 		else
 		{
-			if (write(1, &format[i], 1) == -1 || format[i] == '%')
+			if (write(1, &format[i], 1) == -1)
 				return (-1);
 			len += 1;
 		}
