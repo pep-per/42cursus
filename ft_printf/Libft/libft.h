@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:45:17 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/05 23:21:04 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:09:35 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ unsigned int	num_length_hexa(size_t n);
 unsigned int	num_length_i(long long num);
 int				ft_putstr_free(void *p, unsigned int len);
 int				ft_putstr(void *p, unsigned int len);
-void			*ft_memset(void *b, int c, size_t len);
 
 #endif

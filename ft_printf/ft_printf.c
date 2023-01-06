@@ -6,54 +6,86 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/20 14:02:59 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 19:10:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	parse_type(char c, va_list args)
+int	handle_null_strlen(char *arg, char *str)
 {
-	int				i;
-	char			*str;
-	unsigned int	ui;
+	if (!arg)
+		return ((int)ft_strlen(str));
+	else
+		return ((int)ft_strlen(arg));
+}
 
-	if (c == 'p')
-		return (ft_put_address(va_arg(args, void *)));
-	if (c == 'c' || c == 'd' || c == 'i')
+int	handle_null_ft_put(char *arg, char *str, int len, \
+						int (*ft_put)(void *p, unsigned int len))
+{
+	if (!arg)
+		return (ft_put(str, len));
+	else
+		return (ft_put(arg, len));
+}
+
+static int	parse_type(va_list args, int type, \
+						int (*ft_put[])(void *p, unsigned int len))
+{
+	long long		num;	
+	unsigned int	len;
+	char			*arg;
+	char			*str;
+
+	if (type == 'c')
 	{
-		i = va_arg(args, int);
-		if (c == 'c')
-			return (ft_put_to_char(&i));
-		return (ft_itoa(&i));
+		num = (char)va_arg(args, int);
+		if (write(1, &num, 1) == -1)
+			return (-1);
 	}
-	if (c == 's')
+	else if (type == '%')
 	{
-		str = va_arg(args, char *);
+		num = '%';
+		if (write(1, &num, 1) == -1)
+			return (-1);
+	}
+	else if (type == 's')
+	{
+		arg = va_arg(args, char *);
+		str = ft_strdup("(null)");
 		if (!str)
-			return (ft_putstr("(null)"));
-		return (ft_putstr(str));
+			return (-1);
+		len = handle_null_strlen(arg, str);
+
 	}
-	if (c == 'u' || c == 'x' || c == 'X')
-	{
-		ui = va_arg(args, unsigned int);
-		if (c == 'x')
-			return (ft_put_hexa_lower(&ui));
-		else if (c == 'X')
-			return (ft_put_hexa_upper(&ui));
-		return (ft_uitoa(&ui));
-	}
-	return (ft_putchar('%'));
+		return (convert_to_str(args, ft_put[0]));
+	else if (type == 'p')
+		return (convert_to_adress(args, ft_put[1]));
+	else if (type == 'd' || type == 'i')
+		return (convert_to_decimal(args, ft_put[4]));
+	else if (type == 'u')
+		return (convert_to_decimal(args, ft_put[5]));
+	else if (type == 'x')
+		return (convert_to_hexa(args, ft_put[2]));
+	else
+		return (convert_to_hexa(args, ft_put[3]));	
+	return (1);		
 }
 
 static int	parse_format(char *format, va_list args, int *i)
 {
+	int		(*ft_put[6])(void *p, unsigned int len);
+
+	ft_put[0] = &ft_putstr;
+	ft_put[1] = &ft_put_address;
+	ft_put[2] = &ft_put_hexa_lower;
+	ft_put[3] = &ft_put_hexa_upper;
+	ft_put[4] = &ft_itoa;
+	ft_put[5] = &ft_uitoa;
 	while (format[++(*i)])
 	{
-		if (format[*i] == 'c' || format[*i] == 's' || format[*i] == 'p' \
-			|| format[*i] == 'd' || format[*i] == 'i' || format[*i] == 'u' \
-			|| format[*i] == 'x' || format[*i] == 'X' || format[*i] == '%')
-			return (parse_type(format[*i], args));
+		if (is_type(format[*i]))
+			return (parse_type(args, format[*i], ft_put));
 	}
 	return (0);
 }
@@ -78,7 +110,7 @@ static int	input_format(char *format, va_list args)
 		}
 		else
 		{
-			if (ft_putchar(format[i]) == -1)
+			if (write(1, &format[i], 1) == -1 || format[i] == '%')
 				return (-1);
 			len += 1;
 		}

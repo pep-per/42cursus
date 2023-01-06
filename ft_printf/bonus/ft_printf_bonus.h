@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:14:23 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 05:03:12 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 14:29:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stdarg.h>
 # include "../Libft/libft.h"
+
+
+#include <stdio.h>
+
 
 typedef struct s_tags
 {
@@ -30,8 +34,7 @@ typedef struct s_tags
 
 int		ft_printf(const char *format, ...);
 
-void	init_tags(t_tags *tags);
-void	init_ft_put(int (*ft_put[])(void *p, unsigned int len));
+void	initialize(t_tags *tags, int (*ft_put[])(void *p, unsigned int len));
 int		is_type(char c);
 int		is_option(char c);
 
@@ -67,5 +70,6 @@ int		handle_null_ft_put(char *arg, char *str, int len, \
 						int (*ft_put)(void *p, unsigned int len));
 
 void	atoi_handle_overflow(int *num, char c, t_tags *tags);
+int		handle_format_overflow(t_tags *tags, int type);
 
 #endif

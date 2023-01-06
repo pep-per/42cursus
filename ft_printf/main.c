@@ -8,10 +8,10 @@ int main(void)
 	int r1;
 	int r2;
 
-	r1 = printf("p12 %.0d\n", 0);
+	r1 = printf("%3.2s\n", "hello");
 	printf("\n");
 	printf("printf cnt : %d\n", r1);
-	r2 = ft_printf("p12 %.0d\n", 0);
+	r2 = ft_printf("%3.2s\n", "hello");
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
 

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 03:57:15 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:46:16 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int	parse_type(va_list args, t_tags *tags, \
 						int type, int (*ft_put[])(void *p, unsigned int len))
 {
-	tags->type = type;
+	if (tags->type != -1)
+		tags->type = type;
 	if (type == 'c' || type == '%')
 		return (convert_to_char(args, tags));
 	else if (type == 's')
@@ -41,17 +42,13 @@ static int	parse_format(char *format, va_list args, int *i)
 	tags = (t_tags *)malloc(sizeof(t_tags));
 	if (!tags)
 		return (-1);
-	init_tags(tags);
-	init_ft_put(ft_put);
+	initialize(tags, ft_put);
 	while (format[++(*i)])
 	{
 		if (is_type(format[*i]))
 		{
-			if (tags->type == -1 && format[*i] != 's')
-			{
-				free(tags);
+			if (handle_format_overflow(tags, format[*i]) == -1)
 				return (-1);
-			}
 			result = parse_type(args, tags, format[*i], ft_put);
 			free(tags);
 			return (result);

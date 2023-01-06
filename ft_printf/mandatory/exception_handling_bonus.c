@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 19:06:20 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/05 19:28:58 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:15:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,25 @@ void	atoi_handle_overflow(int *num, char c, t_tags *tags)
 {
 	long long	total;
 
-	total = 10 * (*num) + (c - '0');
-	if (total >= 2147483647)
+	total = 10 * (long long)(*num) + (c - '0');
+	if (total > 2147483647)
 	{
-		tags->type = -1;
 		if (tags->precision == -1)
 			tags->width = -1;
+		tags->type = -1;
 	}
 	else
+	{
 		*num = total;
+	}
+}
+
+int	handle_format_overflow(t_tags *tags, int type)
+{
+	if (tags->type == -1 && (type != 's' || tags->width == -1))
+	{
+		free(tags);
+		return (-1);
+	}
+	return (1);
 }

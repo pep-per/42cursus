@@ -6,13 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:41:29 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/05 18:27:20 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 11:10:28 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	init_tags(t_tags *tags)
+void	initialize(t_tags *tags, int (*ft_put[])(void *p, unsigned int len))
 {
 	tags->type = 0;
 	tags->width = 0;
@@ -22,10 +22,6 @@ void	init_tags(t_tags *tags)
 	tags->zero = 0;
 	tags->hash = 0;
 	tags->space = 0;
-}
-
-void	init_ft_put(int (*ft_put[])(void *p, unsigned int len))
-{
 	ft_put[0] = &ft_putstr;
 	ft_put[1] = &ft_put_address;
 	ft_put[2] = &ft_put_hexa_lower;

@@ -6,38 +6,45 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/05 19:35:02 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:15:34 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	apply_width(t_tags *tags, int len)
+int	fill_width(t_tags *tags, int total)
 {
-	int	w;
+	int		w;
+	char	*blank;	
+	int		c;
+	int		i;
 
-	// w = tags->width - tags->precision;
-	w = tags->width - len;
-	while (w-- > 0)
+	w = tags->width - total;
+	if (w <= 0)
+		return (1);
+	blank = (char *)malloc(sizeof(char) * w);
+	if (!blank)
+		return (-1);
+	c = ' ';
+	if (tags->zero == 1 && tags->minus == 0 && tags->precision == -1 \
+		&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
 	{
-		if (tags->zero == 1 && tags->minus == 0 && tags->precision == -1 \
-			&& tags->type != 'c' && tags->type != 's' && tags->type != 'p')
-		{
-			if (write(1, "0", 1) == -1)
-				return (-1);
-		}
-		else
-		{
-			if (write(1, " ", 1) == -1)
-				return (-1);
-		}
+		c = '0';
 	}
+	i = 0;
+	while (i < w)
+		blank[i++] = c;
+	// blank = ft_memset(blank, c, w);
+	if (ft_putstr_free(blank, w) == -1)
+		return (-1);
 	return (1);
 }
 
-int	apply_width_str(t_tags *tags, int len, char *str)
+int	fill_width_str(t_tags *tags, int total, char *str)
 {
-	if (apply_width(tags, len) == -1)
+	if (tags->width < total)
+		tags->width = total;
+	if (fill_width(tags, total) == -1)
 	{
 		free(str);
 		return (-1);
@@ -47,54 +54,93 @@ int	apply_width_str(t_tags *tags, int len, char *str)
 //부호는 빼고 계산
 // 오버플로우 일떄도 s 옵션은 출력
 
-int	check_precise_len(t_tags *tags, int len)
+int	fill_width_hexa(t_tags *tags, int total, unsigned int num)
 {
-	int	p;
-	int	precise_len;
-
-	p = tags->precision;
-	if (len == 0)
+	if (tags->minus == 0 && !(tags->hash == 1 && tags->zero == 1 \
+		&& tags->precision == -1))
 	{
-		precise_len = 0;
+		if (fill_width(tags, total) == -1)
+			return (-1);
 	}
-	else if (p == -1 || p >= len)
+	if (tags->hash == 1 && num != 0)
+		if (mark_0x(tags) == -1)
+			return (-1);
+	if (tags->minus == 0 && tags->hash == 1 && tags->zero == 1 \
+		&& tags->precision == -1)
 	{
-		precise_len = len;
-	}
-	else
-	{
-		precise_len = p;
-	}
-	if (tags->width < precise_len)
-		tags->width = precise_len;
-	// if (tags->precision > len)
-	// 	precise_len = tags->precision;
-
-	return (precise_len);
-}
-
-int	apply_precision(t_tags *tags, int len)
-{
-	int		p;
-
-	p = tags->precision - len;
-	while (p-- > 0)
-	{
-		if (write(1, "0", 1) == -1)
+		if (fill_width(tags, total) == -1)
 			return (-1);
 	}
 	return (1);
 }
 
-void	parse_option(char c, t_tags *tags)
+int	handle_str_precision(t_tags *tags, int len)
 {
-	if (!ft_isdigit((int)c) && !is_option(c))
+	int	p;
+
+	p = tags->precision;
+	if (len == 0)
+		return (0);
+	else if (p == -1 || p >= len || tags->type == -1)
+		return (len);
+	else
+		return (p);
+}
+
+int	handle_digit_precision(t_tags *tags, int len, long long num)
+{
+	int	p;
+	int	result;
+
+	p = tags->precision;
+	result = len;
+	if (p > len)
+		result = p;
+	if (p == 0 && num == 0)
+		result = 0;
+	if (tags->type == 'x' || tags->type == 'X')
+		if (tags->hash == 1 && num != 0)
+			result += 2;
+	if (tags->type == 'i' || tags->type == 'd')
+		if (tags->plus || tags->space || (num < 0))
+			result += 1;
+	return (result);
+}
+
+int	fill_precision(t_tags *tags, int len)
+{
+	int	p;
+	char			*blank;
+	int		i;
+
+	p = tags->precision - len;
+	if (p <= 0)
+		return (1);
+	blank = (char *)malloc(sizeof(char) * p);
+	if (!blank)
+		return (-1);
+	i = 0;
+	while (i < p)
+	{
+		blank[i] = '0';
+		i++;
+	}
+	if (ft_putstr_free(blank, p) == -1)
+		return (-1);
+	return (1);
+}
+
+void	parse_option(int c, t_tags *tags)
+{
+	if (!ft_isdigit(c) && !is_option(c))
+		return ;
+	if (ft_isdigit(c) && tags->type == -1)
 		return ;
 	if (c == '-')
 	{
 		tags->minus = 1;
-		// if (tags->precision != -1)
-		// 	tags->precision = -1;
+		if (tags->precision != -1)
+			tags->precision = -1;
 	}
 	if (c == '+')
 		tags->plus = 1;

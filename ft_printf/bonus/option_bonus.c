@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:53:12 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 05:27:48 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:15:34 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,10 @@ int	handle_str_precision(t_tags *tags, int len)
 	p = tags->precision;
 	if (len == 0)
 		return (0);
-	else if (p == -1 || p >= len)
+	else if (p == -1 || p >= len || tags->type == -1)
 		return (len);
 	else
 		return (p);
-	// if (tags->precision > len)
-	// 	precise_len = tags->precision;
 }
 
 int	handle_digit_precision(t_tags *tags, int len, long long num)
@@ -121,7 +119,6 @@ int	fill_precision(t_tags *tags, int len)
 	blank = (char *)malloc(sizeof(char) * p);
 	if (!blank)
 		return (-1);
-	// blank = ft_memset(blank, '0', p);
 	i = 0;
 	while (i < p)
 	{
@@ -137,11 +134,13 @@ void	parse_option(int c, t_tags *tags)
 {
 	if (!ft_isdigit(c) && !is_option(c))
 		return ;
+	if (ft_isdigit(c) && tags->type == -1)
+		return ;
 	if (c == '-')
 	{
 		tags->minus = 1;
-		// if (tags->precision != -1)
-		// 	tags->precision = -1;
+		if (tags->precision != -1)
+			tags->precision = -1;
 	}
 	if (c == '+')
 		tags->plus = 1;
