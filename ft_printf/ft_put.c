@@ -6,11 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 21:01:08 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 17:19:53 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:44:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 int	ft_put_address(void *p, unsigned int len)
 {
@@ -36,23 +36,8 @@ int	ft_put_hexa_upper(void *p, unsigned int len)
 	return (hexa_to_str(*((unsigned int *)p), len, hexa));
 }
 
-// int	mark_0x(t_tags *tags)
-// {
-// 	char	*mark;
-
-// 	mark = (char *)malloc(sizeof(char) * 2);
-// 	if (!mark)
-// 		return (-1);
-// 	mark[0] = '0';
-// 	if (tags->type == 'X')
-// 		mark[1] = 'X';
-// 	else
-// 		mark[1] = 'x';
-// 	if (write(1, mark, 2) == -1)
-// 	{
-// 		free(mark);
-// 		return (-1);
-// 	}
-// 	free(mark);
-// 	return (1);
-// }
+int	is_type(char c)
+{
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' \
+			|| c == 'u' || c == 'x' || c == 'X' || c == '%');
+}

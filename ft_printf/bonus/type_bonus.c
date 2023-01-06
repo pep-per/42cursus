@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 22:45:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 19:06:28 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:53:42 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,6 @@ int	convert_to_str(va_list args, t_tags *tags, \
 	return (tags->width);
 }
 
-int	handle_sign_option(t_tags *tags, int is_minus)
-{
-	int	c;
-
-	c = '+';
-	if (is_minus)
-		c = '-';
-	else
-	{
-		if (tags->space == 1)
-			c = ' ';
-	}
-	if (write(1, &c, 1) == -1)
-		return (-1);
-	return (1);
-}
-
 int	convert_to_decimal(va_list args, t_tags *tags, \
 						int (*ft_put)(void *p, unsigned int len))
 {
@@ -92,19 +75,10 @@ int	convert_to_decimal(va_list args, t_tags *tags, \
 		num = (long long)va_arg(args, int);
 	len = (int)num_length_i(num);
 	total = handle_digit_precision(tags, len, num);
-	if (tags->minus == 0 && !(tags->zero == 1 && tags->precision == -1))
-		if (fill_width(tags, total) == -1)
-			return (-1);
-	if ((tags->type != 'u' && (tags->plus || tags->space)) || (num < 0))
-		if (handle_sign_option(tags, (num < 0)) == -1)
-			return (-1);
-	if (tags->minus == 0 && tags->zero == 1 && tags->precision == -1)
-		if (fill_width(tags, total) == -1)
-			return (-1);
+	if (fill_width_decimal(tags, total, num) == -1)
+		return (-1);
 	if (fill_precision(tags, len) == -1)
 		return (-1);
-	// if (tags->precision == 0 && num == 0)
-	// 	len = 0;
 	if (!(tags->precision == 0 && num == 0))
 		if (ft_put(&num, (unsigned int)len) == -1)
 			return (-1);
@@ -152,7 +126,7 @@ int	convert_to_adress(va_list args, t_tags *tags, \
 	if (tags->minus == 0)
 		if (fill_width(tags, len + 2) == -1)
 			return (-1);
-	if (mark_0x(tags) == -1)
+	if (write(1, "0x", 2) == -1)
 		return (-1);
 	if (ft_put(adress, (unsigned int)len) == -1)
 		return (-1);

@@ -1,17 +1,17 @@
-#include "./bonus/ft_printf_bonus.h"
+// #include "ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
-// #include "ft_printf_bonus.h"
+#include "./bonus/ft_printf_bonus.h"
 
 int main(void)
 {
 	int r1;
 	int r2;
 
-	r1 = printf("%3.2s\n", "hello");
+	r1 = printf("%16s", "nark nark");
 	printf("\n");
 	printf("printf cnt : %d\n", r1);
-	r2 = ft_printf("%3.2s\n", "hello");
+	r2 = ft_printf("%16s", "nark nark");
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
 
