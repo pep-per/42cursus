@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 20:14:39 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/07 19:24:39 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ int	handle_null_strlen(char *arg, char *str)
 		return ((int)ft_strlen(str));
 	else
 		return ((int)ft_strlen(arg));
-}
-
-int	handle_null_ft_put(char *arg, char *str, int len, \
-						int (*ft_put)(void *p, unsigned int len))
-{
-	if (!arg)
-		return (ft_put(str, len));
-	else
-		return (ft_put(arg, len));
 }
 
 static int	parse_type(va_list args, int type, \

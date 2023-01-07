@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:10:24 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 12:46:16 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 22:58:57 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 
 static int	parse_type(va_list args, t_tags *tags, \
 						int type, int (*ft_put[])(void *p, unsigned int len))
@@ -31,6 +31,34 @@ static int	parse_type(va_list args, t_tags *tags, \
 		return (convert_to_hexa(args, tags, ft_put[2]));
 	else
 		return (convert_to_hexa(args, tags, ft_put[3]));
+}
+
+static void	parse_option(int c, t_tags *tags)
+{
+	if (!ft_isdigit(c) && !is_option(c))
+		return ;
+	if (ft_isdigit(c) && tags->type == -1)
+		return ;
+	if (c == '-')
+	{
+		tags->minus = 1;
+		if (tags->precision != -1)
+			tags->precision = -1;
+	}
+	if (c == '+')
+		tags->plus = 1;
+	if (c == '#')
+		tags->hash = 1;
+	if (c == ' ')
+		tags->space = 1;
+	if (c == '.' && tags->precision == -1)
+		tags->precision = 0;
+	if (c == '0' && tags->width == 0 && tags->precision == -1)
+		tags->zero = 1;
+	else if (ft_isdigit((int)c) && tags->precision == -1)
+		atoi_handle_overflow(&tags->width, c, tags);
+	else if (ft_isdigit((int)c))
+		atoi_handle_overflow(&tags->precision, c, tags);
 }
 
 static int	parse_format(char *format, va_list args, int *i)

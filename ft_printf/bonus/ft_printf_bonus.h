@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 23:14:23 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/06 21:46:29 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/06 22:12:34 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ typedef struct s_tags
 	int	hash;
 	int	space;
 }			t_tags;
-
-
-#include <stdio.h>
-
 
 int		ft_printf(const char *format, ...);
 
