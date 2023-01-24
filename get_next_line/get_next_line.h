@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/24 12:37:50 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:51:50 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*get_next_line(int fd);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000;
+# endif
 
 typedef struct s_backup
 {
@@ -27,14 +29,12 @@ typedef struct s_backup
 	//t_read	*next;
 }	t_backup;
 
+char	*get_next_line(int fd);
 char	*ft_strjoin(t_backup *backup, char *buf, size_t read_num);
 char	*ft_strdup(const char *s1);
 
 
 
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000;
-# endif
 
 #endif
