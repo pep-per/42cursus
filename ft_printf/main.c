@@ -14,5 +14,4 @@ int main(void)
 	r2 = ft_printf("%-7.5s", "tubular");
 	printf("\n");
 	printf("ft_printf cnt : %d\n", r2);
-
 }
