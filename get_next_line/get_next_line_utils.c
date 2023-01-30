@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/24 16:37:35 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:31:28 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,25 @@
 // 	return (i);
 // }
 
-char	*ft_strjoin(t_backup *backup, char *buf, size_t read_num)
+char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
 {
 	char	*new;
+	char	*start;
 	size_t	i;
 	size_t	j;
 
-	new = (char *)malloc(sizeof(char) * (backup->length + read_num + 1));
+	new = (char *)malloc(sizeof(char) * (curr->backup_len + read_num + 1));
 	if (!new)
 		return (0);
+	start = curr->backup;
+	// while (*start)
+	// {
+	// 	start++;
+	// }
 	i = 0;
-	while (i < backup->length)
+	while (i < curr->backup_len)
 	{
-		new[i] = backup->start[i];
+		new[i] = start[i];
 		i++;
 	}
 	j = 0;
@@ -43,30 +49,44 @@ char	*ft_strjoin(t_backup *backup, char *buf, size_t read_num)
 		new[i++] = buf[j++];
 	}
 	new[i] = 0;
-	backup->length += read_num;
+	curr->backup_len += read_num;
+	//curr->backup = new;
 	//free(buf);
-	//buf = 0;
 	return (new);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(t_link *curr, char *buf, size_t len)
 {
 	char	*dst;
-	size_t	len;
 	size_t	i;
 
-	len = 0;
-	while (s1[len])
-		len++;
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
 		return (0);
 	i = 0;
-	while (s1[i])
+	while (i < len)
 	{
-		dst[i] = s1[i];
+		dst[i] = buf[i];
 		i++;
 	}
 	dst[i] = 0;
+	curr->backup_len += len;
 	return (dst);
+}
+
+void	free_link(t_link *head)
+{
+	t_link	*curr;
+	t_link	*tmp;
+
+	curr = head->next;
+	while (curr)
+	{
+		if (curr->backup)
+			free(curr->backup);
+		tmp = curr;
+		curr = curr->next;
+		free(tmp);
+	}
+	free(head);
 }

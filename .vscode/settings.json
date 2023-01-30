@@ -8,5 +8,6 @@
 		"ft_printf.h": "c",
 		"unistd.h": "c",
 		"get_next_line.h": "c"
-	}
+	},
+	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
 }

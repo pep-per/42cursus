@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/get_next_line/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/gnl.dir/get_next_line.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line.c",
+  "file": "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/get_next_line/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/gnl.dir/get_next_line_utils.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c",
+  "file": "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/get_next_line/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/gnl.dir/main.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/main.c",
+  "file": "/Users/jiyeolee/WORKSPACE/get_next_line/main.c"
+}
+]

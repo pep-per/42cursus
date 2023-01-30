@@ -6,16 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/24 18:21:28 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/30 19:34:34 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// int	define_tail(ssize_t newline_idx, ssize_t *read_num, char *buf)
-// {
-// 	*read_num = newline_idx + 1;
-// }
 
 static int	check_buffer_find_newline(char *buf, ssize_t read_num)
 {
@@ -24,86 +19,107 @@ static int	check_buffer_find_newline(char *buf, ssize_t read_num)
 	i = 0;
 	while (i < read_num)
 	{
-		if (buf[i] == '\n' || buf[i] == '\0')
-		{
+		if (buf[i] == '\n')
 			return (i);
-		}
 		i++;
 	}
 	return (-1);
 }
 
-static ssize_t	save_line(int fd, t_backup *backup)
+static void	save_line(char *line, t_link *curr)
+{
+	if (curr->backup)
+		free(curr->backup);
+	curr->backup = line;
+	//free(save);
+}
+
+static char	*load_line(int fd, t_link *curr)
 {
 	ssize_t	read_num;
 	ssize_t	newline_idx;
+	ssize_t	len;
+	char	*line;
 	char	buf[BUFFER_SIZE + 1];
-	char	*save;
 
 	read_num = read(fd, buf, BUFFER_SIZE);
-	if (read_num == -1)
-		return (-1);
-	if (read_num == 0)
-	{
+	if (read_num < 0)
 		return (0);
-	}
+	buf[read_num] = 0;
 	newline_idx = check_buffer_find_newline(buf, read_num);
-	if (newline_idx != -1) //개행 만나면 그만 읽고 리턴 시키기 
+	len = read_num;
+	if (newline_idx != -1 || read_num < BUFFER_SIZE)
 	{
-		//read_num = newline_idx + 1;
-		buf[newline_idx + 1] = 0;
-		if (!backup->start)
-		{
-			save = ft_strdup(buf);
-			if (!save)
-				return (-1);
-			backup->start = save;
+		if (len > newline_idx + 1)
+			len = newline_idx + 1;
+		//buf[newline_idx + 1] = 0;
+		if (!curr->backup)
+			line = ft_strdup(curr, buf, len);
+		else
+			line = ft_strjoin(curr, buf, len);
+		if (!line)
 			return (0);
-		}
-		save = ft_strjoin(backup, buf, (size_t)newline_idx + 1);
-		if (!save)
-			return (-1);
-		if (backup->start)
-			free(backup->start);
-		backup->start = save;
-		return (0);
+		save_line(line, curr);
+		return (line);
 	}
+	if (!curr->backup)
+		line = ft_strdup(curr, buf, len);
 	else
-		buf[read_num] = 0;
-
-	save = ft_strjoin(backup, buf, (size_t)read_num);
-	if (!save)
-		return (-1);
-	if (backup->start)
-		free(backup->start);
-	backup->start = save;
-	// if (read_num < BUFFER_SIZE)
-	// 	return (0);
-	// eof까지 읽으면 0
-	return (read_num);
+		line = ft_strjoin(curr, buf, len);
+	if (!line)
+		return (0);
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_backup	backup;
-	int				result;
+	static t_link	*head;
+	t_link			*curr;
+	char			*start;
+	char			*result;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (0);
-	// backup.start = 0; 
-	// backup.length = 0;
+	head = (t_link *)malloc(sizeof(t_link));
+	if (!head)
+		return (0);
+	curr = head->next;
+	while (curr)
+	{
+		if (curr->fd == fd)
+			break ;
+		curr = curr->next;
+	}
+	if (!curr)
+	{
+		curr = (t_link *)malloc(sizeof(t_link));
+		if (!curr)
+		{
+			free_link(head);
+			return (0);
+		}
+		curr->fd = fd;
+		curr->next = NULL;
+		curr->backup = NULL;
+		curr->backup_len = 0;
+	}
+	start = curr->backup;
 	while (1)
 	{
-		result = save_line(fd, &backup);
-		if (result == -1)
+		result = load_line(fd, curr);
+		if (result == NULL)
 		{
+			free_link(head);
+			//free(head);
 			return (0);
-
 		}
-		if (result == 0)
-			break ;
+		// 뉴라인 나오면 백업 업데이트. 이때까지 붙인거 리턴
+		if (curr->backup != start)
+		{
+			free_link(head);
+			return (result);
+		}
 	}
-	return (backup.start);
 }
 
 // int	main(void)
