@@ -6,11 +6,16 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/30 19:34:34 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/31 23:52:10 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+
+
+#include <stdio.h>
+
 
 static int	check_buffer_find_newline(char *buf, ssize_t read_num)
 {
@@ -28,10 +33,14 @@ static int	check_buffer_find_newline(char *buf, ssize_t read_num)
 
 static void	save_line(char *line, t_link *curr)
 {
-	if (curr->backup)
+	size_t	i;
+
+	i = 0;
+	if (curr->backup != NULL)
 		free(curr->backup);
-	curr->backup = line;
-	//free(save);
+	while (line[i] != '\n' && line[i] != '\0')
+		i++;
+	curr->backup = &line[i + 1];
 }
 
 static char	*load_line(int fd, t_link *curr)
@@ -43,7 +52,7 @@ static char	*load_line(int fd, t_link *curr)
 	char	buf[BUFFER_SIZE + 1];
 
 	read_num = read(fd, buf, BUFFER_SIZE);
-	if (read_num < 0)
+	if (read_num < 1)
 		return (0);
 	buf[read_num] = 0;
 	newline_idx = check_buffer_find_newline(buf, read_num);
@@ -51,10 +60,10 @@ static char	*load_line(int fd, t_link *curr)
 	if (newline_idx != -1 || read_num < BUFFER_SIZE)
 	{
 		if (len > newline_idx + 1)
-			len = newline_idx + 1;
+			len = newline_idx;
 		//buf[newline_idx + 1] = 0;
-		if (!curr->backup)
-			line = ft_strdup(curr, buf, len);
+		if (curr->backup == NULL)
+			line = ft_strdup(curr, buf, read_num);
 		else
 			line = ft_strjoin(curr, buf, len);
 		if (!line)
@@ -75,6 +84,7 @@ char	*get_next_line(int fd)
 {
 	static t_link	*head;
 	t_link			*curr;
+	t_link			*tmp;
 	char			*start;
 	char			*result;
 
@@ -83,13 +93,16 @@ char	*get_next_line(int fd)
 	head = (t_link *)malloc(sizeof(t_link));
 	if (!head)
 		return (0);
-	curr = head->next;
-	while (curr)
+	head->next = NULL;
+	curr = head;
+	while (curr->next != NULL)
 	{
 		if (curr->fd == fd)
 			break ;
 		curr = curr->next;
 	}
+	tmp = curr;
+	curr = curr->next;
 	if (!curr)
 	{
 		curr = (t_link *)malloc(sizeof(t_link));
@@ -102,6 +115,7 @@ char	*get_next_line(int fd)
 		curr->next = NULL;
 		curr->backup = NULL;
 		curr->backup_len = 0;
+		tmp->next = curr;
 	}
 	start = curr->backup;
 	while (1)
@@ -110,10 +124,8 @@ char	*get_next_line(int fd)
 		if (result == NULL)
 		{
 			free_link(head);
-			//free(head);
 			return (0);
 		}
-		// 뉴라인 나오면 백업 업데이트. 이때까지 붙인거 리턴
 		if (curr->backup != start)
 		{
 			free_link(head);

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/30 19:31:28 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/01/31 23:51:52 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@ char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
 	if (!new)
 		return (0);
 	start = curr->backup;
-	// while (*start)
-	// {
-	// 	start++;
-	// }
 	i = 0;
 	while (i < curr->backup_len)
 	{
@@ -50,8 +46,6 @@ char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
 	}
 	new[i] = 0;
 	curr->backup_len += read_num;
-	//curr->backup = new;
-	//free(buf);
 	return (new);
 }
 
@@ -79,14 +73,12 @@ void	free_link(t_link *head)
 	t_link	*curr;
 	t_link	*tmp;
 
-	curr = head->next;
-	while (curr)
+	curr = head;
+	while (curr->next)
 	{
-		if (curr->backup)
-			free(curr->backup);
 		tmp = curr;
 		curr = curr->next;
 		free(tmp);
 	}
-	free(head);
+	//free(head);
 }

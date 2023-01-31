@@ -83,7 +83,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jiyeolee/WORKSPACE/get_next_line/build"
+			"value" : "/Users/jiyeolee/WORKSPACE/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -187,10 +187,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/clang++"
 		},
 		{
@@ -283,10 +283,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/clang"
 		},
 		{
@@ -523,7 +523,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jiyeolee/WORKSPACE/get_next_line/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/jiyeolee/WORKSPACE/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -1719,7 +1719,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "cx2r6s5.42seoul.kr"
+			"value" : "c1r5s7.42seoul.kr"
 		},
 		{
 			"name" : "SVNCOMMAND",
@@ -1747,7 +1747,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jiyeolee/WORKSPACE/get_next_line/build"
+			"value" : "/Users/jiyeolee/WORKSPACE/build"
 		},
 		{
 			"name" : "gnl_IS_TOP_LEVEL",
