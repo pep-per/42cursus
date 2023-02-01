@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/31 23:52:10 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:42:47 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static int	check_buffer_find_newline(char *buf, ssize_t read_num)
 	return (-1);
 }
 
-static void	save_line(char *line, t_link *curr)
+static void	save_line(char *buf, t_link *curr)
 {
 	size_t	i;
 
-	i = 0;
-	if (curr->backup != NULL)
+	if (curr->backup)
 		free(curr->backup);
-	while (line[i] != '\n' && line[i] != '\0')
+	i = 0;
+	while (buf[i] != '\n' && buf[i] != '\0')
 		i++;
-	curr->backup = &line[i + 1];
+	curr->backup = &buf[i + 1];
 }
 
 static char	*load_line(int fd, t_link *curr)
@@ -49,8 +49,11 @@ static char	*load_line(int fd, t_link *curr)
 	ssize_t	newline_idx;
 	ssize_t	len;
 	char	*line;
-	char	buf[BUFFER_SIZE + 1];
+	char	*buf;
 
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (0);
 	read_num = read(fd, buf, BUFFER_SIZE);
 	if (read_num < 1)
 		return (0);
@@ -60,23 +63,27 @@ static char	*load_line(int fd, t_link *curr)
 	if (newline_idx != -1 || read_num < BUFFER_SIZE)
 	{
 		if (len > newline_idx + 1)
-			len = newline_idx;
+			len = newline_idx + 1;
 		//buf[newline_idx + 1] = 0;
 		if (curr->backup == NULL)
-			line = ft_strdup(curr, buf, read_num);
+			line = ft_strdup(buf, len);
 		else
 			line = ft_strjoin(curr, buf, len);
 		if (!line)
 			return (0);
-		save_line(line, curr);
+		curr->backup_len = 0;
+		save_line(buf, curr);
+		free(buf);
 		return (line);
 	}
 	if (!curr->backup)
-		line = ft_strdup(curr, buf, len);
+		line = ft_strdup(buf, len);
 	else
 		line = ft_strjoin(curr, buf, len);
 	if (!line)
 		return (0);
+	curr->backup_len += len;
+	free(buf);
 	return (line);
 }
 
@@ -90,10 +97,12 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (0);
-	head = (t_link *)malloc(sizeof(t_link));
 	if (!head)
-		return (0);
-	head->next = NULL;
+	{
+		head = (t_link *)malloc(sizeof(t_link));
+		if (!head)
+			return (0);
+	}	
 	curr = head;
 	while (curr->next != NULL)
 	{
@@ -102,9 +111,9 @@ char	*get_next_line(int fd)
 		curr = curr->next;
 	}
 	tmp = curr;
-	curr = curr->next;
-	if (!curr)
+	if (curr->fd != fd)
 	{
+		curr = curr->next;
 		curr = (t_link *)malloc(sizeof(t_link));
 		if (!curr)
 		{
@@ -112,9 +121,6 @@ char	*get_next_line(int fd)
 			return (0);
 		}
 		curr->fd = fd;
-		curr->next = NULL;
-		curr->backup = NULL;
-		curr->backup_len = 0;
 		tmp->next = curr;
 	}
 	start = curr->backup;
@@ -128,7 +134,7 @@ char	*get_next_line(int fd)
 		}
 		if (curr->backup != start)
 		{
-			free_link(head);
+			//free_link(head);
 			return (result);
 		}
 	}

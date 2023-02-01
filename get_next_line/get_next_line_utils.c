@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/31 23:51:52 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:45:22 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
 		new[i++] = buf[j++];
 	}
 	new[i] = 0;
-	curr->backup_len += read_num;
+	// curr->backup_len += read_num;
 	return (new);
 }
 
-char	*ft_strdup(t_link *curr, char *buf, size_t len)
+char	*ft_strdup(char *buf, size_t len)
 {
 	char	*dst;
 	size_t	i;
@@ -64,7 +64,7 @@ char	*ft_strdup(t_link *curr, char *buf, size_t len)
 		i++;
 	}
 	dst[i] = 0;
-	curr->backup_len += len;
+	// curr->backup_len += len;
 	return (dst);
 }
 
@@ -73,12 +73,12 @@ void	free_link(t_link *head)
 	t_link	*curr;
 	t_link	*tmp;
 
-	curr = head;
-	while (curr->next)
+	curr = head->next;
+	while (curr)
 	{
 		tmp = curr;
 		curr = curr->next;
 		free(tmp);
 	}
-	//free(head);
+	head = NULL;
 }

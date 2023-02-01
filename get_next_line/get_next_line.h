@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/31 20:18:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:40:57 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_link
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(t_link *curr, char *buf, size_t read_num);
-char	*ft_strdup(t_link *curr, char *buf, size_t len);
+char	*ft_strdup(char *buf, size_t len);
 
 
 void	free_link(t_link *head);
