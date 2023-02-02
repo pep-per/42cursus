@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/01 23:45:22 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/02 22:36:30 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,36 @@ char	*ft_strdup(char *buf, size_t len)
 	return (dst);
 }
 
-void	free_link(t_link *head)
+// void	free_curr_node(t_link *curr)
+// {
+// 	free(curr);
+// }
+
+void	free_current_node(t_link *head, int fd)
 {
 	t_link	*curr;
-	t_link	*tmp;
 
-	curr = head->next;
-	while (curr)
+	curr = head;
+	while (curr	&& curr->next)
 	{
-		tmp = curr;
+		if (curr->next->fd == fd)
+		{
+			free(curr->next);
+			curr->next = NULL;
+		}
 		curr = curr->next;
-		free(tmp);
 	}
-	head = NULL;
+	//head = NULL;
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*((char *)s + i) = 0;
+		i++;
+	}
 }
