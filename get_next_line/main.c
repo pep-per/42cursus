@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:48:59 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/02 22:53:37 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:05:17 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	char	*str;
 
 	idx = 1;
-	fd = open("../v", O_RDONLY);
+	fd = open("../empty", O_RDONLY);
 	while (1)
 	{
 		str = get_next_line(fd);

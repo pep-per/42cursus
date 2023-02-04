@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/02 23:24:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:31:19 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,90 +17,81 @@
 #include <stdio.h>
 
 
-static int	find_newline(char *buf, ssize_t len)
+static ssize_t	find_newline(char *buf, ssize_t read_num)
 {
 	ssize_t	i;
 
 	i = 0;
-	while (i < len)
+	while (i < read_num)
 	{
-		if (buf[i] == '\n' && buf[i] != '\0')
+		if (buf[i] == '\n')
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-static void	save_line(char *buf, t_link *curr)
-{
-	size_t	i;
-
-	// if (curr->backup) 
-	// 	free(curr->backup);
-	i = 0;
-	while (buf[i] != '\n' && buf[i] != '\0')
-		i++;
-	curr->backup = &buf[i + 1];
-}
-
-// static char	*split_line(t_link *curr, ssize_t read_num)
+// static void	save_line(char *buf, t_link *curr, ssize_t newline_idx)
 // {
-	
+// 	curr->backup = &buf[newline_idx + 1];
 // }
 
-static char	*load_line(t_link *curr, char *buf, ssize_t read_num)
+int	is_newline(ssize_t newline_idx)
+{
+	return (newline_idx != -1);
+}
+
+static ssize_t	load_backup_find_newline(t_link *curr, char *buf, ssize_t read_num)
 {
 	ssize_t	newline_idx;
-	ssize_t	len;
+
+	newline_idx = -1;
+	if (read_num < BUFFER_SIZE)
+		return (read_num - 1);
+	if (curr->backup)
+		newline_idx = find_newline(curr->backup, curr->backup_len);
+	else
+		newline_idx = find_newline(buf, read_num);
+	return (newline_idx);
+}
+
+static char	*complete_line(t_link *curr, char *buf, ssize_t newline_idx, ssize_t read_num)
+{
 	char	*line;
-	// char	*buf;
 
 	if (read_num == 0)
 	{
-		len = curr->backup_len;
-		newline_idx = find_newline(curr->backup, len);
-		if (len > newline_idx + 1)
-			len = newline_idx + 1;
-		line = ft_strdup(curr->backup, len);
+		line = ft_strdup(curr->backup, newline_idx + 1);
 		if (!line)
 			return (0);
-		save_line(curr->backup, curr);
+		curr->backup = &curr->backup[newline_idx + 1];
+		// save_line(curr->backup, curr, newline_idx);
 		curr->backup_len -= (newline_idx + 1);
+		if (curr->backup_len <= 0)
+			curr->backup = 0;
 		return (line);
 	}
-	buf[read_num] = 0;
-	newline_idx = find_newline(buf, read_num);
-	len = read_num;
-	if (newline_idx != -1 || read_num < BUFFER_SIZE)
-	{
-		if (len > newline_idx + 1)
-			len = newline_idx + 1;
-		//buf[newline_idx + 1] = 0;
-		if (curr->backup == NULL)
-			line = ft_strdup(buf, len);
-		else
-			line = ft_strjoin(curr, buf, len);
-		if (!line)
-		{
-			// free(buf);
-			return (0);
-		}
-		curr->backup_len = 0;//////
-		save_line(buf, curr);
-		// free(buf);
-		return (line);
-	}
-	if (!curr->backup)
-		line = ft_strdup(buf, len);
+	if (curr->backup == NULL)
+		line = ft_strdup(buf, newline_idx + 1);
 	else
-		line = ft_strjoin(curr, buf, len);
+		line = ft_strjoin(curr->backup, buf, newline_idx + 1);
 	if (!line)
-	{
-		// free(buf);
 		return (0);
-	}
-	curr->backup_len += len;
-	// free(buf);
+	curr->backup = &buf[newline_idx + 1];
+	
+	// save_line(buf, curr, newline_idx);
+	curr->backup_len = 0;
+	return (line);
+}
+
+static char	*concatenate_lines(char *buf, ssize_t read_num, char *line)
+{
+	if (line == NULL)
+		line = ft_strdup(buf, read_num);
+	else
+		line = ft_strjoin(line, buf, read_num);
+	if (!line)
+		return (0);
 	return (line);
 }
 
@@ -108,15 +99,14 @@ char	*get_next_line(int fd)
 {
 	static t_link	*head;
 	t_link			*curr;
-	t_link			*new;
-	char			*result;
+	char			*line;
 	char			*buf;
-	ssize_t	read_num;
-
+	ssize_t			read_num;
+	ssize_t			newline_idx;
 
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (0);
-	if (!head)
+	if (head == NULL)
 	{
 		head = (t_link *)malloc(sizeof(t_link));
 		if (!head)
@@ -124,49 +114,64 @@ char	*get_next_line(int fd)
 		head->next = NULL;
 		head->backup = NULL;
 		head->fd = -1;
-		head->backup_len = -1;
-	}	
-	curr = head;
-	while (curr->next != NULL && curr->fd != fd)
-		curr = curr->next;
-	if (curr->fd != fd)
-	{
-		new = (t_link *)malloc(sizeof(t_link));
-		if (!new)
-			return (0);
-		new->fd = fd;
-		new->next = NULL;
-		new->backup_len = -1;
-		curr->next = new;
-		curr = new;
+		head->backup_len = 0;
 	}
-	// start = curr->backup;
+	curr = find_node_or_make_new(&head, fd);
+	if (!curr)
+	{
+		free_all(&head);
+		return (0);
+	}
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
+	{
+		free_all(&head);
 		return (0);
+	}
 	ft_bzero(buf, BUFFER_SIZE + 1);
-	while (curr->backup_len != 0)
+	newline_idx = -1;
+	line = NULL;
+	while (!is_newline(newline_idx))
 	{
 		read_num = read(fd, buf, BUFFER_SIZE);
-		if (read_num < 0)
+		if (read_num < 0 || (read_num == 0 && curr->backup == NULL))
 		{
 			free(buf);
-			free_current_node(head, fd);
+			buf = 0;
+			// free(curr);
+			// curr = NULL;
+			free_all(&head);
 			return (0);
 		}
-		result = load_line(curr, buf, read_num);
-		if (result == NULL)
+		if (read_num != 0)
 		{
+			buf[read_num] = 0;
+			newline_idx = load_backup_find_newline(curr, buf, read_num);
+		}
+		if (is_newline(newline_idx) || read_num == 0)
+			line = complete_line(curr, buf, newline_idx, read_num);
+		else
+			line = concatenate_lines(buf, read_num, line);
+		if (line == NULL)
+		{
+			// if (buf != NULL)
+			// {
+			// 	free(buf);
+			// 	buf = 0;
+			// }
+			// free(curr);
 			free(buf);
-			free_current_node(head, fd);
+			buf = 0;
+			// curr = NULL;
+			free_all(&head);
 			return (0);
 		}
 		if (read_num == 0)
 			break ;
 	}
-	buf = 0;
 	free(buf);
-	return (result);
+	buf = 0;
+	return (line);
 }
 
 // int	main(void)

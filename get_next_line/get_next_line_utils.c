@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/02 22:36:30 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/05 05:00:06 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,25 @@
 // 	return (i);
 // }
 
-char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
+char	*ft_strjoin(char *line, char *buf, ssize_t read_num)
 {
 	char	*new;
-	char	*start;
-	size_t	i;
-	size_t	j;
+	// char	*start;
+	ssize_t	len;
+	ssize_t	i;
+	ssize_t	j;
 
-	new = (char *)malloc(sizeof(char) * (curr->backup_len + read_num + 1));
+	len = 0;
+	while (line[len])
+		len++;
+	new = (char *)malloc(sizeof(char) * (len + read_num + 1));
 	if (!new)
 		return (0);
-	start = curr->backup;
+	// start = curr->backup;
 	i = 0;
-	while (i < curr->backup_len)
+	while (i < len)
 	{
-		new[i] = start[i];
+		new[i] = line[i];
 		i++;
 	}
 	j = 0;
@@ -49,10 +53,10 @@ char	*ft_strjoin(t_link *curr, char *buf, size_t read_num)
 	return (new);
 }
 
-char	*ft_strdup(char *buf, size_t len)
+char	*ft_strdup(char *buf, ssize_t len)
 {
 	char	*dst;
-	size_t	i;
+	ssize_t	i;
 
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
@@ -68,26 +72,40 @@ char	*ft_strdup(char *buf, size_t len)
 	return (dst);
 }
 
-// void	free_curr_node(t_link *curr)
-// {
-// 	free(curr);
-// }
-
-void	free_current_node(t_link *head, int fd)
+t_link	*find_node_or_make_new(t_link **head, int fd)
 {
+	t_link	*new;
 	t_link	*curr;
 
-	curr = head;
-	while (curr	&& curr->next)
-	{
-		if (curr->next->fd == fd)
-		{
-			free(curr->next);
-			curr->next = NULL;
-		}
+	curr = *head;
+	while (curr->next != NULL && curr->fd != fd)
 		curr = curr->next;
+	if (curr->fd == fd)
+		return (curr);
+	new = (t_link *)malloc(sizeof(t_link));
+	if (!new)
+		return (0);
+	new->fd = fd;
+	new->next = NULL;
+	new->backup = NULL;
+	new->backup_len = 0;
+	curr->next = new;
+	return (new);
+}
+
+void	free_all(t_link **head)
+{
+	t_link	*curr;
+	t_link	*tmp;
+
+	curr = *head;
+	while (curr)
+	{
+		tmp = curr;
+		curr = curr->next;
+		free(tmp);
 	}
-	//head = NULL;
+	*head = NULL;
 }
 
 void	ft_bzero(void *s, size_t n)
