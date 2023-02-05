@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/05 05:00:06 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/05 09:48:21 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	*ft_strdup(char *buf, ssize_t len)
 	char	*dst;
 	ssize_t	i;
 
+	if (len == 0)
+		return (0);
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
 		return (0);
@@ -93,20 +95,29 @@ t_link	*find_node_or_make_new(t_link **head, int fd)
 	return (new);
 }
 
-void	free_all(t_link **head)
-{
-	t_link	*curr;
-	t_link	*tmp;
 
-	curr = *head;
-	while (curr)
-	{
-		tmp = curr;
-		curr = curr->next;
-		free(tmp);
-	}
-	*head = NULL;
+void	free_current_node(t_link **curr, char *buf)
+{
+	free(buf);
+	buf = NULL;
+	free(*curr);
+	*curr = NULL;
 }
+
+// void	free_all(t_link **head)
+// {
+// 	t_link	*curr;
+// 	t_link	*tmp;
+
+// 	curr = *head;
+// 	while (curr)
+// 	{
+// 		tmp = curr;
+// 		curr = curr->next;
+// 		free(tmp);
+// 	}
+// 	*head = NULL;
+// }
 
 void	ft_bzero(void *s, size_t n)
 {
