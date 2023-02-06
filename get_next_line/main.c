@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:48:59 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/05 08:09:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:00:17 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	char	*str;
 
 	idx = 1;
-	fd = open("../ss", O_RDONLY);
+	fd = open("../z.txt", O_RDONLY);
 	while (1)
 	{
 		str = get_next_line(fd);

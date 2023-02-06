@@ -307,7 +307,7 @@ MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
 //Name of the computer/site where compile is being run
-SITE:STRING=cx2r6s5.42seoul.kr
+SITE:STRING=c1r6s5.42seoul.kr
 
 //Value Computed by CMake
 gnl_BINARY_DIR:STATIC=/Users/jiyeolee/WORKSPACE/get_next_line/build

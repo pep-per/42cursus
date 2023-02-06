@@ -11,7 +11,7 @@ BuildDirectory: /Users/jiyeolee/WORKSPACE/get_next_line/build
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: cx2r6s5.42seoul.kr
+Site: c1r6s5.42seoul.kr
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Darwin-clang++
