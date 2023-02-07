@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/06 21:53:13 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:07:01 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 typedef struct s_link
 {
-	char			*backup;
-	ssize_t			backup_len;
+	char			buffer[BUFFER_SIZE];
+	ssize_t			buf_idx;
+	ssize_t			read_byte;
 	int				fd;
 	struct s_link	*next;
 }	t_link;
@@ -35,9 +36,6 @@ char	*get_next_line(int fd);
 char	*ft_strjoin(char *line, char *buf, ssize_t read_num);
 char	*ft_strdup(char *buf, ssize_t len);
 t_link	*find_node_or_make_new(t_link **head, int fd);
-void	free_all_node(t_link **head, t_link **curr, char *buf);
-void	free_current_node(t_link **curr, char *buf);
-
 void	ft_bzero(void *s, size_t n);
-
+ssize_t	find_newline_or_eof(char *buf, ssize_t read_num);
 #endif

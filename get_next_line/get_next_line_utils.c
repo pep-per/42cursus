@@ -6,47 +6,37 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:39 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/06 22:31:45 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/07 22:48:42 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// size_t	ft_strlen(const char *s)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
-
-char	*ft_strjoin(char *line, char *buf, ssize_t read_num)
+char	*ft_strjoin(t_link *curr, char *old)
 {
 	char	*new;
-	ssize_t	len;
 	ssize_t	i;
 	ssize_t	j;
+	ssize_t	len;
 
 	len = 0;
-	while (line[len])
+	while (len < curr->read_byte && curr->buffer[len] == '\n')
 		len++;
-	new = (char *)malloc(sizeof(char) * (len + read_num + 1));
+	new = (char *)malloc(len + ft_strlen(old) + 1);
 	if (!new)
 		return (0);
-	i = 0;
-	while (i < len)
-	{
-		new[i] = line[i];
-		i++;
-	}
+	i = -1;
+	while (old[++i])
+		new[i] = old[i];
 	j = 0;
-	while (j < read_num)
-	{
-		new[i++] = buf[j++];
-	}
+	while (j < len)
+		new[i++] = curr->buffer[j++];
 	new[i] = 0;
+	if (new[i - 1] == '\n')
+		curr->read_byte = -2;
+	else
+		curr->read_byte = BUFFER_SIZE;
+	free(old);
 	return (new);
 }
 
@@ -68,12 +58,12 @@ char	*ft_strdup(char *buf, ssize_t len)
 	return (dst);
 }
 
-t_link	*find_node_or_make_new(t_link **head, int fd)
+t_link	*find_node_or_make_new(t_link *head, int fd)
 {
 	t_link	*new;
 	t_link	*curr;
 
-	curr = *head;
+	curr = head;
 	while (curr->next != NULL && curr->fd != fd)
 		curr = curr->next;
 	if (curr->fd == fd)
@@ -81,44 +71,64 @@ t_link	*find_node_or_make_new(t_link **head, int fd)
 	new = (t_link *)malloc(sizeof(t_link));
 	if (!new)
 		return (0);
+	new->buffer[0] = 0;
+	new->buf_idx = 0;
+	new->read_byte = -1;
 	new->fd = fd;
 	new->next = NULL;
-	new->backup = NULL;
-	new->backup_len = 0;
 	curr->next = new;
 	return (new);
 }
 
-void	free_current_node(t_link **curr, char *buf)
+ssize_t	find_newline_or_eof(char *buf, ssize_t read_num)
 {
-	free(buf);
-	buf = NULL;
-	free(*curr);
-	*curr = NULL;
+	ssize_t	i;
+
+	if (read_num < BUFFER_SIZE)
+		return (read_num - 1);
+	i = 0;
+	while (i < read_num)
+	{
+		if (buf[i] == '\n')
+			return (i);
+		i++;
+	}
+	return (NO_NEWLINE);
 }
 
-void	free_all_node(t_link **head, t_link **curr, char *buf)
+char	*free_current_node(t_link *curr, char *buf)
 {
-	t_link	*curr;
 	t_link	*tmp;
 
-	free(head);
-	head = 0;
-	free(curr);
-	curr = 0;
 	free(buf);
-	buf = 0;
+	buf = NULL;
+	tmp = curr->next;
+	free(curr);
+
+	return (0);
 }
 
-	// curr = *head;
-	// while (curr)
-	// {
-	// 	tmp = curr;
-	// 	curr = curr->next;
-	// 	free(tmp);
-	// }
-	// *head = NULL;
+// void	free_all_node(t_link **head, t_link **curr, char *buf)
+// {
+// 	t_link	*curr;
+// 	t_link	*tmp;
 
+// 	free(head);
+// 	head = 0;
+// 	free(curr);
+// 	curr = 0;
+// 	free(buf);
+// 	buf = 0;
+// }
+
+	temp = *head;
+	while (temp->next != curr)
+	{
+		temp = temp->next;
+		
+	}
+	temp->next = curr->next;
+	
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
