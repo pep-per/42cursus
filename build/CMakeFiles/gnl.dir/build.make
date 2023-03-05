@@ -83,10 +83,24 @@ CMakeFiles/gnl.dir/get_next_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gnl.dir/get_next_line.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line.c -o CMakeFiles/gnl.dir/get_next_line.c.s
 
+CMakeFiles/gnl.dir/get_next_line_bonus.c.o: CMakeFiles/gnl.dir/flags.make
+CMakeFiles/gnl.dir/get_next_line_bonus.c.o: /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_bonus.c
+CMakeFiles/gnl.dir/get_next_line_bonus.c.o: CMakeFiles/gnl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gnl.dir/get_next_line_bonus.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gnl.dir/get_next_line_bonus.c.o -MF CMakeFiles/gnl.dir/get_next_line_bonus.c.o.d -o CMakeFiles/gnl.dir/get_next_line_bonus.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_bonus.c
+
+CMakeFiles/gnl.dir/get_next_line_bonus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gnl.dir/get_next_line_bonus.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_bonus.c > CMakeFiles/gnl.dir/get_next_line_bonus.c.i
+
+CMakeFiles/gnl.dir/get_next_line_bonus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gnl.dir/get_next_line_bonus.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_bonus.c -o CMakeFiles/gnl.dir/get_next_line_bonus.c.s
+
 CMakeFiles/gnl.dir/get_next_line_utils.c.o: CMakeFiles/gnl.dir/flags.make
 CMakeFiles/gnl.dir/get_next_line_utils.c.o: /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c
 CMakeFiles/gnl.dir/get_next_line_utils.c.o: CMakeFiles/gnl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gnl.dir/get_next_line_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gnl.dir/get_next_line_utils.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gnl.dir/get_next_line_utils.c.o -MF CMakeFiles/gnl.dir/get_next_line_utils.c.o.d -o CMakeFiles/gnl.dir/get_next_line_utils.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c
 
 CMakeFiles/gnl.dir/get_next_line_utils.c.i: cmake_force
@@ -97,10 +111,24 @@ CMakeFiles/gnl.dir/get_next_line_utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gnl.dir/get_next_line_utils.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c -o CMakeFiles/gnl.dir/get_next_line_utils.c.s
 
+CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o: CMakeFiles/gnl.dir/flags.make
+CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o: /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils_bonus.c
+CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o: CMakeFiles/gnl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o -MF CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o.d -o CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils_bonus.c
+
+CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils_bonus.c > CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.i
+
+CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils_bonus.c -o CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.s
+
 CMakeFiles/gnl.dir/main.c.o: CMakeFiles/gnl.dir/flags.make
 CMakeFiles/gnl.dir/main.c.o: /Users/jiyeolee/WORKSPACE/get_next_line/main.c
 CMakeFiles/gnl.dir/main.c.o: CMakeFiles/gnl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gnl.dir/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/gnl.dir/main.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gnl.dir/main.c.o -MF CMakeFiles/gnl.dir/main.c.o.d -o CMakeFiles/gnl.dir/main.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/main.c
 
 CMakeFiles/gnl.dir/main.c.i: cmake_force
@@ -114,18 +142,22 @@ CMakeFiles/gnl.dir/main.c.s: cmake_force
 # Object files for target gnl
 gnl_OBJECTS = \
 "CMakeFiles/gnl.dir/get_next_line.c.o" \
+"CMakeFiles/gnl.dir/get_next_line_bonus.c.o" \
 "CMakeFiles/gnl.dir/get_next_line_utils.c.o" \
+"CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o" \
 "CMakeFiles/gnl.dir/main.c.o"
 
 # External object files for target gnl
 gnl_EXTERNAL_OBJECTS =
 
 gnl: CMakeFiles/gnl.dir/get_next_line.c.o
+gnl: CMakeFiles/gnl.dir/get_next_line_bonus.c.o
 gnl: CMakeFiles/gnl.dir/get_next_line_utils.c.o
+gnl: CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o
 gnl: CMakeFiles/gnl.dir/main.c.o
 gnl: CMakeFiles/gnl.dir/build.make
 gnl: CMakeFiles/gnl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable gnl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiyeolee/WORKSPACE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable gnl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gnl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

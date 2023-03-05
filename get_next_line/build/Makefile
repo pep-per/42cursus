@@ -571,6 +571,30 @@ get_next_line_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_utils.c.s
 .PHONY : get_next_line_utils.c.s
 
+gnl_test.o: gnl_test.c.o
+.PHONY : gnl_test.o
+
+# target to build an object file
+gnl_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/gnl_test.c.o
+.PHONY : gnl_test.c.o
+
+gnl_test.i: gnl_test.c.i
+.PHONY : gnl_test.i
+
+# target to preprocess a source file
+gnl_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/gnl_test.c.i
+.PHONY : gnl_test.c.i
+
+gnl_test.s: gnl_test.c.s
+.PHONY : gnl_test.s
+
+# target to generate assembly for a file
+gnl_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/gnl_test.c.s
+.PHONY : gnl_test.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -641,6 +665,9 @@ help:
 	@echo "... get_next_line_utils.o"
 	@echo "... get_next_line_utils.i"
 	@echo "... get_next_line_utils.s"
+	@echo "... gnl_test.o"
+	@echo "... gnl_test.i"
+	@echo "... gnl_test.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

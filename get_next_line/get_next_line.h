@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/09 13:45:40 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/21 20:24:06 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
-
-# define NO_NEWLINE -1
 
 typedef struct s_link
 {

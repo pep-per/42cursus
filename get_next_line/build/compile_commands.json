@@ -11,6 +11,11 @@
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/get_next_line/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/gnl.dir/gnl_test.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/gnl_test.c",
+  "file": "/Users/jiyeolee/WORKSPACE/get_next_line/gnl_test.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/get_next_line/build",
   "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/gnl.dir/main.c.o -c /Users/jiyeolee/WORKSPACE/get_next_line/main.c",
   "file": "/Users/jiyeolee/WORKSPACE/get_next_line/main.c"
 }

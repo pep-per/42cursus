@@ -9,7 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line.c" "CMakeFiles/gnl.dir/get_next_line.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line.c.o.d"
+  "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_bonus.c" "CMakeFiles/gnl.dir/get_next_line_bonus.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line_bonus.c.o.d"
   "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c" "CMakeFiles/gnl.dir/get_next_line_utils.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line_utils.c.o.d"
+  "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils_bonus.c" "CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o.d"
   "/Users/jiyeolee/WORKSPACE/get_next_line/main.c" "CMakeFiles/gnl.dir/main.c.o" "gcc" "CMakeFiles/gnl.dir/main.c.o.d"
   )
 

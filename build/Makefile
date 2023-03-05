@@ -547,6 +547,30 @@ get_next_line.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line.c.s
 .PHONY : get_next_line.c.s
 
+get_next_line_bonus.o: get_next_line_bonus.c.o
+.PHONY : get_next_line_bonus.o
+
+# target to build an object file
+get_next_line_bonus.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_bonus.c.o
+.PHONY : get_next_line_bonus.c.o
+
+get_next_line_bonus.i: get_next_line_bonus.c.i
+.PHONY : get_next_line_bonus.i
+
+# target to preprocess a source file
+get_next_line_bonus.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_bonus.c.i
+.PHONY : get_next_line_bonus.c.i
+
+get_next_line_bonus.s: get_next_line_bonus.c.s
+.PHONY : get_next_line_bonus.s
+
+# target to generate assembly for a file
+get_next_line_bonus.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_bonus.c.s
+.PHONY : get_next_line_bonus.c.s
+
 get_next_line_utils.o: get_next_line_utils.c.o
 .PHONY : get_next_line_utils.o
 
@@ -570,6 +594,30 @@ get_next_line_utils.s: get_next_line_utils.c.s
 get_next_line_utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_utils.c.s
 .PHONY : get_next_line_utils.c.s
+
+get_next_line_utils_bonus.o: get_next_line_utils_bonus.c.o
+.PHONY : get_next_line_utils_bonus.o
+
+# target to build an object file
+get_next_line_utils_bonus.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.o
+.PHONY : get_next_line_utils_bonus.c.o
+
+get_next_line_utils_bonus.i: get_next_line_utils_bonus.c.i
+.PHONY : get_next_line_utils_bonus.i
+
+# target to preprocess a source file
+get_next_line_utils_bonus.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.i
+.PHONY : get_next_line_utils_bonus.c.i
+
+get_next_line_utils_bonus.s: get_next_line_utils_bonus.c.s
+.PHONY : get_next_line_utils_bonus.s
+
+# target to generate assembly for a file
+get_next_line_utils_bonus.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnl.dir/build.make CMakeFiles/gnl.dir/get_next_line_utils_bonus.c.s
+.PHONY : get_next_line_utils_bonus.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -638,9 +686,15 @@ help:
 	@echo "... get_next_line.o"
 	@echo "... get_next_line.i"
 	@echo "... get_next_line.s"
+	@echo "... get_next_line_bonus.o"
+	@echo "... get_next_line_bonus.i"
+	@echo "... get_next_line_bonus.s"
 	@echo "... get_next_line_utils.o"
 	@echo "... get_next_line_utils.i"
 	@echo "... get_next_line_utils.s"
+	@echo "... get_next_line_utils_bonus.o"
+	@echo "... get_next_line_utils_bonus.i"
+	@echo "... get_next_line_utils_bonus.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

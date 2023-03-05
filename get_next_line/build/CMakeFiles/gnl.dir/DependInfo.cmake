@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line.c" "CMakeFiles/gnl.dir/get_next_line.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line.c.o.d"
   "/Users/jiyeolee/WORKSPACE/get_next_line/get_next_line_utils.c" "CMakeFiles/gnl.dir/get_next_line_utils.c.o" "gcc" "CMakeFiles/gnl.dir/get_next_line_utils.c.o.d"
+  "/Users/jiyeolee/WORKSPACE/get_next_line/gnl_test.c" "CMakeFiles/gnl.dir/gnl_test.c.o" "gcc" "CMakeFiles/gnl.dir/gnl_test.c.o.d"
   "/Users/jiyeolee/WORKSPACE/get_next_line/main.c" "CMakeFiles/gnl.dir/main.c.o" "gcc" "CMakeFiles/gnl.dir/main.c.o.d"
   )
 

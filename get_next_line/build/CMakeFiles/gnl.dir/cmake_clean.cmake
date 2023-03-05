@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/gnl.dir/get_next_line.c.o.d"
   "CMakeFiles/gnl.dir/get_next_line_utils.c.o"
   "CMakeFiles/gnl.dir/get_next_line_utils.c.o.d"
+  "CMakeFiles/gnl.dir/gnl_test.c.o"
+  "CMakeFiles/gnl.dir/gnl_test.c.o.d"
   "CMakeFiles/gnl.dir/main.c.o"
   "CMakeFiles/gnl.dir/main.c.o.d"
   "gnl"

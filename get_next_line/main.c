@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 21:48:59 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/02/09 13:51:03 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:21:50 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	char	*str;
 
 	idx = 1;
-	fd = open("./ttt", O_RDONLY);
+	fd = open("./test", O_RDONLY);
 	while (1)
 	{
 		str = get_next_line(fd);
