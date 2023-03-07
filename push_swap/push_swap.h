@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/05 22:09:07 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:06:35 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ enum e_cmd
 
 void	display_error(void);
 void	free_strs(char **strs);
-void	free_arrays(int	**arrays);
-void	invalid_data_error(char **strs, int **arrays);
+void	invalid_data_error(char **strs, int *data);
+void	duplicate_data_error(int *data);
 
 
 #endif

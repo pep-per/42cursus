@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 22:04:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/05 22:09:20 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/07 22:16:56 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,31 @@ void	free_strs(char **strs)
 	free(strs);
 }
 
-void	free_arrays(int	**arrays)
+// void	free_data(int *data)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (data[i])
+// 	{
+// 		free(data[i]);
+// 		i++;
+// 	}
+// 	free(data);
+// }
+
+void	invalid_data_error(char **strs, int *data)
+{
+	free_strs(strs);
+	free(data);
+	display_error();
+}
+
+void	duplicate_data_error(int *data)
 {
 	int	i;
 
 	i = 0;
-	while (arrays[i])
-	{
-		free(arrays[i]);
-		i++;
-	}
-	free(arrays);
-}
-
-void	invalid_data_error(char **strs, int **arrays)
-{
-	free_strs(strs);
-	free_arrays(arrays);
+	free(data);
 	display_error();
 }
