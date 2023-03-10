@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/09 20:18:21 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:12:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	count_data(char **s, char c)
 	return (count);
 }
 
-int	is_sorted(int *data, int count)
+int	is_sorted(int *data, int size)
 {
 	int	i;
 
 	i = 0;
-	while (i < count)
+	while (i < size)
 	{
 		if (data[i] > data[i + 1])
 			return (0);
@@ -49,17 +49,17 @@ int	is_sorted(int *data, int count)
 	return (1);
 }
 
-int	is_duplicate(int *data, int count)
+int	is_duplicate(int *data, int size)
 {
 	int	i;
 	int	j;
 	int	num;
 
 	i = 0;
-	while (i < count - 1)
+	while (i < size - 1)
 	{
 		j = i + 1;
-		while (j < count)
+		while (j < size)
 		{
 			if (data[i] == data[j])
 				return (1);
@@ -70,7 +70,7 @@ int	is_duplicate(int *data, int count)
 	return (0);
 }
 
-int	*get_data(char **argv, int *data, int count)
+int	*get_data(char **argv, int *data, int size)
 {
 	int		i;
 	int		j;
@@ -78,11 +78,11 @@ int	*get_data(char **argv, int *data, int count)
 	int		num;
 	char	*strs;
 
-	data = (int *)malloc(sizeof(int) * count);
+	data = (int *)malloc(sizeof(int) * size);
 	i = 0;
 	j = 0;
 	k = 0;
-	while (i < count)
+	while (i < size)
 	{
 		strs = ft_split(argv[j++], ' ');
 		k = 0;

@@ -6,53 +6,39 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/09 23:09:17 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/10 22:28:02 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_small(t_stack *stack)
+void	sort_small(t_stack *a, t_stack *b, char *output)
 {
 
 }
 
-void	sort_complex(t_stack *stack)
+void	sort_complex(t_stack *a, t_stack *b, t_info *info, char *output)
 {
-	stack->pivot1 = stack->size * (1 / 3);
-	stack->pivot2 = stack->size * (2 / 3);
-	if (stack->size == 0)
-	{
-		/* code */
-	}
+	int	chunk_idx;
+	int	chunk_min;
+	int	chunk_max;
 	
-}
-
-int	initialize_stack(t_stack *stack, int *data, int count)
-{
-	int	*copy;
-
-	if (!initialize_deque(&stack->a, count))
-		return (0);
-	if (!initialize_deque(&stack->b, count))
+	if (info->size == 0)
 	{
-		free(stack->a.data);
-		return (0);
+		
 	}
-	stack->size = count;
-	stack->pivot1 = 0;
-	stack->pivot2 = 0;
 }
 
-void	sort(t_stack stack)
+void	sort_stack(t_stack *a, t_info *info, char *output)
 {
-	t_deque	b;
+	t_stack	b;
 
-	b = initialize_deque(b, );
-	if (stack.size < 3)
-		sort_small(&stack);
+	if (!initialize(&b, info->size))
+		free_error(a->data);
+	if (info->size <= CHUNK_MIN_CONSTANT)
+		sort_small(a, &b, output);
 	else
-		sort_complex(&stack);
-	free(stack.a.data);
-	free(stack.b.data);
+		sort_complex(a, &b, info, output);
+	free(a->data);
+	free(b.data);
 }

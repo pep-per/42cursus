@@ -6,20 +6,20 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/09 23:08:48 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/10 17:14:49 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	initialize_deque(t_deque *deque, int count)
+int	initialize(t_stack *stack, int size)
 {
-	deque->data = (int *)malloc(sizeof(int) * count);
-	if (!deque->data)
+	stack->data = (int *)malloc(sizeof(int) * size);
+	if (!stack->data)
 		return (0);
-	deque->front = 0;
-	deque->rear = 0;
-	deque->len = 0;
+	stack->front = 0;
+	stack->rear = 0;
+	stack->len = 0;
 	return (1);
 }
 
@@ -54,29 +54,25 @@ void	ft_quick_sort(int arr[], int l, int r)
 		ft_quick_sort(arr, left, r);
 }
 
-t_stack	set_stack(int argc, char **argv)
+void	set_stack(t_stack *stack, t_info *info, char **argv)
 {
-	t_stack	stack;
 	int		*data;
 	int		*copy;
-	int		*sorted;
-	int		count;
 
-	count = count_data(argv, ' ');
-	data = get_data(argv, data, count);
-	if (is_duplicate(data, count))
+	info->size = count_data(argv, ' ');
+	data = get_data(argv, data, info->size);
+	if (is_duplicate(data, info->size))
 		free_error(data);
-	if (is_sorted(data, count))
+	if (is_sorted(data, info->size))
 	{
 		free(data);
 		exit(1);
 	}
-	if (!initialize_stack(&stack, data, count))
+	if (!initialize(stack, info->size))
 		free_error(data);
-	copy = (int *)malloc(sizeof(int) * count);
+	copy = (int *)malloc(sizeof(int) * info->size);
 	if (!copy)
-		free_all_error(&stack, data);
-	ft_quick_sort(ft_memcpy(copy, data, sizeof(data)), 0, count - 1);
-	index_data(data, count, copy, &stack);
-	return (stack);
+		free_all_error(stack, data);
+	ft_quick_sort(ft_memcpy(copy, data, sizeof(data)), 0, info->size - 1);
+	index_data(data, info->size, copy, stack);
 }

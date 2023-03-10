@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 22:04:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/09 21:44:10 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:22:16 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ void	invalid_data_error(char **strs, int *data)
 
 void	free_all_error(t_stack *stack, int *data)
 {
-	free(data);
-	free(stack->a.data);
-	free(stack->b.data);
-	error_exit();
+	free(stack->data);
+	free_error(data);
 }
 
 void	free_error(int *data)
