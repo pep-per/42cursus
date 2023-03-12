@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/10 17:14:49 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/12 22:31:44 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	set_stack(t_stack *stack, t_info *info, char **argv)
 	int		*copy;
 
 	info->size = count_data(argv, ' ');
+	if (info->size < 2)
+		exit(0);
 	data = get_data(argv, data, info->size);
 	if (is_duplicate(data, info->size))
 		free_error(data);

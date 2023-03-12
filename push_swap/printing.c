@@ -6,11 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:44:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/10 20:07:39 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/12 20:02:56 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	print_operations(char *output)
 {
+
 	
+	free(output);
 }
