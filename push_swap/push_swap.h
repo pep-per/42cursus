@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/12 22:20:01 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:30:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include "./Libft/libft.h"
 # include "./ft_printf/mandatory/ft_printf.h"
-# define CHUNK_MAX_CONSTANT 50
+# define CHUNK_CONSTANT 50
 // # define CHUNK_MIN_CONSTANT 3
 
 typedef struct s_stack
@@ -30,9 +30,10 @@ typedef struct s_stack
 
 typedef struct s_info
 {
-	int		size;
-	int		pivot1;
-	int		pivot2;
+	int	size;
+	int	pivot1;
+	int	pivot2;
+	int	a;
 }	t_info;
 
 enum e_cmd
@@ -49,6 +50,7 @@ enum e_cmd
 	RRB,
 	RRR
 };
+
 int		initialize(t_stack *stack, int size);
 void	ft_quick_sort(int arr[], int l, int r);
 void	set_stack(t_stack *stack, t_info *info, char **argv);
@@ -60,12 +62,12 @@ int		*get_data(char **argv, int *data, int size);
 
 void	index_data(int *data, int size, int *sorted, t_stack *stack);
 
-void	sort_stack(t_stack *a, t_info *info, char *output);
+void	sort_stack(t_stack *a, t_info *info);
 
-void	rotate(t_stack *stack, t_info *info);
-void	reverse_rotate(t_stack *stack, t_info *info);
-void	swap(t_stack *stack);
-void	push(t_stack *from, t_stack *to, t_info *info);
+int		rotate(t_stack *stack, t_info *info);
+int		reverse_rotate(t_stack *stack, t_info *info);
+int		swap(t_stack *stack, t_info *info);
+int		push(t_stack *from, t_stack *to, t_info *info);
 
 void	push_front(t_stack *stack, int n, int size);
 void	push_rear(t_stack *stack, int n, int size);
