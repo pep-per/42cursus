@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/13 22:30:15 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:53:32 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include "./Libft/libft.h"
 # include "./ft_printf/mandatory/ft_printf.h"
-# define CHUNK_CONSTANT 50
+// # define CHUNK_CONSTANT 50
 // # define CHUNK_MIN_CONSTANT 3
 
 typedef struct s_stack

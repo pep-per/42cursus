@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/13 22:53:36 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:14:53 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,34 +63,85 @@ void	sort_small(t_stack *a, t_info *info)
 		print_cmd(swap(a, info));
 }
 
-void	a_to_b(int min, int max)
+// void	a_to_b(int chunk_idx, t_stack *a, t_stack *b, t_info *info)
+// {
+// 	int	i;
+
+// 	info->a = 0;
+// 	i = chunk_idx * CHUNK_CONSTANT;
+// 	while (i < (chunk_idx + 1) * CHUNK_CONSTANT)
+// 	{
+// 		push(a, b, info);
+// 		i++;
+// 	}
+// }
+
+void	a_to_b(int chunk_idx, t_stack *a, t_stack *b, t_info *info)
 {
 	int	i;
+	int	min;
+	int	max;
 
-	while (i < max)
+	info->a = 0;
+	i = 0;
+	while (i < info->size)
 	{
-
+		to_
+		push(a, b, info);
+		i++;
 	}
 }
 
+void	greedy()
+{
+		min = find_min();
+		max = find_max();
+	
+}
+	//idx < len / 2 -> rb
+	//idx > len / 2 -> rrb
+
 void	b_to_a()
 {
+	//rb
+	//rrb
 	
+}
+
+int	in_range()
+{
+
+}
+
+int	partition()
+{
+
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 {
-	int	chunk_cnt;
 	int	chunk_idx;
+	int	min;
+	int	max;
+	int	pivot;
 
-	chunk_cnt = (info->size / CHUNK_CONSTANT);
-	chunk_idx = 0;
-	while (chunk_idx <= chunk_cnt)
+	chunk_idx = (info->size / 3);
+	while ()
 	{
-		a_to_b(chunk_idx * CHUNK_CONSTANT, (chunk_idx + 1) * CHUNK_CONSTANT);
-		b_to_a();
+		pivot = partition();
+		// a_to_b(chunk_idx, a, b, info);
+		greedy();
+		// b_to_a();
 		chunk_idx++;
 	}
+
+	// while (chunk_idx < chunk_cnt)
+	// {
+	// 	a_to_b(chunk_idx, a, b, info);
+	// 	greedy();
+	// 	b_to_a();
+	// 	chunk_idx++;
+	// }
 }
 
 void	sort_stack(t_stack *a, t_info *info)
