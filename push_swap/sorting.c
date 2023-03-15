@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/14 22:14:53 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:34:52 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,27 +75,33 @@ void	sort_small(t_stack *a, t_info *info)
 // 		i++;
 // 	}
 // }
+void	put_on_top()
+{
+
+}
 
 void	a_to_b(int chunk_idx, t_stack *a, t_stack *b, t_info *info)
 {
 	int	i;
-	int	min;
-	int	max;
 
 	info->a = 0;
 	i = 0;
+
 	while (i < info->size)
 	{
-		to_
+		put_op_top(to_push);
 		push(a, b, info);
 		i++;
 	}
 }
 
+// 4가지 방법 비교해서 최선의 선택
 void	greedy()
 {
-		min = find_min();
-		max = find_max();
+	int	
+	
+	min = find_min();
+	max = find_max();
 	
 }
 	//idx < len / 2 -> rb
@@ -113,27 +119,32 @@ int	in_range()
 
 }
 
-int	partition()
+int	partition(t_info *info)
 {
 
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 {
-	int	chunk_idx;
-	int	min;
-	int	max;
+	int	chunk;
+	int	rest;
 	int	pivot;
+	int	i;
 
-	chunk_idx = (info->size / 3);
-	while ()
+	i = 0;
+	chunk = (info->size / 3);
+	rest = (info->size % 3);
+	while (i < chunk)
 	{
-		pivot = partition();
-		// a_to_b(chunk_idx, a, b, info);
-		greedy();
-		// b_to_a();
-		chunk_idx++;
+		a_to_b(i, chunk, a, b);
+		i += chunk;
 	}
+	i = 0;
+	while (i < rest)
+	{
+		/* code */
+	}
+	
 
 	// while (chunk_idx < chunk_cnt)
 	// {
