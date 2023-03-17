@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:48:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/13 20:19:32 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/17 21:23:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	index_data(int *data, int size, int *sorted, t_stack *stack)
 		stack->data[i] = idx;
 		i++;
 	}
+	stack->len = size;
+	stack->rear = size - 1;
 	free(sorted);
 	free(data);
 }

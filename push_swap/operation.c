@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:48:53 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/13 22:43:14 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:18:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	push(t_stack *from, t_stack *to, t_info *info)
 		return ;
 	push_front(to, pop_front(from, info->size), info->size);
 	if (info->a)
-		return (PA);
-	return (PB);
+		return (PB);
+	return (PA);
 }

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/15 20:34:52 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:22:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,17 @@ void	sort_small(t_stack *a, t_info *info)
 // 		i++;
 // 	}
 // }
-void	put_on_top()
-{
 
-}
 
-void	a_to_b(int chunk_idx, t_stack *a, t_stack *b, t_info *info)
-{
-	int	i;
 
-	info->a = 0;
-	i = 0;
-
-	while (i < info->size)
-	{
-		put_op_top(to_push);
-		push(a, b, info);
-		i++;
-	}
-}
 
 // 4가지 방법 비교해서 최선의 선택
 void	greedy()
 {
-	int	
+	int	rb_ra;
+	int	rrb_ra;
+	int	rb_rra;
+	int	rrb_rra;
 	
 	min = find_min();
 	max = find_max();
@@ -109,8 +96,8 @@ void	greedy()
 
 void	b_to_a()
 {
-	//rb
-	//rrb
+	//ra
+	//rra
 	
 }
 
@@ -119,9 +106,54 @@ int	in_range()
 
 }
 
-int	partition(t_info *info)
+
+void	find_from_top(int *to_move, t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while ()
+	{
+		if (in_range())
+			*to_move = i;
+	}
+	return ;
+}
+
+void	find_from_bottom(int *to_move)
 {
 
+}
+
+void	put_on_top()
+{
+	int	to_move;
+
+	find_from_top(&to_move);
+	find_from_bottom(&to_bottom);
+}
+
+void	a_to_b(int chunk_idx, int chunk, t_stack *a, t_stack *b)
+{
+	int	limit;
+	int	i;
+
+	limit = chunk_idx * (chunk + 1);
+	i = 0;
+	while (i < a->len)
+	{
+		put_on_top();
+		if (in_range(a->data[0]))
+		{
+			// top을 푸시
+			push(a, b, info);
+			chunk--;
+		}
+		else
+		if (chunk == 0)
+			break ;
+		i++;
+	}
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
@@ -131,19 +163,15 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	int	pivot;
 	int	i;
 
-	i = 0;
+	info->a = 1;
 	chunk = (info->size / 3);
 	rest = (info->size % 3);
-	while (i < chunk)
-	{
-		a_to_b(i, chunk, a, b);
-		i += chunk;
-	}
+	i = 0;
+	while (i < 3)
+		a_to_b(i++, chunk, a, b);
 	i = 0;
 	while (i < rest)
-	{
-		/* code */
-	}
+		sort_small(a, b, info);
 	
 
 	// while (chunk_idx < chunk_cnt)

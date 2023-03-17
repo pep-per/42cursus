@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/14 21:53:32 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:28:18 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void	push_front(t_stack *stack, int n, int size);
 void	push_rear(t_stack *stack, int n, int size);
 int		pop_front(t_stack *stack, int size);
 int		pop_rear(t_stack *stack, int size);
-
-void	print_operations(char *output);
 
 void	error_exit(void);
 void	free_strs(char **strs);
