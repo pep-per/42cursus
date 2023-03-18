@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/17 19:28:18 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/18 22:41:46 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include "./Libft/libft.h"
 # include "./ft_printf/mandatory/ft_printf.h"
-// # define CHUNK_CONSTANT 50
+# define NOTHING_TO_PUSH -1
 // # define CHUNK_MIN_CONSTANT 3
 
 typedef struct s_stack
@@ -62,6 +62,8 @@ int		*get_data(char **argv, int *data, int size);
 
 void	index_data(int *data, int size, int *sorted, t_stack *stack);
 
+void	sort_small(t_stack *a, t_info *info);
+void	sort_complex(t_stack *a, t_stack *b, t_info *info);
 void	sort_stack(t_stack *a, t_info *info);
 
 int		rotate(t_stack *stack, t_info *info);
@@ -73,6 +75,8 @@ void	push_front(t_stack *stack, int n, int size);
 void	push_rear(t_stack *stack, int n, int size);
 int		pop_front(t_stack *stack, int size);
 int		pop_rear(t_stack *stack, int size);
+
+void	print_operation(int op);
 
 void	error_exit(void);
 void	free_strs(char **strs);
