@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:38:13 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/18 23:23:47 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:47:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	search_from_top(int limit_min, int limit_max, t_stack *a)
 {
 	int	i;
 
-	i = a->front;
-	while (++i < a->rear)
+	i = a->front + 1;
+	while (i++ < a->rear)
 	{
 		if (in_range(limit_min, limit_max, a->data[i]))
 			return (i);

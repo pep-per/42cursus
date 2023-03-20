@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/18 22:44:13 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:24:55 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	while (chunk_idx < 3)
 	{
 		a_to_b(a, b, info, chunk_idx);
+		chunk_idx++;
+	}
+	chunk_idx = 0;
+	while (chunk_idx < 3)
+	{
 		b_to_a(a, b, info, chunk_idx);
 		chunk_idx++;
 	}
