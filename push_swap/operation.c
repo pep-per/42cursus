@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:48:53 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/17 22:18:04 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:03:12 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	swap(t_stack *stack, t_info *info)
 	int	tmp;
 
 	if (stack->len < 2)
-		return ;
+		return (-1);
 	tmp = stack->data[0];
 	stack->data[0] = stack->data[1];
 	stack->data[1] = tmp;
@@ -50,10 +50,8 @@ int	swap(t_stack *stack, t_info *info)
 
 int	push(t_stack *from, t_stack *to, t_info *info)
 {
-	int	top;
-
 	if (from->len == 0)
-		return ;
+		return (-1);
 	push_front(to, pop_front(from, info->size), info->size);
 	if (info->a)
 		return (PB);

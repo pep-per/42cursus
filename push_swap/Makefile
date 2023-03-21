@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/03/21 22:44:57 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/03/21 23:13:40 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,24 +19,23 @@ SRCS = 	main.c \
 		greedy_a.c \
 		greedy_b.c \
 		searching.c \
+		range.c \
 		operation.c \
 		stack.c \
 		printing.c \
 		error_handling.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	make -C ./Libft all
+	$(CC) $(CFLAGS) $^ -o $@ -LLibft -lft
 
 %.o : %.c
-	make -C ./Libft all
-	$(CC) $(CFLAGS) $^ -o $@
-
-lib :
-	make -C ./Libft all
+	$(CC) -c $(CFLAGS) $^ -o $@
 
 clean :
 	make -C ./Libft clean

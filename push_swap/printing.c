@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:44:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/18 22:02:42 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:02:11 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	print_operation(int op)
 		write(1, "rra\n", 4);
 	else if (op == RRB)
 		write(1, "rrb\n", 4);
-	else
+	else if (op == RRR)
 		write(1, "rrr\n", 4);
 }

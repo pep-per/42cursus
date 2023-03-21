@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/10 15:12:33 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:58:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	count_data(char **s, char c)
 	int	count;
 
 	i = 0;
+	count = 0;
 	while (s[i])
 	{
 		j = 0;
@@ -53,7 +54,6 @@ int	is_duplicate(int *data, int size)
 {
 	int	i;
 	int	j;
-	int	num;
 
 	i = 0;
 	while (i < size - 1)
@@ -76,7 +76,7 @@ int	*get_data(char **argv, int *data, int size)
 	int		j;
 	int		k;
 	int		num;
-	char	*strs;
+	char	**strs;
 
 	data = (int *)malloc(sizeof(int) * size);
 	i = 0;

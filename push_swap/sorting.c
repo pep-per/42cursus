@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/20 20:24:55 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:59:51 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ void	sort_small(t_stack *a, t_info *info)
 	if (info->size == 2)
 	{
 		if (data[0] > data[1])
-			print_cmd(swap(a, info));
+			print_operation(swap(a, info));
 		return ;
 	}
 	if (data[0] < data[1] && data[1] > data[2])
 	{
-		print_cmd(reverse_rotate(a, info));
+		print_operation(reverse_rotate(a, info));
 	}
 	else if (data[0] > data[1])
 	{
 		if (data[0] > data[2])
-			print_cmd(rotate(a, info));
+			print_operation(rotate(a, info));
 	}
 	if (data[0] > data[1])
-		print_cmd(swap(a, info));
+		print_operation(swap(a, info));
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
@@ -50,7 +50,7 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	chunk_idx = 0;
 	while (chunk_idx < 3)
 	{
-		b_to_a(a, b, info, chunk_idx);
+		b_to_a(a, b, info);
 		chunk_idx++;
 	}
 }
