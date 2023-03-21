@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/18 22:41:46 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:43:48 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "./Libft/libft.h"
-# include "./ft_printf/mandatory/ft_printf.h"
+// # include "./ft_printf/mandatory/ft_printf.h"
 # define NOTHING_TO_PUSH -1
 // # define CHUNK_MIN_CONSTANT 3
 
@@ -66,6 +66,18 @@ void	sort_small(t_stack *a, t_info *info);
 void	sort_complex(t_stack *a, t_stack *b, t_info *info);
 void	sort_stack(t_stack *a, t_info *info);
 
+int		search_from_top(int limit_min, int limit_max, t_stack *a);
+int		search_from_bottom(int limit_min, int limit_max, t_stack *a);
+int		search(int num, t_stack *b);
+
+int		count_rotation(t_stack *stack, int idx);
+void	put_on_top(int idx, t_stack *stack, t_info *info);
+void	greedy_on_a(int limit_min, int limit_max, t_stack *a, t_info *info);
+void	a_to_b(t_stack *a, t_stack *b, t_info *info, int chunk_idx);
+
+void	greedy_on_b(t_stack *a, t_stack *b, t_info *info);
+void	b_to_a(t_stack *a, t_stack *b, t_info *info);
+
 int		rotate(t_stack *stack, t_info *info);
 int		reverse_rotate(t_stack *stack, t_info *info);
 int		swap(t_stack *stack, t_info *info);
@@ -75,6 +87,11 @@ void	push_front(t_stack *stack, int n, int size);
 void	push_rear(t_stack *stack, int n, int size);
 int		pop_front(t_stack *stack, int size);
 int		pop_rear(t_stack *stack, int size);
+
+int		in_upper(int idx, t_stack *stack);
+int		in_range(int limit_min, int limit_max, int idx);
+int		in_order(t_stack *a);
+int		is_min_or_max_on_top(t_stack *a, int data);
 
 void	print_operation(int op);
 

@@ -6,39 +6,62 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:38:13 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/20 20:47:25 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:14:11 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	in_upper(int to_push, t_stack *a)
-{
-	return (to_push <= a->len / 2);
-}
-
 int	search_from_top(int limit_min, int limit_max, t_stack *a)
 {
-	int	i;
+	int	idx;
 
-	i = a->front + 1;
-	while (i++ < a->rear)
+	idx = a->front;
+	while (++idx <= a->rear)
 	{
-		if (in_range(limit_min, limit_max, a->data[i]))
-			return (i);
+		if (in_range(limit_min, limit_max, a->data[idx]))
+			return (idx);
 	}
 	return (NOTHING_TO_PUSH);
 }
 
 int	search_from_bottom(int limit_min, int limit_max, t_stack *a)
 {
-	int	i;
+	int	idx;
 
-	i = a->rear;
-	while (i++ < a->front)
+	idx = a->rear;
+	while (idx++ > a->front)
 	{
 		if (in_range(limit_min, limit_max, a->data[i]))
 			return (i);
 	}
 	return (NOTHING_TO_PUSH);
 }
+
+int	search(int num, t_stack *b)
+{
+	int	idx;
+
+	idx = b->front;
+	while (++idx <= b->rear)
+	{
+		if (b->data[idx] == num)
+			return (idx);
+	}
+	return (NOTHING_TO_PUSH);
+}
+
+// int	search_max(t_stack *a, t_stack *b)
+// {
+// 	int	idx;
+// 	int	max;
+
+// 	max = a->data[a->rear] + 1;
+// 	idx = b->front;
+// 	while (++idx <= b->rear)
+// 	{
+// 		if (b->data[idx] == max)
+// 			return (idx);
+// 	}
+// 	return (NOTHING_TO_PUSH);
+// }

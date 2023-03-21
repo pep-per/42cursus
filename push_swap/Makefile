@@ -6,12 +6,23 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/03/02 01:32:31 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/03/21 22:44:57 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = main.c
+SRCS = 	main.c \
+		preprocessing.c \
+		parsing.c \
+		indexing.c \
+		sorting.c \
+		greedy_a.c \
+		greedy_b.c \
+		searching.c \
+		operation.c \
+		stack.c \
+		printing.c \
+		error_handling.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -c -Wall -Wextra -Werror
@@ -21,8 +32,8 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 
 %.o : %.c
-	$(lib)
-	$(CC) $(CFLAGS) $^ -o $@  -LLibft -lft
+	make -C ./Libft all
+	$(CC) $(CFLAGS) $^ -o $@
 
 lib :
 	make -C ./Libft all
