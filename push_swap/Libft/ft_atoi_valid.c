@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:50:48 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/05 18:25:39 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:34:36 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int	ft_atoi_valid(const char *str, int *result)
 	{
 		if (!ft_isdigit(str[i]))
 			break ;
-		num += (num * 10) + sign * (str[i++] - '0');
+		num = (num * 10) + sign * (str[i] - '0');
 		if (num < INT_MIN || num > INT_MAX)
 			return (0);
+		i++;
 	}
 	while (ft_isspace(str[i]))
 		i++;

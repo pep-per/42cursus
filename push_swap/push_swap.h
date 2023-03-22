@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 23:02:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:34:32 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 // # include "./ft_printf/mandatory/ft_printf.h"
 # define NOTHING_TO_PUSH -1
 // # define CHUNK_MIN_CONSTANT 3
+
+
+
+
+
+# include <stdio.h>
+
+
+
+
+
+
+
 
 typedef struct s_stack
 {

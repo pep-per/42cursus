@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:50:28 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/17 21:23:18 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:30:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	pop_front(t_stack *stack, int size)
 int	pop_rear(t_stack *stack, int size)
 {
 	int	n;
-
+	
 	n = stack->data[stack->rear];
 	stack->rear = (stack->rear - 1 + size) % size;
 	stack->len -= 1;

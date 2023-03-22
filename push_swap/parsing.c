@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 22:58:33 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:47:42 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ int	is_sorted(int *data, int size)
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
 		if (data[i] > data[i + 1])
 			return (0);
+		i++;
 	}
 	return (1);
 }

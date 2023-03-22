@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 22:49:15 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:30:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ void	set_stack(t_stack *stack, t_info *info, char **argv)
 	copy = (int *)malloc(sizeof(int) * info->size);
 	if (!copy)
 		free_all_error(stack, data);
-	ft_quick_sort(ft_memcpy(copy, data, sizeof(data)), 0, info->size - 1);
+		//3개부터 정렬상관없이 세그폴트
+	ft_memcpy(copy, data, sizeof(int) * info->size);
+	ft_quick_sort(copy, 0, info->size - 1);
+	printf("here 1");
 	index_data(data, info->size, copy, stack);
 }

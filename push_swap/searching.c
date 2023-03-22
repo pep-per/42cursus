@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:38:13 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 23:00:25 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:56:10 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	search_from_bottom(int limit_min, int limit_max, t_stack *a)
 {
 	int	idx;
 
-	idx = a->rear;
-	while (idx++ > a->front)
+	idx = a->rear -1;
+	while (++idx > a->front)
 	{
 		if (in_range(limit_min, limit_max, a->data[idx]))
 			return (idx);
