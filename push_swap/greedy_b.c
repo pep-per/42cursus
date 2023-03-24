@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:55:57 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 22:16:09 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 23:15:14 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	greedy_on_b(t_stack *a, t_stack *b, t_info *info)
 	int	min_idx;
 	int	max_idx;
 
+	if (a->len == 0)
+	{
+		put_on_top(search(0, b), b, info);
+		return ;
+	}
 	min = a->data[a->front] - 1;
 	max = a->data[a->rear] + 1;
 	min_idx = search(min, b);

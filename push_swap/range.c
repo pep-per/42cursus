@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:41:50 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 22:12:23 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 23:25:05 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	in_order(t_stack *a)
 
 int	is_min_or_max_on_top(t_stack *a, int data)
 {
-	if (a->len <= 1)
-		return (1);
+	if (a->len == 0)
+		return (data == 0);
 	return (a->data[a->front + 1] - 1 == data || a->data[a->rear] + 1 == data);
 }

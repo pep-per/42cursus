@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/22 21:47:42 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/24 16:06:39 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	is_duplicate(int *data, int size)
 	return (0);
 }
 
-int	*get_data(char **argv, int *data, int size)
+void	get_data(char **argv, int *data, int size)
 {
 	int		i;
 	int		j;
@@ -79,7 +79,6 @@ int	*get_data(char **argv, int *data, int size)
 	int		num;
 	char	**strs;
 
-	data = (int *)malloc(sizeof(int) * size);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -95,5 +94,4 @@ int	*get_data(char **argv, int *data, int size)
 		}
 		free_strs(strs);
 	}
-	return (data);
 }

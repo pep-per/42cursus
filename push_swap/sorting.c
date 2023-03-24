@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/21 22:59:51 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/24 23:45:51 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,44 @@
 
 void	sort_small(t_stack *a, t_info *info)
 {
-	int	*data;
-
 	info->a = 1;
-	data = a->data;
 	if (info->size == 2)
 	{
-		if (data[0] > data[1])
+		if (a->data[0] > a->data[1])
 			print_operation(swap(a, info));
 		return ;
 	}
-	if (data[0] < data[1] && data[1] > data[2])
+	
+	// if (a->data[0] > a->data[1] && a->data[1] > a->data[2])
+	// {
+	// 	print_operation(swap(a, info));
+	// 	print_operation(reverse_rotate(a, info));
+	// }
+
+	// if (a->data[0] > a->data[2])
+	// {
+	// 	print_operation(rotate(a, info));
+	// }
+
+
+	if (a->data[0] < a->data[1] && a->data[1] > a->data[2])
 	{
 		print_operation(reverse_rotate(a, info));
 	}
-	else if (data[0] > data[1])
+	else if (a->data[0] > a->data[1] && a->data[0] > a->data[2])
 	{
-		if (data[0] > data[2])
-			print_operation(rotate(a, info));
+		print_operation(rotate(a, info));
 	}
-	if (data[0] > data[1])
+	if (a->data[a->front] > a->data[a->front + 1])
 		print_operation(swap(a, info));
+	printf("idx %d : %d\n", 0, a->data[0]);
+	printf("idx %d : %d\n", 1, a->data[1]);
+	printf("idx %d : %d\n", 2, a->data[2]);
+
+	printf("top idx %d\n : %d\n", a->front, a->data[a->front]);
+	printf("bottom idx %d\n : %d\n", a->rear, a->data[a->rear]);
+
+
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
@@ -55,7 +72,7 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	}
 }
 
-void	sort_stack(t_stack *a, t_info *info)
+void	 sort_stack(t_stack *a, t_info *info)
 {
 	t_stack	b;
 

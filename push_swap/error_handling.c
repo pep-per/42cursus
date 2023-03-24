@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 22:04:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/10 15:22:16 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:53:15 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,3 @@ void	free_error(int *data)
 	free(data);
 	error_exit();
 }
-
-// void	free_exit(int *data)
-// {
-// 	free(data);
-// 	exit(1);
-// }

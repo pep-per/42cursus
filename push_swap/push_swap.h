@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/22 17:34:32 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/24 17:11:35 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	set_stack(t_stack *stack, t_info *info, char **argv);
 int		count_data(char **s, char c);
 int		is_sorted(int *data, int size);
 int		is_duplicate(int *data, int size);
-int		*get_data(char **argv, int *data, int size);
+void	get_data(char **argv, int *data, int size);
 
 void	index_data(int *data, int size, int *sorted, t_stack *stack);
 
