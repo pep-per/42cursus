@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:55:57 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 19:53:58 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:32:53 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	greedy_on_b(t_stack *b, t_info *info, int min, int max)
 		return ;
 	min_idx = search(b, info, min);
 	max_idx = search(b, info, max);
-	if (min_idx == ERROR && max_idx == ERROR)
+	if (min_idx == ERROR || max_idx == ERROR)
 		return ;
 	if (count_rotation(b, info, min_idx) \
 		<= count_rotation(b, info, max_idx) + 1)

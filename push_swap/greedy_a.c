@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:42:04 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 19:53:55 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:30:26 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	greedy_on_a(t_stack *a, t_info *info)
 
 	idx_from_top = search_from_top(a, info);
 	idx_from_bottom = search_from_bottom(a, info);
-	if (idx_from_top == ERROR && idx_from_bottom == ERROR)
+	if (idx_from_top == ERROR || idx_from_bottom == ERROR)
 		return ;
 	if (count_rotation(a, info, idx_from_top) \
 		<= count_rotation(a, info, idx_from_bottom))
