@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:41:50 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/22 23:25:05 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:30:55 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ int	in_upper(int idx, t_stack *stack)
 	return (idx + 1 <= stack->len / 2);
 }
 
-int	in_range(int limit_min, int limit_max, int idx)
+int	in_range(int min, int max, int data)
 {
-	return ((limit_min <= idx) && (idx < limit_max));
+	return ((min <= data) && (data <= max));
 }
 
-int	in_order(t_stack *a)
-{
-	if (a->len <= 1)
-		return (1);
-	return (a->data[a->front + 1] < a->data[a->front + 2]);
-}
+// int	in_order(t_stack *a, t_info *info)
+// {
+// 	if (a->len <= 1)
+// 		return (1);
+// 	return (get_top(a, info->size) < a->data[(a->front + 2) % info->size]);
+// }
 
-int	is_min_or_max_on_top(t_stack *a, int data)
-{
-	if (a->len == 0)
-		return (data == 0);
-	return (a->data[a->front + 1] - 1 == data || a->data[a->rear] + 1 == data);
-}
+// int	is_min_or_max_on_top(t_info *info, int data)
+// {
+// 	return (info->min == data || info->max == data);
+// }

@@ -34,7 +34,8 @@ SRCS = 	ft_isalpha.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_isspace.c
+		ft_isspace.c \
+		ft_abs.c
 BONUS = ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
 		ft_lstsize_bonus.c \
@@ -50,27 +51,27 @@ CC = cc
 CFLAGS = -c -Wall -Wextra -Werror
 AR = ar -rc
 
-all : $(NAME)
+all		:	$(NAME)
 
-bonus : all
+bonus	:	all
 
 ifeq ($(findstring bonus, $(MAKECMDGOALS)), bonus)
-$(NAME) : $(OBJS) $(BONUS_OBJS)
-		$(AR) $@ $^
+$(NAME)	:	$(OBJS) $(BONUS_OBJS)
+			$(AR) $@ $^
 else
-$(NAME) : $(OBJS)
-		$(AR) $@ $^
+$(NAME)	:	$(OBJS)
+			$(AR) $@ $^
 endif
 
-%.o : %.c
-	$(CC) $(CFLAGS) $< -o $@
+%.o		:	%.c
+			$(CC) $(CFLAGS) $< -o $@
 
-clean :
-	rm -rf $(OBJS) $(BONUS_OBJS)
+clean	:
+			rm -rf $(OBJS) $(BONUS_OBJS)
 
-fclean : clean
-	rm -rf $(NAME)
+fclean	:	clean
+			rm -rf $(NAME)
 
-re : fclean all
+re		:	fclean all
 
-.PHONY: all re clean fclean bonus
+.PHONY	:	all re clean fclean bonus

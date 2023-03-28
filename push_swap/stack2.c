@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indexing.c                                         :+:      :+:    :+:   */
+/*   stack2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 04:48:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 01:32:58 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/03/28 01:41:58 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/03/28 17:58:14 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	index_data(int *data, int size, int *sorted, t_stack *stack)
+int	get_top(t_stack *stack, int size)
 {
-	int	i;
-	int	idx;
+	return (stack->data[(stack->front + 1) % size]);
+}
 
-	i = 0;
-	while (i < size)
-	{
-		idx = 0;
-		while (sorted[idx] != data[i])
-			idx++;
-		stack->data[i] = idx;
-		i++;
-	}
-	stack->len = size;
-	stack->front = size - 1;
-	stack->rear = size - 1;
-	free(sorted);
-	free(data);
+int	get_bottom(t_stack *stack)
+{
+	return (stack->data[stack->rear]);
 }

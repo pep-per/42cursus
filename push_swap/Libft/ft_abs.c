@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indexing.c                                         :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 04:48:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 01:32:58 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/03/28 07:01:38 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/03/28 07:11:41 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	index_data(int *data, int size, int *sorted, t_stack *stack)
+unsigned int	ft_abs(int n)
 {
-	int	i;
-	int	idx;
+	unsigned int	num;
 
-	i = 0;
-	while (i < size)
-	{
-		idx = 0;
-		while (sorted[idx] != data[i])
-			idx++;
-		stack->data[i] = idx;
-		i++;
-	}
-	stack->len = size;
-	stack->front = size - 1;
-	stack->rear = size - 1;
-	free(sorted);
-	free(data);
+	if (n < 0)
+		num = -n;
+	else
+		num = n;
+	return (num);
 }

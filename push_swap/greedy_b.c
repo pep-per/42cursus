@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:55:57 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/22 23:15:14 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:53:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,40 +30,59 @@
 // 			print_operation(reverse_rotate(b, info));
 // 	}
 // }
+void	arrange_chunk(t_stack *a, t_info *info, int chunk_idx)
+{
+	if (chunk_idx == 0)
+	{
+		while (get_bottom(a) != info->max)
+			print_operation(rotate(a, info));
+	}
+	else
+	{
+		while (get_top(a, info->size) != info->min)
+			print_operation(reverse_rotate(a, info));
+	}
+}
 
-void	greedy_on_b(t_stack *a, t_stack *b, t_info *info)
+void	greedy_on_b(t_stack *b, t_info *info, int min, int max)
 {	
-	int	min;
-	int	max;
 	int	min_idx;
 	int	max_idx;
 
-	if (a->len == 0)
-	{
-		put_on_top(search(0, b), b, info);
+	if (min > max)
 		return ;
-	}
-	min = a->data[a->front] - 1;
-	max = a->data[a->rear] + 1;
-	min_idx = search(min, b);
-	max_idx = search(max, b);
-	if (count_rotation(b, min_idx) <= count_rotation(b, max_idx) + 1)
+	min_idx = search(b, info, min);
+	max_idx = search(b, info, max);
+	if (min_idx == ERROR && max_idx == ERROR)
+		return ;
+	if (count_rotation(b, info, min_idx) \
+		<= count_rotation(b, info, max_idx) + 1)
 		put_on_top(min_idx, b, info);
 	else
 		put_on_top(max_idx, b, info);
 }
 
-void	b_to_a(t_stack *a, t_stack *b, t_info *info)
+void	b_to_a(t_stack *a, t_stack *b, t_info *info, int chunk)
 {
+	int	min;
+	int	max;
+	int	top;
+
+	min = info->min;
+	max = info->max;
 	info->a = 0;
-	while (b->len > 0)
+	while (chunk > 0)
 	{
-		greedy_on_b(a, b, info);
-		if (is_min_or_max_on_top(a, b->data[b->front]))
+		greedy_on_b(b, info, min, max);
+		top = get_top(b, info->size);
+		if (top == min || top == max)
 		{
 			print_operation(push(b, a, info));
-			if (!in_order(a))
+			if (get_top(a, info->size) == min)
 				print_operation(rotate(a, info));
+			chunk--;
+			min++;
+			max--;
 		}
 	}
 }

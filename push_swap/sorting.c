@@ -6,78 +6,83 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/24 23:45:51 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:55:38 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	get_three_data(t_stack *a, int *first, int *second, int *third)
+{
+	*first = a->data[0];
+	*second = a->data[1];
+	*third = a->data[2];
+}
+
 void	sort_small(t_stack *a, t_info *info)
 {
-	info->a = 1;
+	int	first;
+	int	second;
+	int	third;
+
+	get_three_data(a, &first, &second, &third);
 	if (info->size == 2)
 	{
-		if (a->data[0] > a->data[1])
+		if (first > second)
 			print_operation(swap(a, info));
 		return ;
 	}
-	
-	// if (a->data[0] > a->data[1] && a->data[1] > a->data[2])
-	// {
-	// 	print_operation(swap(a, info));
-	// 	print_operation(reverse_rotate(a, info));
-	// }
-
-	// if (a->data[0] > a->data[2])
-	// {
-	// 	print_operation(rotate(a, info));
-	// }
-
-
-	if (a->data[0] < a->data[1] && a->data[1] > a->data[2])
+	if (first < second && second > third)
 	{
 		print_operation(reverse_rotate(a, info));
+		if (first < third)
+			print_operation(swap(a, info));
 	}
-	else if (a->data[0] > a->data[1] && a->data[0] > a->data[2])
+	else if (first > second && first > third)
 	{
 		print_operation(rotate(a, info));
+		if (second > third)
+			print_operation(swap(a, info));
 	}
-	if (a->data[a->front] > a->data[a->front + 1])
+	else
 		print_operation(swap(a, info));
-	printf("idx %d : %d\n", 0, a->data[0]);
-	printf("idx %d : %d\n", 1, a->data[1]);
-	printf("idx %d : %d\n", 2, a->data[2]);
-
-	printf("top idx %d\n : %d\n", a->front, a->data[a->front]);
-	printf("bottom idx %d\n : %d\n", a->rear, a->data[a->rear]);
-
-
 }
 
 void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 {
 	int	chunk_idx;
+	int	chunk;
+	int	rest;
 
 	chunk_idx = 0;
+	chunk = info->size / 3;
+	rest = info->size % 3;
 	while (chunk_idx < 3)
 	{
-		a_to_b(a, b, info, chunk_idx);
-		chunk_idx++;
-	}
-	chunk_idx = 0;
-	while (chunk_idx < 3)
-	{
-		b_to_a(a, b, info);
+		info->min = chunk_idx * chunk;
+		info->max = (chunk_idx + 1) * chunk - 1;
+		// printf("%d\n", info->min);
+		// printf("%d\n", info->max);
+		// printf("%d%d%d%d\n", a->data[0], a->data[1], a->data[2], a->data[3]);
+		if (chunk_idx == 2 && rest != 0)
+		{
+			info->max += rest;
+			chunk += rest;
+		}
+		a_to_b(a, b, info, chunk);
+		b_to_a(a, b, info, chunk);
+		arrange_chunk(a, info, chunk_idx);
 		chunk_idx++;
 	}
 }
 
-void	 sort_stack(t_stack *a, t_info *info)
+void	sort_stack(t_stack *a, t_info *info)
 {
 	t_stack	b;
 
 	if (!initialize(&b, info->size))
 		free_error(a->data);
+	info->a = 1;
 	if (info->size <= 3)
 		sort_small(a, info);
 	else
