@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 19:55:38 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/30 21:52:54 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	int	rest;
 
 	chunk_idx = 0;
-	chunk = info->size / 3;
-	rest = info->size % 3;
+	chunk = (info->size - 1) / 3;
+	rest = (info->size - 1) % 3;
 	while (chunk_idx < 3)
 	{
 		info->min = chunk_idx * chunk;
@@ -83,7 +83,7 @@ void	sort_stack(t_stack *a, t_info *info)
 	if (!initialize(&b, info->size))
 		free_error(a->data);
 	info->a = 1;
-	if (info->size <= 3)
+	if (info->size - 1 <= 3)
 		sort_small(a, info);
 	else
 		sort_complex(a, &b, info);

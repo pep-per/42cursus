@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:42:04 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 20:30:26 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/30 22:49:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	put_on_top(int idx, t_stack *stack, t_info *info)
 {
 	int	to_push;
 
-	// if (idx == ERROR)
-	// 	return ;
+	if (idx == ERROR)
+	{
+		// printf("eeee");
+		return ;
+	}
 	to_push = stack->data[idx];
 	if (in_upper(idx, stack))
 	{
@@ -46,8 +49,9 @@ void	greedy_on_a(t_stack *a, t_info *info)
 
 	idx_from_top = search_from_top(a, info);
 	idx_from_bottom = search_from_bottom(a, info);
-	if (idx_from_top == ERROR || idx_from_bottom == ERROR)
+	if (idx_from_top == ERROR && idx_from_bottom == ERROR)
 		return ;
+	// printf("top:%d bottom:%d\n", idx_from_top, idx_from_bottom);
 	if (count_rotation(a, info, idx_from_top) \
 		<= count_rotation(a, info, idx_from_bottom))
 		put_on_top(idx_from_top, a, info);
@@ -57,7 +61,7 @@ void	greedy_on_a(t_stack *a, t_info *info)
 
 void	a_to_b(t_stack *a, t_stack *b, t_info *info, int chunk)
 {
-	info->a = 1;
+	info->a = 1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 	while (chunk > 0)
 	{
 		greedy_on_a(a, info);

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/28 06:13:13 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:35:51 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	set_stack(t_stack *stack, t_info *info, char **argv)
 	int		*data;
 	int		*copy;
 
-	info->size = count_data(argv, ' ');
+	info->size = count_data(argv, ' ') + 1;
 	data = (int *)malloc(sizeof(int) * info->size);
 	if (!data)
 		error_exit();
-	get_data(argv, data, info->size);
+	get_data(argv, data, info->size - 1);
 	if (is_duplicate(data, info->size))
 		free_error(data);
 	if (is_sorted(data, info->size))
@@ -77,6 +77,6 @@ void	set_stack(t_stack *stack, t_info *info, char **argv)
 	if (!copy)
 		free_all_error(stack, data);
 	ft_memcpy(copy, data, sizeof(int) * info->size);
-	ft_quick_sort(copy, 0, info->size - 1);
-	index_data(data, info->size, copy, stack);
+	ft_quick_sort(copy, 0, info->size - 2);
+	index_data(data, info->size - 1, copy, stack);
 }
