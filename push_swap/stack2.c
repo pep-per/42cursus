@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 01:41:58 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/30 21:37:48 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/31 19:17:54 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_top(t_stack *stack, int size)
 {
-	return (stack->data[(stack->front + 1) % size]);
+	return (stack->data[(stack->front + 1 + size) % size]);
 }
 
 int	get_bottom(t_stack *stack)

@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/03/28 06:12:19 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/03/31 20:10:23 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS = 	main.c \
 		error_handling.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LFLAGS = -LLibft -lft
 LIB = ./Libft
 

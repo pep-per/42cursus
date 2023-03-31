@@ -6,70 +6,80 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:42:04 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/30 22:49:04 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/31 22:08:08 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-unsigned int	count_rotation(t_stack *stack, t_info *info, int idx)
+// unsigned int	count_rotation(t_stack *stack, t_info *info, int idx)
+// {
+// 	if (in_upper(idx, stack))
+// 	{
+// 		// printf("ra count : %d\n", ft_abs(idx - ((stack->front + 1 + info->size) % info->size)));
+// 		return (ft_abs(idx - ((stack->front + 1 + info->size) % info->size)));
+// 	}
+// 	else
+// 	{
+// 		// printf("rra count : %d\n", ft_abs(stack->rear - idx + 1));
+// 		return (ft_abs(stack->rear - idx + 1));
+// 	}
+// }
+
+void	put_on_top_rra(int rra_count, t_stack *stack, t_info *info)
 {
-	if (in_upper(idx, stack))
-		return (ft_abs(idx - ((stack->front + 1) % info->size)));
-	else
-		return (ft_abs(stack->rear - idx + 1));
+	int	i;
+
+	i = 0;
+	while (i < rra_count)
+	{
+		print_operation(reverse_rotate(stack, info));
+		i++;
+	}
 }
 
-void	put_on_top(int idx, t_stack *stack, t_info *info)
+void	put_on_top_ra(int ra_count, t_stack *stack, t_info *info)
 {
-	int	to_push;
+	int	i;
 
-	if (idx == ERROR)
+	i = 0;
+	while (i < ra_count)
 	{
-		// printf("eeee");
-		return ;
-	}
-	to_push = stack->data[idx];
-	if (in_upper(idx, stack))
-	{
-		while (get_top(stack, info->size) != to_push)
-			print_operation(rotate(stack, info));
-	}
-	else
-	{
-		while (get_top(stack, info->size) != to_push)
-			print_operation(reverse_rotate(stack, info));
+		print_operation(rotate(stack, info));
+		i++;
 	}
 }
 
 void	greedy_on_a(t_stack *a, t_info *info)
 {
-	int	idx_from_top;
-	int	idx_from_bottom;
+	int	ra_count;
+	int	rra_count;
 
-	idx_from_top = search_from_top(a, info);
-	idx_from_bottom = search_from_bottom(a, info);
-	if (idx_from_top == ERROR && idx_from_bottom == ERROR)
-		return ;
-	// printf("top:%d bottom:%d\n", idx_from_top, idx_from_bottom);
-	if (count_rotation(a, info, idx_from_top) \
-		<= count_rotation(a, info, idx_from_bottom))
-		put_on_top(idx_from_top, a, info);
+	ra_count = search_from_top(a, info);
+	rra_count = search_from_bottom(a, info);
+	printf("1.%d\n2.%d\n", ra_count, rra_count);
+	// if (ra_count == ERROR && rra_count == ERROR)
+	// 	return ;
+	if (ra_count <= rra_count)
+		put_on_top_ra(ra_count, a, info);
 	else
-		put_on_top(idx_from_bottom, a, info);
+		put_on_top_rra(rra_count, a, info);
+
+	// if (count_rotation(a, info, idx_from_top) 
+	// 	<= count_rotation(a, info, idx_from_bottom))
+	// 	put_on_top(idx_from_top, a, info);
+	// else
+	// 	put_on_top(idx_from_bottom, a, info);
 }
 
 void	a_to_b(t_stack *a, t_stack *b, t_info *info, int chunk)
 {
-	info->a = 1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	info->a = 1;
 	while (chunk > 0)
 	{
 		greedy_on_a(a, info);
-		if (in_range(info->min, info->max, get_top(a, info->size)))
-		{
-			print_operation(push(a, b, info));
-			chunk--;
-		}
+		print_operation(push(a, b, info));
+		chunk--;
 	}
 }
 	// int	chunk;

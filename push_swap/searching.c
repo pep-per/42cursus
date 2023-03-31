@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:38:13 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/30 21:33:54 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/03/31 22:06:53 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,49 @@
 int	search_from_top(t_stack *a, t_info *info)
 {
 	int	idx;
-	// int	bottom;
+	int	ra_count;
 
-	idx = (a->front + 1) % info->size;
-	// bottom = get_bottom(a);
-	// printf("idx: %d, bottom: %d\n", idx, bottom);
-	while (idx <= a->rear)
+	idx = (a->front + 1 + info->size) % info->size;
+	ra_count = 0;
+	while (idx != a->front)
 	{
 		if (in_range(info->min, info->max, a->data[idx]))
-			return (idx);
-		idx = (idx + 1) % info->size;
+			return (ra_count);
+		idx = (idx + 1 + info->size) % info->size;
+		ra_count++;
 	}
-	return (ERROR);
+	return (ra_count);
 }
 
 int	search_from_bottom(t_stack *a, t_info *info)
 {
 	int	idx;
-	// int	top;
+	int	rra_count;
 
 	idx = a->rear;
-	// top = get_top(a, info->size);
-	while (idx <= (a->front + 1) % info->size)
+	rra_count = 0;
+	while (idx != a->front)
 	{
 		if (in_range(info->min, info->max, a->data[idx]))
-			return (idx);
-		idx = (idx - 1) % info->size;
+			return (rra_count);
+		idx = (idx - 1 + info->size) % info->size;
+		rra_count++;
 	}
-	return (ERROR);
+	return (rra_count);
 }
 
-int	search(t_stack *b, t_info *info, int data)
+int	search(t_stack *b, t_info *info, int data, int *count)
 {
 	int	idx;
 
-	idx = (b->front + 1) % info->size;
-	while (idx <= b->rear)
+	idx = (b->front + 1 + info->size) % info->size;
+	*count = 0;
+	while (idx != b->front)
 	{
 		if (b->data[idx] == data)
 			return (idx);
-		idx = (idx + 1) % info->size;
+		idx = (idx + 1 + info->size) % info->size;
+		(*count)++;
 	}
 	return (ERROR);
 }
