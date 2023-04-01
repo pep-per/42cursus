@@ -1738,6 +1738,18 @@
 			"value" : ""
 		},
 		{
+			"name" : "UNIT_LIB",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a library."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/Users/jiyeolee/WORKSPACE/push_swap/Libft/libft.a"
+		},
+		{
 			"name" : "push_swap_BINARY_DIR",
 			"properties" : 
 			[

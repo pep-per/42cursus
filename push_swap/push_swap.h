@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/31 21:24:12 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/01 20:53:03 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,10 @@ void	sort_stack(t_stack *a, t_info *info);
 
 int		search_from_top(t_stack *a, t_info *info);
 int		search_from_bottom(t_stack *a, t_info *info);
-// int		search(t_stack *b, t_info *info, int data);
-int		search(t_stack *b, t_info *info, int data, int *count);
+int		search(t_stack *b, t_info *info, int min, int max);
 
-void	put_on_top_rra(int rra_count, t_stack *stack, t_info *info);
-void	put_on_top_ra(int ra_count, t_stack *stack, t_info *info);
+void	put_on_top_rr(int rr_count, t_stack *stack, t_info *info);
+void	put_on_top_r(int r_count, t_stack *stack, t_info *info);
 void	greedy_on_a(t_stack *a, t_info *info);
 void	a_to_b(t_stack *a, t_stack *b, t_info *info, int chunk);
 
@@ -111,7 +110,6 @@ int		get_top(t_stack *stack, int size);
 int		get_bottom(t_stack *stack);
 
 int		in_upper(int idx, t_stack *stack);
-int		in_range(int min, int max, int data);
 
 void	print_operation(int op);
 

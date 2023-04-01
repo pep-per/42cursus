@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:42:04 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/31 22:08:08 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/01 21:28:44 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@
 // 	}
 // }
 
-void	put_on_top_rra(int rra_count, t_stack *stack, t_info *info)
+void	put_on_top_rr(int rr_count, t_stack *stack, t_info *info)
 {
 	int	i;
 
 	i = 0;
-	while (i < rra_count)
+	while (i < rr_count)
 	{
 		print_operation(reverse_rotate(stack, info));
 		i++;
 	}
 }
 
-void	put_on_top_ra(int ra_count, t_stack *stack, t_info *info)
+void	put_on_top_r(int r_count, t_stack *stack, t_info *info)
 {
 	int	i;
 
 	i = 0;
-	while (i < ra_count)
+	while (i < r_count)
 	{
 		print_operation(rotate(stack, info));
 		i++;
@@ -52,32 +52,29 @@ void	put_on_top_ra(int ra_count, t_stack *stack, t_info *info)
 
 void	greedy_on_a(t_stack *a, t_info *info)
 {
-	int	ra_count;
-	int	rra_count;
+	int	r_count;
+	int	rr_count;
 
-	ra_count = search_from_top(a, info);
-	rra_count = search_from_bottom(a, info);
-	printf("1.%d\n2.%d\n", ra_count, rra_count);
-	// if (ra_count == ERROR && rra_count == ERROR)
-	// 	return ;
-	if (ra_count <= rra_count)
-		put_on_top_ra(ra_count, a, info);
+	r_count = search_from_top(a, info);
+	rr_count = search_from_bottom(a, info) + 1;
+	if (r_count <= rr_count)
+		put_on_top_r(r_count, a, info);
 	else
-		put_on_top_rra(rra_count, a, info);
-
-	// if (count_rotation(a, info, idx_from_top) 
-	// 	<= count_rotation(a, info, idx_from_bottom))
-	// 	put_on_top(idx_from_top, a, info);
-	// else
-	// 	put_on_top(idx_from_bottom, a, info);
+		put_on_top_rr(rr_count, a, info);
 }
 
 void	a_to_b(t_stack *a, t_stack *b, t_info *info, int chunk)
 {
+	for (int i = (a->front + 1 + info->size) % info->size; i != a->front; i = (i + 1 + info->size) % info->size)
+			printf("%d\n", a->data[i]);
 	info->a = 1;
 	while (chunk > 0)
 	{
 		greedy_on_a(a, info);
+		printf("-------\n");
+		for (int i = (a->front + 1 + info->size) % info->size; i != a->front; i = (i + 1 + info->size) % info->size)
+			printf("%d\n", a->data[i]);
+		printf("-------\n");
 		print_operation(push(a, b, info));
 		chunk--;
 	}

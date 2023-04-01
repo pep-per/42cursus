@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 21:38:13 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/31 22:06:53 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/01 20:57:00 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,52 @@
 int	search_from_top(t_stack *a, t_info *info)
 {
 	int	idx;
-	int	ra_count;
+	int	r_count;
 
 	idx = (a->front + 1 + info->size) % info->size;
-	ra_count = 0;
+	r_count = 0;
 	while (idx != a->front)
 	{
-		if (in_range(info->min, info->max, a->data[idx]))
-			return (ra_count);
+		if ((info->min <= a->data[idx]) && (a->data[idx] <= info->max))
+			return (r_count);
+		r_count++;
 		idx = (idx + 1 + info->size) % info->size;
-		ra_count++;
 	}
-	return (ra_count);
+	return (r_count);
 }
 
 int	search_from_bottom(t_stack *a, t_info *info)
 {
 	int	idx;
-	int	rra_count;
+	int	rr_count;
 
 	idx = a->rear;
-	rra_count = 0;
+	rr_count = 0;
 	while (idx != a->front)
 	{
-		if (in_range(info->min, info->max, a->data[idx]))
-			return (rra_count);
+		if ((info->min <= a->data[idx]) && (a->data[idx] <= info->max))
+			return (rr_count);
+		rr_count++;
 		idx = (idx - 1 + info->size) % info->size;
-		rra_count++;
 	}
-	return (rra_count);
+	return (rr_count);
 }
 
-int	search(t_stack *b, t_info *info, int data, int *count)
+int	search(t_stack *b, t_info *info, int min, int max)
 {
 	int	idx;
+	int	count;
 
 	idx = (b->front + 1 + info->size) % info->size;
-	*count = 0;
+	count = 0;
 	while (idx != b->front)
 	{
-		if (b->data[idx] == data)
-			return (idx);
+		if (b->data[idx] == min || b->data[idx] == max)
+			break ;
+		count++;
 		idx = (idx + 1 + info->size) % info->size;
-		(*count)++;
 	}
-	return (ERROR);
+	return (count);
 }
 
 // int	search_max(t_stack *a, t_stack *b)

@@ -309,6 +309,9 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 //Name of the computer/site where compile is being run
 SITE:STRING=c1r7s4.42seoul.kr
 
+//Path to a library.
+UNIT_LIB:FILEPATH=/Users/jiyeolee/WORKSPACE/push_swap/Libft/libft.a
+
 //Value Computed by CMake
 push_swap_BINARY_DIR:STATIC=/Users/jiyeolee/WORKSPACE/push_swap/build
 

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/30 21:52:54 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/01 21:57:56 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,22 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	{
 		info->min = chunk_idx * chunk;
 		info->max = (chunk_idx + 1) * chunk - 1;
-		// printf("%d\n", info->min);
-		// printf("%d\n", info->max);
-		// printf("%d%d%d%d\n", a->data[0], a->data[1], a->data[2], a->data[3]);
 		if (chunk_idx == 2 && rest != 0)
 		{
 			info->max += rest;
 			chunk += rest;
 		}
+		printf("min : %d\n", info->min);
+		printf("max : %d\n", info->max);
 		a_to_b(a, b, info, chunk);
 		b_to_a(a, b, info, chunk);
 		arrange_chunk(a, info, chunk_idx);
 		chunk_idx++;
 	}
+	printf("-------\n");
+	for (int i = (a->front + 1 + info->size) % info->size; i != a->front; i = (i + 1 + info->size) % info->size)
+		printf("%d\n", a->data[i]);
+	printf("-------\n");
 }
 
 void	sort_stack(t_stack *a, t_info *info)

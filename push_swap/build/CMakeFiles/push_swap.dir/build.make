@@ -300,6 +300,7 @@ push_swap: CMakeFiles/push_swap.dir/sorting.c.o
 push_swap: CMakeFiles/push_swap.dir/stack1.c.o
 push_swap: CMakeFiles/push_swap.dir/stack2.c.o
 push_swap: CMakeFiles/push_swap.dir/build.make
+push_swap: /Users/jiyeolee/WORKSPACE/push_swap/Libft/libft.a
 push_swap: CMakeFiles/push_swap.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable push_swap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/push_swap.dir/link.txt --verbose=$(VERBOSE)
