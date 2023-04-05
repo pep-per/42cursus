@@ -12,6 +12,20 @@
 		"list": "c",
 		"queue": "c",
 		"string_view": "c",
-		"vector": "c"
+		"vector": "c",
+		"stack": "c",
+		"__hash_table": "c",
+		"__tree": "c",
+		"bitset": "c",
+		"deque": "c",
+		"initializer_list": "c",
+		"map": "c",
+		"random": "c",
+		"regex": "c",
+		"set": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"utility": "c",
+		"algorithm": "c"
 	}
 }

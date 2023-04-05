@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/03 17:52:30 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:25:49 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void	get_data(char **argv, int *data, int size)
 		k = 0;
 		while (strs[k])
 		{
-			if (ft_strlen(strs[k]) == 0)
-				invalid_data_error(strs, data);
 			if (!ft_atoi_valid(strs[k++], &num))
 				invalid_data_error(strs, data);
 			data[i++] = num;

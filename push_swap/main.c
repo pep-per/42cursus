@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:29:11 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 23:07:44 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:11:19 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	stack;
-	t_info	info;
+	t_stack	a;
 
 	if (argc <= 1)
 		return (0);
-	set_stack(&stack, &info, &argv[1]);
-	sort_stack(&stack, &info);
+	set_stack(&a, &argv[1]);
+	sort(&a);
 	return (0);
 }

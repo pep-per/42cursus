@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 20:53:03 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:21:50 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ typedef struct s_stack
 	int	front;
 	int	rear;
 	int	len;
+	int	size;
+	int	a;
 }	t_stack;
 
-typedef struct s_info
+typedef struct s_move
 {
-	int	size;
-	int	min;
-	int	max;
-	int	a;
+	int	r_count;
+	int	rr_count;
 }	t_info;
 
 enum e_cmd
@@ -68,7 +68,7 @@ enum e_cmd
 
 int		initialize(t_stack *stack, int size);
 void	ft_quick_sort(int arr[], int l, int r);
-void	set_stack(t_stack *stack, t_info *info, char **argv);
+void	set_stack(t_stack *a, char **argv);
 
 int		count_data(char **s, char c);
 int		is_sorted(int *data, int size);

@@ -6,22 +6,36 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/03 17:52:43 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:17:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	initialize(t_stack *stack, int size)
+void	initialize_a(t_stack *a, int size, int *data)
 {
-	stack->data = (int *)malloc(sizeof(int) * size);
-	if (!stack->data)
-		return (0);
-	stack->front = 0;
-	stack->rear = 0;
-	stack->len = 0;
-	return (1);
+	a->data = (int *)malloc(sizeof(int) * size);
+	if (!a->data)
+		free_error(data);
+	a->front = size - 1;
+	a->rear = size - 2;
+	a->len = size - 1;
+	a->size = size;
+	a->a = 1;
 }
+
+void	initialize_b(t_stack *b, int size, int *data)
+{
+	b->data = (int *)malloc(sizeof(int) * size);
+	if (!b->data)
+		free_error(data);
+	b->front = 0;
+	b->rear = 0;
+	b->len = 0;
+	b->size = size;
+	b->a = 0;
+}
+
 
 void	ft_quick_sort(int arr[], int l, int r)
 {
@@ -54,29 +68,37 @@ void	ft_quick_sort(int arr[], int l, int r)
 		ft_quick_sort(arr, left, r);
 }
 
-void	set_stack(t_stack *stack, t_info *info, char **argv)
+int	*validate_data(char **argv, int size)
 {
-	int		*data;
-	int		*copy;
+	int	*data;
 
-	info->size = count_data(argv, ' ') + 1;
-	data = (int *)malloc(sizeof(int) * info->size);
+	data = (int *)malloc(sizeof(int) * size);
 	if (!data)
 		error_exit();
-	get_data(argv, data, info->size - 1);
-	if (is_duplicate(data, info->size))
+	get_data(argv, data, size);
+	if (is_duplicate(data, size) || size == 0)
 		free_error(data);
-	if (is_sorted(data, info->size))
+	if (is_sorted(data, size))
 	{
 		free(data);
 		exit(1);
 	}
-	if (!initialize(stack, info->size))
-		free_error(data);
-	copy = (int *)malloc(sizeof(int) * info->size);
+	return (data);
+}
+
+void	set_stack(t_stack *a, char **argv)
+{
+	int		*data;
+	int		*copy;
+	int		size;
+
+	size = count_data(argv, ' ');
+	data = validate_data(argv, size);
+	initialize_a(a, size + 1, data);
+	copy = (int *)malloc(sizeof(int) * size);
 	if (!copy)
-		free_all_error(stack, data);
-	ft_memcpy(copy, data, sizeof(int) * info->size);
-	ft_quick_sort(copy, 0, info->size - 2);
-	index_data(data, info->size - 1, copy, stack);
+		free_all_error(a, data);
+	ft_memcpy(copy, data, sizeof(int) * size);
+	ft_quick_sort(copy, 0, a->size - 2);
+	index_data(data, size, copy, a);
 }

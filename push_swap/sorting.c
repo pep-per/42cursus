@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 21:57:56 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:14:45 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,11 @@ void	sort_complex(t_stack *a, t_stack *b, t_info *info)
 	printf("-------\n");
 }
 
-void	sort_stack(t_stack *a, t_info *info)
+void	sort_stack(t_stack *a)
 {
 	t_stack	b;
 
-	if (!initialize(&b, info->size))
-		free_error(a->data);
+	initialize(&b, a->size, a->data);
 	info->a = 1;
 	if (info->size - 1 <= 3)
 		sort_small(a, info);
