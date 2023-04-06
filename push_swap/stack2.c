@@ -6,18 +6,23 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 01:41:58 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/03/31 19:17:54 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/07 00:26:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_top(t_stack *stack, int size)
+int	front(t_stack *stack)
 {
-	return (stack->data[(stack->front + 1 + size) % size]);
+	return ((stack->front + 1 + stack->size) % stack->size);
 }
 
-int	get_bottom(t_stack *stack)
+int	top(t_stack *stack)
+{
+	return (stack->data[front(stack)]);
+}
+
+int	bottom(t_stack *stack)
 {
 	return (stack->data[stack->rear]);
 }

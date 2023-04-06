@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jiyeolee/WORKSPACE/push_swap/Initialization.c" "CMakeFiles/push_swap.dir/Initialization.c.o" "gcc" "CMakeFiles/push_swap.dir/Initialization.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/error_handling.c" "CMakeFiles/push_swap.dir/error_handling.c.o" "gcc" "CMakeFiles/push_swap.dir/error_handling.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/greedy_a.c" "CMakeFiles/push_swap.dir/greedy_a.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy_a.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/greedy_b.c" "CMakeFiles/push_swap.dir/greedy_b.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy_b.c.o.d"

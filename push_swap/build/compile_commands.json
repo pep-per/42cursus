@@ -1,6 +1,11 @@
 [
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/Initialization.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/Initialization.c",
+  "file": "/Users/jiyeolee/WORKSPACE/push_swap/Initialization.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
   "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/error_handling.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/error_handling.c",
   "file": "/Users/jiyeolee/WORKSPACE/push_swap/error_handling.c"
 },

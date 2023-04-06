@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 22:04:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 21:12:12 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:01:50 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	invalid_data_error(char **strs, int *data)
 	error_exit();
 }
 
-void	free_all_error(t_stack *stack, int *data)
-{
-	free(stack->data);
-	free_error(data);
-}
+// void	free_all_error(t_stack *stack, int *data)
+// {
+// 	free(stack->data);
+// 	free_error(data);
+// }
 
 void	free_error(int *data)
 {

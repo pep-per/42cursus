@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   indexing.c                                         :+:      :+:    :+:   */
+/*   Initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 04:48:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/06 23:08:45 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/04/06 23:17:51 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/06 23:20:20 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	index_data(int *data, int size, int *sorted)
+void	initialize_a(t_stack *a, int size, int *data)
 {
-	int	i;
-	int	idx;
+	a->data = data;
+	a->front = size - 1;
+	a->rear = size - 2;
+	a->len = size - 1;
+	a->size = size;
+	a->a = 1;
+}
 
-	i = 0;
-	while (i < size)
-	{
-		idx = 0;
-		while (sorted[idx] != data[i])
-			idx++;
-		data[i] = idx;
-		i++;
-	}
-	free(sorted);
+void	initialize_b(t_stack *b, int size, int *data)
+{
+	b->data = (int *)malloc(sizeof(int) * size);
+	if (!b->data)
+		free_error(data);
+	b->front = 0;
+	b->rear = 0;
+	b->len = 0;
+	b->size = size;
+	b->a = 0;
 }

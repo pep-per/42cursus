@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/05 13:21:50 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/07 02:01:22 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,22 @@ enum e_cmd
 	RRR
 };
 
-int		initialize(t_stack *stack, int size);
 void	ft_quick_sort(int arr[], int l, int r);
 void	set_stack(t_stack *a, char **argv);
+
+void	initialize_a(t_stack *a, int size, int *data);
+void	initialize_b(t_stack *b, int size, int *data);
 
 int		count_data(char **s, char c);
 int		is_sorted(int *data, int size);
 int		is_duplicate(int *data, int size);
 void	get_data(char **argv, int *data, int size);
 
-void	index_data(int *data, int size, int *sorted, t_stack *stack);
+void	index_data(int *data, int size, int *sorted);
 
 void	get_three_data(t_stack *a, int *first, int *second, int *third);
-void	sort_small(t_stack *a, t_info *info);
-void	sort_complex(t_stack *a, t_stack *b, t_info *info);
-void	sort_stack(t_stack *a, t_info *info);
+void	sort_complex(t_stack *a, t_stack *b);
+void	sort_small(t_stack *a);
 
 int		search_from_top(t_stack *a, t_info *info);
 int		search_from_bottom(t_stack *a, t_info *info);
@@ -96,18 +97,19 @@ void	b_to_a(t_stack *a, t_stack *b, t_info *info, int chunk_idx);
 
 void	arrange_chunk(t_stack *a, t_info *info, int chunk_idx);
 
-int		rotate(t_stack *stack, t_info *info);
-int		reverse_rotate(t_stack *stack, t_info *info);
-int		swap(t_stack *stack, t_info *info);
-int		push(t_stack *from, t_stack *to, t_info *info);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
+void	swap(t_stack *a);
+void	push(t_stack *from, t_stack *to);
 
-void	push_front(t_stack *stack, int n, int size);
-void	push_rear(t_stack *stack, int n, int size);
-int		pop_front(t_stack *stack, int size);
-int		pop_rear(t_stack *stack, int size);
+void	push_front(t_stack *stack, int data);
+void	push_rear(t_stack *stack, int data);
+int		pop_front(t_stack *stack);
+int		pop_rear(t_stack *stack);
 
-int		get_top(t_stack *stack, int size);
-int		get_bottom(t_stack *stack);
+int		front(t_stack *stack);
+int		top(t_stack *stack);
+int		bottom(t_stack *stack);
 
 int		in_upper(int idx, t_stack *stack);
 

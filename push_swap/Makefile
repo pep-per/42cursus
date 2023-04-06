@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/03/31 20:10:23 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/04/06 23:20:16 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS = 	main.c \
 		preprocessing.c \
 		parsing.c \
 		indexing.c \
+		Initialization.c \
 		sorting.c \
 		greedy_a.c \
 		greedy_b.c \

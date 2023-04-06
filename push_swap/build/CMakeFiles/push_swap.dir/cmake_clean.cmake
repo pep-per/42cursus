@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/push_swap.dir/Initialization.c.o"
+  "CMakeFiles/push_swap.dir/Initialization.c.o.d"
   "CMakeFiles/push_swap.dir/error_handling.c.o"
   "CMakeFiles/push_swap.dir/error_handling.c.o.d"
   "CMakeFiles/push_swap.dir/greedy_a.c.o"

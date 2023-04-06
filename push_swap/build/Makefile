@@ -523,6 +523,30 @@ push_swap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/build
 .PHONY : push_swap/fast
 
+Initialization.o: Initialization.c.o
+.PHONY : Initialization.o
+
+# target to build an object file
+Initialization.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.o
+.PHONY : Initialization.c.o
+
+Initialization.i: Initialization.c.i
+.PHONY : Initialization.i
+
+# target to preprocess a source file
+Initialization.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.i
+.PHONY : Initialization.c.i
+
+Initialization.s: Initialization.c.s
+.PHONY : Initialization.s
+
+# target to generate assembly for a file
+Initialization.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.s
+.PHONY : Initialization.c.s
+
 error_handling.o: error_handling.c.o
 .PHONY : error_handling.o
 
@@ -899,6 +923,9 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... push_swap"
+	@echo "... Initialization.o"
+	@echo "... Initialization.i"
+	@echo "... Initialization.s"
 	@echo "... error_handling.o"
 	@echo "... error_handling.i"
 	@echo "... error_handling.s"

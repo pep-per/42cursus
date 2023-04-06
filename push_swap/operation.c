@@ -6,61 +6,56 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:48:53 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/05 03:18:28 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/07 01:58:52 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rotate(t_stack *stack, t_info *info)
+void	rotate(t_stack *stack)
 {
 	int	top;
 
 	if (stack->len == 0)
-		return (ERROR);
-	top = pop_front(stack, info->size);
-	push_rear(stack, top, info->size);
-	if (info->a)
-		return (RA);
-	return (RB);
+		return ;
+	top = pop_front(stack);
+	push_rear(stack, top);
+	if (stack->a)
+		print_operation(RA);
+	print_operation(RB);
 }
 
-int	reverse_rotate(t_stack *stack, t_info *info)
+void	reverse_rotate(t_stack *stack)
 {
 	int	bottom;
 
 	if (stack->len == 0)
-		return (ERROR);
-	bottom = pop_rear(stack, info->size);
-	push_front(stack, bottom, info->size);
-	if (info->a)
-		return (RRA);
-	return (RRB);
+		return ;
+	bottom = pop_rear(stack);
+	push_front(stack, bottom);
+	if (stack->a)
+		print_operation(RRA);
+	print_operation(RRB);
 }
 
-int	swap(t_stack *stack, t_info *info)
+void	swap(t_stack *a)
 {
 	int	tmp;
-	int	size;
 
-	if (stack->len < 2)
-		return (ERROR);
-	size = info->size;
-	tmp = stack->data[(stack->front + 1) % size];
-	stack->data[(stack->front + 1) % size] \
-	= stack->data[(stack->front + 2) % size];
-	stack->data[(stack->front + 2) % size] = tmp;
-	if (info->a)
-		return (SA);
-	return (SB);
+	if (a->len < 2)
+		return ;
+	tmp = get_top(a);
+	a->data[get_front(a)] = a->data[(a->front + 2 + a->size) % a->size];
+	a->data[(a->front + 2 + a->size) % a->size] = tmp;
+	print_operation(SA);
 }
 
-int	push(t_stack *from, t_stack *to, t_info *info)
+void	push(t_stack *from, t_stack *to)
 {
 	if (from->len == 0)
 		return (ERROR);
-	push_front(to, pop_front(from, info->size), info->size);
-	if (info->a)
-		return (PB);
-	return (PA);
+	push_front(to, pop_front(from));
+	if (to->a)
+		print_operation(PA);
+	print_operation(PB);
 }

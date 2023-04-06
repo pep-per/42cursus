@@ -6,42 +6,42 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:50:28 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 18:33:53 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/07 01:59:09 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_front(t_stack *stack, int n, int size)
+void	push_front(t_stack *stack, int data)
 {
-	stack->data[stack->front] = n;
-	stack->front = (stack->front - 1 + size) % size;
+	stack->data[stack->front] = data;
+	stack->front = (stack->front - 1 + stack->size) % stack->size;
 	stack->len += 1;
 }
 
-void	push_rear(t_stack *stack, int n, int size)
+void	push_rear(t_stack *stack, int data)
 {
-	stack->rear = (stack->rear + 1 + size) % size;
-	stack->data[stack->rear] = n;
+	stack->rear = (stack->rear + 1 + stack->size) % stack->size;
+	stack->data[stack->rear] = data;
 	stack->len += 1;
 }
 
-int	pop_front(t_stack *stack, int size)
+int	pop_front(t_stack *stack)
 {
-	int	n;
+	int	data;
 
-	n = get_top(stack, size);
-	stack->front = (stack->front + 1 + size) % size;
+	data = top(stack);
+	stack->front = (stack->front + 1 + stack->size) % stack->size;
 	stack->len -= 1;
-	return (n);
+	return (data);
 }
 
-int	pop_rear(t_stack *stack, int size)
+int	pop_rear(t_stack *stack)
 {
-	int	n;
+	int	data;
 
-	n = get_bottom(stack);
-	stack->rear = (stack->rear - 1 + size) % size;
+	data = bottom(stack);
+	stack->rear = (stack->rear - 1 + stack->size) % stack->size;
 	stack->len -= 1;
-	return (n);
+	return (data);
 }
