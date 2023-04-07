@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   partitioning.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 20:29:11 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 05:26:45 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/04/08 05:06:38 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/08 05:07:50 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	partitioning(t_stack *a, t_stack *b)
 {
-	t_stack	a;
-	t_stack	b;
+	int	pivot1;
+	int	pivot2;
+	int	i;
 
-	if (argc <= 1)
-		return (0);
-	set_stack(&a, &argv[1]);
-	if (a.size <= 3)
+	pivot1 = (a->size - 1) / 3;
+	pivot2 = pivot1 + (a->size - 1) / 3;
+	i = front(a);
+	while (i != (a->rear + 1 + a->size) % a->size)
 	{
-		sort_small(&a);
+		if (a->data[i] < pivot1)
+		{
+			push(a, b);
+			rotate(b);
+		}
+		else if (a->data[i] < pivot2)
+			push(a, b);
+		else
+			rotate(a);
+		i = (i + 1 + a->size) % a->size;
 	}
-	else
-	{
-		initialize_b(&b, a.size, a.data);
-		sort_complex(&a, &b);
-		free(b.data);
-	}
-	free(a.data);
-	return (0);
+	while (a->len > 3)
+		push(a, b);
 }

@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/04/06 23:20:16 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/04/08 05:10:30 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,8 @@ SRCS = 	main.c \
 		indexing.c \
 		Initialization.c \
 		sorting.c \
-		greedy_a.c \
-		greedy_b.c \
-		searching.c \
-		range.c \
+		partitioning.c \
+		greedy.c \
 		operation.c \
 		stack1.c \
 		stack2.c \

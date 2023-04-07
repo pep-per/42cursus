@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/07 02:03:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:20:49 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	get_three_data(t_stack *a, int *first, int *second, int *third)
 {
-	*first = a->data[0];
-	*second = a->data[1];
-	*third = a->data[2];
+	*first = a->data[front(a)];
+	*second = a->data[(a->front + 2 + a->size) % a->size];
+	*third = a->data[(a->front + 3 + a->size) % a->size];
 }
 
 void	sort_small(t_stack *a)
@@ -48,10 +48,18 @@ void	sort_small(t_stack *a)
 		swap(a);
 }
 
-
 void	sort_complex(t_stack *a, t_stack *b)
 {
-	
+	t_move	move;
+	int		i;
+
+	partitioning(a, b);
+	sort_small(a);
+	while (b->len > 0)
+	{
+		i = select_optimal_choice(a, b, &move);
+		run_optimal_move(a, b, &move, i);
+	}
 }
 
 // void	sort_complex(t_stack *a, t_stack *b)

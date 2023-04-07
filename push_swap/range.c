@@ -6,16 +6,16 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:41:50 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/01 20:45:30 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 05:08:37 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+// #include "push_swap.h"
 
-int	in_upper(int idx, t_stack *stack)
-{
-	return (idx + 1 <= stack->len / 2);
-}
+// int	in_upper(int idx, t_stack *stack)
+// {
+// 	return (idx + 1 <= stack->len / 2);
+// }
 
 // int	in_range(int min, int max, int data)
 // {
