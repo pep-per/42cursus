@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:48:53 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 05:26:00 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:53:02 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	reverse_rotate_double(t_stack *a, t_stack *b)
 		return ;
 	bottom = pop_rear(a);
 	push_front(a, bottom);
-	if (b->len < 2)
-		return ;
 	bottom = pop_rear(b);
 	push_front(b, bottom);
 	print_operation(RRR);
@@ -74,8 +72,8 @@ void	swap(t_stack *a)
 
 	if (a->len < 2)
 		return ;
-	tmp = get_top(a);
-	a->data[get_front(a)] = a->data[(a->front + 2 + a->size) % a->size];
+	tmp = top(a);
+	a->data[front(a)] = a->data[(a->front + 2 + a->size) % a->size];
 	a->data[(a->front + 2 + a->size) % a->size] = tmp;
 	print_operation(SA);
 }
@@ -83,7 +81,7 @@ void	swap(t_stack *a)
 void	push(t_stack *from, t_stack *to)
 {
 	if (from->len == 0)
-		return (ERROR);
+		return ;
 	push_front(to, pop_front(from));
 	if (to->a)
 		print_operation(PA);

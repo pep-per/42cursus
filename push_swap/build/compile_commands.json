@@ -11,6 +11,11 @@
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/greedy.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/greedy.c",
+  "file": "/Users/jiyeolee/WORKSPACE/push_swap/greedy.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
   "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/greedy_a.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/greedy_a.c",
   "file": "/Users/jiyeolee/WORKSPACE/push_swap/greedy_a.c"
 },
@@ -38,6 +43,11 @@
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
   "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/parsing.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/parsing.c",
   "file": "/Users/jiyeolee/WORKSPACE/push_swap/parsing.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/partitioning.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/partitioning.c",
+  "file": "/Users/jiyeolee/WORKSPACE/push_swap/partitioning.c"
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",

@@ -571,6 +571,30 @@ error_handling.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/error_handling.c.s
 .PHONY : error_handling.c.s
 
+greedy.o: greedy.c.o
+.PHONY : greedy.o
+
+# target to build an object file
+greedy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy.c.o
+.PHONY : greedy.c.o
+
+greedy.i: greedy.c.i
+.PHONY : greedy.i
+
+# target to preprocess a source file
+greedy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy.c.i
+.PHONY : greedy.c.i
+
+greedy.s: greedy.c.s
+.PHONY : greedy.s
+
+# target to generate assembly for a file
+greedy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy.c.s
+.PHONY : greedy.c.s
+
 greedy_a.o: greedy_a.c.o
 .PHONY : greedy_a.o
 
@@ -714,6 +738,30 @@ parsing.s: parsing.c.s
 parsing.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/parsing.c.s
 .PHONY : parsing.c.s
+
+partitioning.o: partitioning.c.o
+.PHONY : partitioning.o
+
+# target to build an object file
+partitioning.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/partitioning.c.o
+.PHONY : partitioning.c.o
+
+partitioning.i: partitioning.c.i
+.PHONY : partitioning.i
+
+# target to preprocess a source file
+partitioning.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/partitioning.c.i
+.PHONY : partitioning.c.i
+
+partitioning.s: partitioning.c.s
+.PHONY : partitioning.s
+
+# target to generate assembly for a file
+partitioning.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/partitioning.c.s
+.PHONY : partitioning.c.s
 
 preprocessing.o: preprocessing.c.o
 .PHONY : preprocessing.o
@@ -929,6 +977,9 @@ help:
 	@echo "... error_handling.o"
 	@echo "... error_handling.i"
 	@echo "... error_handling.s"
+	@echo "... greedy.o"
+	@echo "... greedy.i"
+	@echo "... greedy.s"
 	@echo "... greedy_a.o"
 	@echo "... greedy_a.i"
 	@echo "... greedy_a.s"
@@ -947,6 +998,9 @@ help:
 	@echo "... parsing.o"
 	@echo "... parsing.i"
 	@echo "... parsing.s"
+	@echo "... partitioning.o"
+	@echo "... partitioning.i"
+	@echo "... partitioning.s"
 	@echo "... preprocessing.o"
 	@echo "... preprocessing.i"
 	@echo "... preprocessing.s"

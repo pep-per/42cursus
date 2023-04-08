@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:29:11 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 05:26:45 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:43:48 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	set_stack(&a, &argv[1]);
-	if (a.size <= 3)
+	if (a.len <= 3)
 	{
 		sort_small(&a);
 	}

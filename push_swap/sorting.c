@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 05:20:49 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 17:27:05 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ void	sort_small(t_stack *a)
 void	sort_complex(t_stack *a, t_stack *b)
 {
 	t_move	move;
-	int		i;
 
 	partitioning(a, b);
 	sort_small(a);
 	while (b->len > 0)
 	{
-		i = select_optimal_choice(a, b, &move);
-		run_optimal_move(a, b, &move, i);
+		select_optimal_choice(a, b, &move);
+		run_optimal_move(a, b, &move);
+	printf("ra : %d, rb : %d, rra : %d, rrb %d\n", move.ra_cnt, move.rb_cnt, move.rra_cnt, move.rrb_cnt);
+
 	}
 }
 

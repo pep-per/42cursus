@@ -49,6 +49,7 @@
 		"thread": "c",
 		"tuple": "c",
 		"type_traits": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"libft.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 05:27:47 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/08 16:37:58 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@
 # include "./Libft/libft.h"
 // # include "./ft_printf/mandatory/ft_printf.h"
 # define ERROR -1
-// # define IS_EMPTY -1
-
-// # define CHUNK_MIN_CONSTANT 3
 
 
 
@@ -87,6 +84,14 @@ void	sort_complex(t_stack *a, t_stack *b);
 void	sort_small(t_stack *a);
 
 void	partitioning(t_stack *a, t_stack *b);
+
+int		find_max(t_stack *a);
+int		count_move_in_a(t_stack *a, t_move *move, int data);
+int		count_move_in_b(t_stack *b, t_move *move, int idx);
+int		sum_move_count(t_stack *a, t_stack *b, t_move *move, int i);
+void	select_optimal_choice(t_stack *a, t_stack *b, t_move *move);
+void	double_move(t_stack *a, t_stack *b, t_move *move);
+void	run_optimal_move(t_stack *a, t_stack *b, t_move *move);
 
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
