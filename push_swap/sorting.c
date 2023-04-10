@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 17:27:05 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/10 23:36:02 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	sort_small(t_stack *a)
 void	sort_complex(t_stack *a, t_stack *b)
 {
 	t_move	move;
+	int		max;
+	int		max_idx;
 
 	partitioning(a, b);
 	sort_small(a);
@@ -58,9 +60,21 @@ void	sort_complex(t_stack *a, t_stack *b)
 	{
 		select_optimal_choice(a, b, &move);
 		run_optimal_move(a, b, &move);
-	printf("ra : %d, rb : %d, rra : %d, rrb %d\n", move.ra_cnt, move.rb_cnt, move.rra_cnt, move.rrb_cnt);
-
+		for (int i = front(a); i != a->front; i = (i + 1 + a->size) % a->size)
+			printf("%d\n", a->data[i]);
 	}
+	max_idx = find_max(a);
+	max = a->data[max_idx];
+	while (bottom(a) != max)
+	{
+		if (max_idx > a->size / 2)
+			rotate(a);
+		else
+			reverse_rotate(a);
+	}
+	for (int i = front(a); i != a->front; i = (i + 1 + a->size) % a->size)
+		printf("%d\n", a->data[i]);
+
 }
 
 // void	sort_complex(t_stack *a, t_stack *b)

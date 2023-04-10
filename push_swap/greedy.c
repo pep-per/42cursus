@@ -6,28 +6,48 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:17 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 17:02:14 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/10 23:31:31 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_max(t_stack *a)
+int	find_max_in_order(t_stack *a)
 {
 	int	i;
 	int	max;
 
 	i = front(a);
-	max = bottom(a);
-	while (i != a->rear)
+	max = top(a);
+	while (i != (a->rear + 1 + a->size) % a->size)
 	{
-		if (a->data[i] > max)
+		if (a->data[i] >= max)
 			max = a->data[i];
 		else
-			break ;
+			return (i - 1);
 		i = (i + 1 + a->size) % a->size;
 	}
 	return (i);
+}
+
+int	find_max(t_stack *a)
+{
+	int	i;
+	int	max;
+	int	max_idx;
+
+	i = front(a);
+	max = top(a);
+	while (i != (a->rear + 1 + a->size) % a->size)
+	{
+		if (a->data[i] >= max)
+		{
+			max = a->data[i];
+			max_idx = i;
+		}
+		i = (i + 1 + a->size) % a->size;
+	}
+	return (max_idx);
 }
 
 int	count_move_in_a(t_stack *a, t_move *move, int data)
@@ -36,11 +56,13 @@ int	count_move_in_a(t_stack *a, t_move *move, int data)
 	int	i;
 	int	max_idx;
 
-	max_idx = find_max(a);
+	max_idx = find_max_in_order(a);
 	cnt = 0;
-	i = front(a);
+	move->ra_cnt = 0;
+	move->rra_cnt = 0;
 	if (data > top(a))
 	{
+		i = front(a);
 		if (data > a->data[max_idx])
 			cnt = max_idx + 1;
 		else
@@ -52,17 +74,16 @@ int	count_move_in_a(t_stack *a, t_move *move, int data)
 			}
 		}
 		move->ra_cnt = cnt;
-		move->rra_cnt = 0;
 	}
-	else
+	else if (data + 1 != top(a))
 	{
+		i = max_idx + 1;
 		while (data < a->data[i])
 		{
 			i = (i + 1 + a->size) % a->size;
 			cnt++;
 		}
 		move->rra_cnt = cnt;
-		move->ra_cnt = 0;
 	}
 	return (cnt);
 }
@@ -79,17 +100,18 @@ int	count_move_in_b(t_stack *b, t_move *move, int idx)
 		i = (i + 1 + b->size) % b->size;
 		cnt++;
 	}
-	if (cnt > b->len)
-		cnt = b->size - cnt;
-	if (idx > (front(b) + b->rear) / 2)
+	// if (cnt > b->len)
+	// 	cnt = b->size - cnt;
+	move->rb_cnt = 0;
+	move->rrb_cnt = 0;
+	if (idx > b->size / 2)
 	{
+		cnt = b->size - cnt;
 		move->rrb_cnt = cnt;
-		move->rb_cnt = 0;
 	}
 	else
 	{
 		move->rb_cnt = cnt;
-		move->rrb_cnt = 0;
 	}
 	return (cnt);
 }
@@ -108,9 +130,9 @@ void	select_optimal_choice(t_stack *a, t_stack *b, t_move *move)
 	int	optimal_idx;
 
 	i = front(b);
-	min_cnt = sum_move_count(a, b, move, b->rear);
-	optimal_idx = 0;
-	while (i != b->rear)
+	min_cnt = sum_move_count(a, b, move, i);
+	optimal_idx = i;
+	while (i != (b->rear + 1 + b->size) % b->size)
 	{
 		move_cnt = sum_move_count(a, b, move, i);
 		if (move_cnt < min_cnt)
@@ -127,10 +149,7 @@ void	double_move(t_stack *a, t_stack *b, t_move *move)
 {
 	if (move->rb_cnt > move->ra_cnt)
 	{
-		// printf("%d\n", move->rb_cnt);
 		move->rb_cnt -= move->ra_cnt;
-		// printf("%d\n", move->rb_cnt);
-		// exit(0);
 		while (move->ra_cnt-- > 0)
 			rotate_double(a, b);
 	}

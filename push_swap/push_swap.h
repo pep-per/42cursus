@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/08 16:37:58 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/10 23:29:56 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	sort_small(t_stack *a);
 
 void	partitioning(t_stack *a, t_stack *b);
 
+int		find_max_in_order(t_stack *a);
 int		find_max(t_stack *a);
 int		count_move_in_a(t_stack *a, t_move *move, int data);
 int		count_move_in_b(t_stack *b, t_move *move, int idx);
