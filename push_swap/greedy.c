@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:17 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/10 23:31:31 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/11 23:23:17 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int	find_max_in_order(t_stack *a)
 		if (a->data[i] >= max)
 			max = a->data[i];
 		else
-			return (i - 1);
+			break ;
 		i = (i + 1 + a->size) % a->size;
 	}
-	return (i);
+	return (i - 1);
 }
 
 int	find_max(t_stack *a)
@@ -56,35 +56,68 @@ int	count_move_in_a(t_stack *a, t_move *move, int data)
 	int	i;
 	int	max_idx;
 
-	max_idx = find_max_in_order(a);
 	cnt = 0;
 	move->ra_cnt = 0;
 	move->rra_cnt = 0;
+	max_idx = find_max_in_order(a);
 	if (data > top(a))
 	{
 		i = front(a);
-		if (data > a->data[max_idx])
-			cnt = max_idx + 1;
-		else
-		{
-			while (data > a->data[i])
-			{
-				i = (i + 1 + a->size) % a->size;
-				cnt++;
-			}
-		}
-		move->ra_cnt = cnt;
-	}
-	else if (data + 1 != top(a))
-	{
-		i = max_idx + 1;
-		while (data < a->data[i])
+		while (data > a->data[i] && data <= a->data[max_idx])
 		{
 			i = (i + 1 + a->size) % a->size;
 			cnt++;
 		}
-		move->rra_cnt = cnt;
+		if (cnt > a->len / 2)
+			move->rra_cnt += (a->len - cnt);
+		else
+			move->ra_cnt += cnt;
+		i = max_idx;
+		while (i != (a->rear + 1 + a->size) % a->size)
+		{
+			if (a->data[i] )
+			i = (i + 1 + a->size) % a->size;
+			cnt++;
+		}
+		if (cnt > a->len / 2)
+			move->rra_cnt += (a->len - cnt);
+		else
+			move->ra_cnt += cnt;
+		// if (data > a->data[max_idx])
+		// 	cnt = max_idx + 1;
+		// else if (data > )
+		// {
+		// 	while (data > a->data[i])
+		// 	{
+		// 		i = (i + 1 + a->size) % a->size;
+		// 		cnt++;
+		// 	}
+		// }
 	}
+	else
+	{
+		// i = a->rear;
+		// while (data < a->data[i])
+		// {
+		// 	i = (i - 1 + a->size) % a->size;
+		// 	cnt++;
+		// }
+		// move->rra_cnt = cnt;
+		// if (cnt < a->len / 2)
+		// 	move->rra_cnt = a->len - cnt;
+		// else
+		// 	move->ra_cnt = cnt;
+	}
+	// else if (data + 1 != top(a))
+	// {
+	// 	i = max_idx + 1;
+	// 	while (data < a->data[i])
+	// 	{
+	// 		i = (i + 1 + a->size) % a->size;
+	// 		cnt++;
+	// 	}
+	// 	move->rra_cnt = cnt;
+	// }
 	return (cnt);
 }
 
@@ -104,15 +137,20 @@ int	count_move_in_b(t_stack *b, t_move *move, int idx)
 	// 	cnt = b->size - cnt;
 	move->rb_cnt = 0;
 	move->rrb_cnt = 0;
-	if (idx > b->size / 2)
-	{
-		cnt = b->size - cnt;
-		move->rrb_cnt = cnt;
-	}
+	if (cnt > b->len / 2)
+		move->rrb_cnt = b->len - cnt;
 	else
-	{
 		move->rb_cnt = cnt;
-	}
+
+	// if (idx > b->len / 2)
+	// {
+	// 	cnt = b->size - cnt;
+	// 	move->rrb_cnt = cnt;
+	// }
+	// else
+	// {
+	// 	move->rb_cnt = cnt;
+	// }
 	return (cnt);
 }
 

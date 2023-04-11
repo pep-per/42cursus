@@ -975,10 +975,6 @@ CMakeFiles/push_swap.dir/printing.c.o: /Users/jiyeolee/WORKSPACE/push_swap/print
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/secure/_stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/secure/_common.h
 
-CMakeFiles/push_swap.dir/range.c.o: /Users/jiyeolee/WORKSPACE/push_swap/range.c
-
-CMakeFiles/push_swap.dir/searching.c.o: /Users/jiyeolee/WORKSPACE/push_swap/searching.c
-
 CMakeFiles/push_swap.dir/sorting.c.o: /Users/jiyeolee/WORKSPACE/push_swap/sorting.c \
   /Users/jiyeolee/WORKSPACE/push_swap/push_swap.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/usr/include/unistd.h \
@@ -1272,10 +1268,6 @@ CMakeFiles/push_swap.dir/stack2.c.o: /Users/jiyeolee/WORKSPACE/push_swap/stack2.
 
 
 /Users/jiyeolee/WORKSPACE/push_swap/stack1.c:
-
-/Users/jiyeolee/WORKSPACE/push_swap/searching.c:
-
-/Users/jiyeolee/WORKSPACE/push_swap/range.c:
 
 /Users/jiyeolee/WORKSPACE/push_swap/operation.c:
 

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:38 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/10 23:57:22 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/11 21:27:55 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	partitioning(t_stack *a, t_stack *b)
 
 	pivot1 = (a->size - 1) / 3;
 	pivot2 = pivot1 + (a->size - 1) / 3;
-	i = front(a);
-	// while (a->len > a->size - 2 * (a->size - 1) / 3)
-	while (i != a->front)
+	i = 0;
+	while (i != a->size - 1)
 	{
 		if (a->data[i] < pivot1)
 		{
@@ -33,7 +32,7 @@ void	partitioning(t_stack *a, t_stack *b)
 			push(a, b);
 		else
 			rotate(a);
-		i = (i + 1) % a->size;
+		i++;
 	}
 	while (a->len > 3)
 		push(a, b);

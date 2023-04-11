@@ -20,8 +20,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jiyeolee/WORKSPACE/push_swap/partitioning.c" "CMakeFiles/push_swap.dir/partitioning.c.o" "gcc" "CMakeFiles/push_swap.dir/partitioning.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/preprocessing.c" "CMakeFiles/push_swap.dir/preprocessing.c.o" "gcc" "CMakeFiles/push_swap.dir/preprocessing.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/printing.c" "CMakeFiles/push_swap.dir/printing.c.o" "gcc" "CMakeFiles/push_swap.dir/printing.c.o.d"
-  "/Users/jiyeolee/WORKSPACE/push_swap/range.c" "CMakeFiles/push_swap.dir/range.c.o" "gcc" "CMakeFiles/push_swap.dir/range.c.o.d"
-  "/Users/jiyeolee/WORKSPACE/push_swap/searching.c" "CMakeFiles/push_swap.dir/searching.c.o" "gcc" "CMakeFiles/push_swap.dir/searching.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/sorting.c" "CMakeFiles/push_swap.dir/sorting.c.o" "gcc" "CMakeFiles/push_swap.dir/sorting.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/stack1.c" "CMakeFiles/push_swap.dir/stack1.c.o" "gcc" "CMakeFiles/push_swap.dir/stack1.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/stack2.c" "CMakeFiles/push_swap.dir/stack2.c.o" "gcc" "CMakeFiles/push_swap.dir/stack2.c.o.d"

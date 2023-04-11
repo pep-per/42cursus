@@ -811,54 +811,6 @@ printing.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/printing.c.s
 .PHONY : printing.c.s
 
-range.o: range.c.o
-.PHONY : range.o
-
-# target to build an object file
-range.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/range.c.o
-.PHONY : range.c.o
-
-range.i: range.c.i
-.PHONY : range.i
-
-# target to preprocess a source file
-range.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/range.c.i
-.PHONY : range.c.i
-
-range.s: range.c.s
-.PHONY : range.s
-
-# target to generate assembly for a file
-range.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/range.c.s
-.PHONY : range.c.s
-
-searching.o: searching.c.o
-.PHONY : searching.o
-
-# target to build an object file
-searching.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/searching.c.o
-.PHONY : searching.c.o
-
-searching.i: searching.c.i
-.PHONY : searching.i
-
-# target to preprocess a source file
-searching.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/searching.c.i
-.PHONY : searching.c.i
-
-searching.s: searching.c.s
-.PHONY : searching.s
-
-# target to generate assembly for a file
-searching.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/searching.c.s
-.PHONY : searching.c.s
-
 sorting.o: sorting.c.o
 .PHONY : sorting.o
 
@@ -1007,12 +959,6 @@ help:
 	@echo "... printing.o"
 	@echo "... printing.i"
 	@echo "... printing.s"
-	@echo "... range.o"
-	@echo "... range.i"
-	@echo "... range.s"
-	@echo "... searching.o"
-	@echo "... searching.i"
-	@echo "... searching.s"
 	@echo "... sorting.o"
 	@echo "... sorting.i"
 	@echo "... sorting.s"

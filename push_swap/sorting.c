@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/10 23:36:02 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/11 22:50:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_three_data(t_stack *a, int *first, int *second, int *third)
 {
-	*first = a->data[front(a)];
+	*first = top(a);
 	*second = a->data[(a->front + 2 + a->size) % a->size];
 	*third = a->data[(a->front + 3 + a->size) % a->size];
 }
@@ -26,7 +26,7 @@ void	sort_small(t_stack *a)
 	int	third;
 
 	get_three_data(a, &first, &second, &third);
-	if (a->size == 2)
+	if (a->len == 2)
 	{
 		if (first > second)
 			swap(a);
@@ -60,19 +60,20 @@ void	sort_complex(t_stack *a, t_stack *b)
 	{
 		select_optimal_choice(a, b, &move);
 		run_optimal_move(a, b, &move);
-		for (int i = front(a); i != a->front; i = (i + 1 + a->size) % a->size)
+		for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
 			printf("%d\n", a->data[i]);
 	}
 	max_idx = find_max(a);
 	max = a->data[max_idx];
-	while (bottom(a) != max)
-	{
-		if (max_idx > a->size / 2)
-			rotate(a);
-		else
-			reverse_rotate(a);
-	}
-	for (int i = front(a); i != a->front; i = (i + 1 + a->size) % a->size)
+	// while (bottom(a) != max)
+	// {
+	// 	if (max_idx > a->len / 2)
+	// 		rotate(a);
+	// 	else
+	// 		reverse_rotate(a);
+	// }
+	printf("\nresult :\n");
+	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
 		printf("%d\n", a->data[i]);
 
 }

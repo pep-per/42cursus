@@ -61,16 +61,6 @@
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
-  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/range.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/range.c",
-  "file": "/Users/jiyeolee/WORKSPACE/push_swap/range.c"
-},
-{
-  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
-  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/searching.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/searching.c",
-  "file": "/Users/jiyeolee/WORKSPACE/push_swap/searching.c"
-},
-{
-  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
   "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/sorting.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/sorting.c",
   "file": "/Users/jiyeolee/WORKSPACE/push_swap/sorting.c"
 },
