@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/11 22:50:25 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:23:01 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,22 @@ void	sort_small(t_stack *a)
 	int	third;
 
 	get_three_data(a, &first, &second, &third);
-	if (a->len == 2)
+	if (a->len > 2)
 	{
-		if (first > second)
-			swap(a);
-		return ;
+		if (first < second && second > third)
+		{
+			reverse_rotate(a);
+			if (first < third)
+				swap(a);
+		}
+		else if (first > second && first > third)
+		{
+			rotate(a);
+			if (second > third)
+				swap(a);
+		}
 	}
-	if (first < second && second > third)
-	{
-		reverse_rotate(a);
-		if (first < third)
-			swap(a);
-	}
-	else if (first > second && first > third)
-	{
-		rotate(a);
-		if (second > third)
-			swap(a);
-	}
-	else
+	if (first > second)
 		swap(a);
 }
 
@@ -55,7 +52,12 @@ void	sort_complex(t_stack *a, t_stack *b)
 	int		max_idx;
 
 	partitioning(a, b);
+	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
+		printf("%d\n", a->data[i]);
 	sort_small(a);
+	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
+		printf("%d\n", a->data[i]);
+	printf("\n");
 	while (b->len > 0)
 	{
 		select_optimal_choice(a, b, &move);
@@ -63,6 +65,8 @@ void	sort_complex(t_stack *a, t_stack *b)
 		for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
 			printf("%d\n", a->data[i]);
 	}
+	printf("\n");
+
 	max_idx = find_max(a);
 	max = a->data[max_idx];
 	// while (bottom(a) != max)

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:38 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/11 21:27:55 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:14:49 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,34 @@ void	partitioning(t_stack *a, t_stack *b)
 {
 	int	pivot1;
 	int	pivot2;
+	int	len;
 	int	i;
 
 	pivot1 = (a->size - 1) / 3;
 	pivot2 = pivot1 + (a->size - 1) / 3;
-	i = 0;
-	while (i != a->size - 1)
+	len = a->len;
+	while (len > 0)
 	{
+		i = front(a);
 		if (a->data[i] < pivot1)
 		{
-			push(a, b);
-			rotate(b);
+			if (a->len > 1 && a->data[(i + 1 + a->size) % a->size] >= pivot2)
+			{
+				push(a, b);
+				rotate_double(a, b);
+				len--;
+			}
+			else
+			{
+				push(a, b);
+				rotate(b);
+			}
 		}
 		else if (a->data[i] < pivot2)
 			push(a, b);
 		else
 			rotate(a);
-		i++;
+		len--;
 	}
 	while (a->len > 3)
 		push(a, b);
