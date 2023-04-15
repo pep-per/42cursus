@@ -595,54 +595,6 @@ greedy.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy.c.s
 .PHONY : greedy.c.s
 
-greedy_a.o: greedy_a.c.o
-.PHONY : greedy_a.o
-
-# target to build an object file
-greedy_a.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_a.c.o
-.PHONY : greedy_a.c.o
-
-greedy_a.i: greedy_a.c.i
-.PHONY : greedy_a.i
-
-# target to preprocess a source file
-greedy_a.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_a.c.i
-.PHONY : greedy_a.c.i
-
-greedy_a.s: greedy_a.c.s
-.PHONY : greedy_a.s
-
-# target to generate assembly for a file
-greedy_a.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_a.c.s
-.PHONY : greedy_a.c.s
-
-greedy_b.o: greedy_b.c.o
-.PHONY : greedy_b.o
-
-# target to build an object file
-greedy_b.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_b.c.o
-.PHONY : greedy_b.c.o
-
-greedy_b.i: greedy_b.c.i
-.PHONY : greedy_b.i
-
-# target to preprocess a source file
-greedy_b.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_b.c.i
-.PHONY : greedy_b.c.i
-
-greedy_b.s: greedy_b.c.s
-.PHONY : greedy_b.s
-
-# target to generate assembly for a file
-greedy_b.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy_b.c.s
-.PHONY : greedy_b.c.s
-
 indexing.o: indexing.c.o
 .PHONY : indexing.o
 
@@ -932,12 +884,6 @@ help:
 	@echo "... greedy.o"
 	@echo "... greedy.i"
 	@echo "... greedy.s"
-	@echo "... greedy_a.o"
-	@echo "... greedy_a.i"
-	@echo "... greedy_a.s"
-	@echo "... greedy_b.o"
-	@echo "... greedy_b.i"
-	@echo "... greedy_b.s"
 	@echo "... indexing.o"
 	@echo "... indexing.i"
 	@echo "... indexing.s"

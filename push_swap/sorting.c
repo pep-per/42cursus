@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/12 22:23:01 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/15 21:25:18 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,30 @@ void	sort_small(t_stack *a)
 		swap(a);
 }
 
+void	join_triangles(t_stack *a)
+{
+	int	cnt;
+
+	cnt = count_to_top(a, 0);
+	if (cnt > a->len / 2)
+	{
+		cnt = a->len - cnt;
+		while (cnt-- > 0)
+			reverse_rotate(a);
+	}
+	else
+	{
+		while (cnt-- > 0)
+			rotate(a);
+	}
+}
+
 void	sort_complex(t_stack *a, t_stack *b)
 {
 	t_move	move;
-	int		max;
-	int		max_idx;
 
 	partitioning(a, b);
-	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
-		printf("%d\n", a->data[i]);
 	sort_small(a);
-	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
-		printf("%d\n", a->data[i]);
-	printf("\n");
 	while (b->len > 0)
 	{
 		select_optimal_choice(a, b, &move);
@@ -66,16 +77,7 @@ void	sort_complex(t_stack *a, t_stack *b)
 			printf("%d\n", a->data[i]);
 	}
 	printf("\n");
-
-	max_idx = find_max(a);
-	max = a->data[max_idx];
-	// while (bottom(a) != max)
-	// {
-	// 	if (max_idx > a->len / 2)
-	// 		rotate(a);
-	// 	else
-	// 		reverse_rotate(a);
-	// }
+	join_triangles(a);
 	printf("\nresult :\n");
 	for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
 		printf("%d\n", a->data[i]);

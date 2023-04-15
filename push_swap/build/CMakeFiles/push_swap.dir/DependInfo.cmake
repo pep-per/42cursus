@@ -11,8 +11,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jiyeolee/WORKSPACE/push_swap/Initialization.c" "CMakeFiles/push_swap.dir/Initialization.c.o" "gcc" "CMakeFiles/push_swap.dir/Initialization.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/error_handling.c" "CMakeFiles/push_swap.dir/error_handling.c.o" "gcc" "CMakeFiles/push_swap.dir/error_handling.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/greedy.c" "CMakeFiles/push_swap.dir/greedy.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy.c.o.d"
-  "/Users/jiyeolee/WORKSPACE/push_swap/greedy_a.c" "CMakeFiles/push_swap.dir/greedy_a.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy_a.c.o.d"
-  "/Users/jiyeolee/WORKSPACE/push_swap/greedy_b.c" "CMakeFiles/push_swap.dir/greedy_b.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy_b.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/indexing.c" "CMakeFiles/push_swap.dir/indexing.c.o" "gcc" "CMakeFiles/push_swap.dir/indexing.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/main.c" "CMakeFiles/push_swap.dir/main.c.o" "gcc" "CMakeFiles/push_swap.dir/main.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/operation.c" "CMakeFiles/push_swap.dir/operation.c.o" "gcc" "CMakeFiles/push_swap.dir/operation.c.o.d"
