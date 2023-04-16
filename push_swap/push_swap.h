@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/15 21:43:08 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/17 05:32:42 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include "./Libft/libft.h"
 // # include "./ft_printf/mandatory/ft_printf.h"
-# define ERROR -1
+// # define ERROR -1
 
 
 
@@ -65,8 +65,10 @@ enum e_cmd
 	RRR
 };
 
+void	quick_swap(int arr[], int left, int right);
 void	ft_quick_sort(int arr[], int l, int r);
 int		*validate_data(char **argv, int size);
+void	index_data(int *data, int size, int *sorted);
 void	set_stack(t_stack *a, char **argv);
 
 int		count_data(char **s, char c);
@@ -77,21 +79,23 @@ void	get_data(char **argv, int *data, int size);
 void	initialize_a(t_stack *a, int size, int *data);
 void	initialize_b(t_stack *b, int size, int *data);
 
-void	index_data(int *data, int size, int *sorted);
+void	get_three(t_stack *a, int *first, int *second, int *third);
+void	sort_three(t_stack *a);
+void	sort_five(t_stack *a, t_stack *b);
+void	sort_big(t_stack *a, t_stack *b);
 
-void	get_three_data(t_stack *a, int *first, int *second, int *third);
-void	sort_complex(t_stack *a, t_stack *b);
-void	join_triangles(t_stack *a);
-void	sort_small(t_stack *a);
+void	partitioning(t_stack *a, t_stack *b, int pivot1, int pivot2);
 
-void	partitioning(t_stack *a, t_stack *b);
-
+void	optimize_rotation(t_stack *a, int data);
+int		is_right_position(t_stack *a, int curr, int next, int new);
 int		count_to_top(t_stack *a, int data);
-int		count_move_in_a(t_stack *a, t_move *move, int data);
-int		count_move_in_b(t_stack *b, t_move *move, int idx);
-int		sum_move_count(t_stack *a, t_stack *b, t_move *move, int i);
+int		count_move_in_a(t_stack *a, t_move *move, int new);
+int		count_move_in_b(t_stack *b, t_move *move, int data);
+
+int		sum_move_count(t_stack *a, t_stack *b, t_move *move, int data);
 void	select_optimal_choice(t_stack *a, t_stack *b, t_move *move);
 void	double_move(t_stack *a, t_stack *b, t_move *move);
+void	double_move_reverse(t_stack *a, t_stack *b, t_move *move);
 void	run_optimal_move(t_stack *a, t_stack *b, t_move *move);
 
 void	rotate(t_stack *stack);

@@ -523,30 +523,6 @@ push_swap/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/build
 .PHONY : push_swap/fast
 
-Initialization.o: Initialization.c.o
-.PHONY : Initialization.o
-
-# target to build an object file
-Initialization.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.o
-.PHONY : Initialization.c.o
-
-Initialization.i: Initialization.c.i
-.PHONY : Initialization.i
-
-# target to preprocess a source file
-Initialization.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.i
-.PHONY : Initialization.c.i
-
-Initialization.s: Initialization.c.s
-.PHONY : Initialization.s
-
-# target to generate assembly for a file
-Initialization.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/Initialization.c.s
-.PHONY : Initialization.c.s
-
 error_handling.o: error_handling.c.o
 .PHONY : error_handling.o
 
@@ -595,29 +571,29 @@ greedy.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/greedy.c.s
 .PHONY : greedy.c.s
 
-indexing.o: indexing.c.o
-.PHONY : indexing.o
+initialization.o: initialization.c.o
+.PHONY : initialization.o
 
 # target to build an object file
-indexing.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/indexing.c.o
-.PHONY : indexing.c.o
+initialization.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/initialization.c.o
+.PHONY : initialization.c.o
 
-indexing.i: indexing.c.i
-.PHONY : indexing.i
+initialization.i: initialization.c.i
+.PHONY : initialization.i
 
 # target to preprocess a source file
-indexing.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/indexing.c.i
-.PHONY : indexing.c.i
+initialization.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/initialization.c.i
+.PHONY : initialization.c.i
 
-indexing.s: indexing.c.s
-.PHONY : indexing.s
+initialization.s: initialization.c.s
+.PHONY : initialization.s
 
 # target to generate assembly for a file
-indexing.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/indexing.c.s
-.PHONY : indexing.c.s
+initialization.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/initialization.c.s
+.PHONY : initialization.c.s
 
 main.o: main.c.o
 .PHONY : main.o
@@ -666,6 +642,30 @@ operation.s: operation.c.s
 operation.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation.c.s
 .PHONY : operation.c.s
+
+optimization.o: optimization.c.o
+.PHONY : optimization.o
+
+# target to build an object file
+optimization.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/optimization.c.o
+.PHONY : optimization.c.o
+
+optimization.i: optimization.c.i
+.PHONY : optimization.i
+
+# target to preprocess a source file
+optimization.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/optimization.c.i
+.PHONY : optimization.c.i
+
+optimization.s: optimization.c.s
+.PHONY : optimization.s
+
+# target to generate assembly for a file
+optimization.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/optimization.c.s
+.PHONY : optimization.c.s
 
 parsing.o: parsing.c.o
 .PHONY : parsing.o
@@ -875,24 +875,24 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... push_swap"
-	@echo "... Initialization.o"
-	@echo "... Initialization.i"
-	@echo "... Initialization.s"
 	@echo "... error_handling.o"
 	@echo "... error_handling.i"
 	@echo "... error_handling.s"
 	@echo "... greedy.o"
 	@echo "... greedy.i"
 	@echo "... greedy.s"
-	@echo "... indexing.o"
-	@echo "... indexing.i"
-	@echo "... indexing.s"
+	@echo "... initialization.o"
+	@echo "... initialization.i"
+	@echo "... initialization.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... operation.o"
 	@echo "... operation.i"
 	@echo "... operation.s"
+	@echo "... optimization.o"
+	@echo "... optimization.i"
+	@echo "... optimization.s"
 	@echo "... parsing.o"
 	@echo "... parsing.i"
 	@echo "... parsing.s"

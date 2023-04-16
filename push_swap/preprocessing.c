@@ -6,18 +6,26 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/11 19:04:27 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/17 04:46:07 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	quick_swap(int arr[], int left, int right)
+{
+	int	temp;
+
+	temp = arr[left];
+	arr[left] = arr[right];
+	arr[right] = temp;
+}
 
 void	ft_quick_sort(int arr[], int l, int r)
 {
 	int	left;
 	int	right;
 	int	pivot;
-	int	temp;
 
 	left = l;
 	right = r;
@@ -30,9 +38,7 @@ void	ft_quick_sort(int arr[], int l, int r)
 			right--;
 		if (left <= right)
 		{
-			temp = arr[left];
-			arr[left] = arr[right];
-			arr[right] = temp;
+			quick_swap(arr, left, right);
 			left++;
 			right--;
 		}
@@ -59,6 +65,23 @@ int	*validate_data(char **argv, int size)
 		exit(1);
 	}
 	return (data);
+}
+
+void	index_data(int *data, int size, int *sorted)
+{
+	int	i;
+	int	idx;
+
+	i = 0;
+	while (i < size)
+	{
+		idx = 0;
+		while (sorted[idx] != data[i])
+			idx++;
+		data[i] = idx;
+		i++;
+	}
+	free(sorted);
 }
 
 void	set_stack(t_stack *a, char **argv)

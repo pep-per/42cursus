@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/04/14 16:42:45 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/04/17 01:53:10 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = push_swap
 SRCS = 	main.c \
 		preprocessing.c \
 		parsing.c \
-		indexing.c \
-		Initialization.c \
+		initialization.c \
 		sorting.c \
 		partitioning.c \
 		greedy.c \
+		optimization.c \
 		operation.c \
 		stack1.c \
 		stack2.c \

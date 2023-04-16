@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/jiyeolee/WORKSPACE/push_swap/Initialization.c" "CMakeFiles/push_swap.dir/Initialization.c.o" "gcc" "CMakeFiles/push_swap.dir/Initialization.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/error_handling.c" "CMakeFiles/push_swap.dir/error_handling.c.o" "gcc" "CMakeFiles/push_swap.dir/error_handling.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/greedy.c" "CMakeFiles/push_swap.dir/greedy.c.o" "gcc" "CMakeFiles/push_swap.dir/greedy.c.o.d"
-  "/Users/jiyeolee/WORKSPACE/push_swap/indexing.c" "CMakeFiles/push_swap.dir/indexing.c.o" "gcc" "CMakeFiles/push_swap.dir/indexing.c.o.d"
+  "/Users/jiyeolee/WORKSPACE/push_swap/initialization.c" "CMakeFiles/push_swap.dir/initialization.c.o" "gcc" "CMakeFiles/push_swap.dir/initialization.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/main.c" "CMakeFiles/push_swap.dir/main.c.o" "gcc" "CMakeFiles/push_swap.dir/main.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/operation.c" "CMakeFiles/push_swap.dir/operation.c.o" "gcc" "CMakeFiles/push_swap.dir/operation.c.o.d"
+  "/Users/jiyeolee/WORKSPACE/push_swap/optimization.c" "CMakeFiles/push_swap.dir/optimization.c.o" "gcc" "CMakeFiles/push_swap.dir/optimization.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/parsing.c" "CMakeFiles/push_swap.dir/parsing.c.o" "gcc" "CMakeFiles/push_swap.dir/parsing.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/partitioning.c" "CMakeFiles/push_swap.dir/partitioning.c.o" "gcc" "CMakeFiles/push_swap.dir/partitioning.c.o.d"
   "/Users/jiyeolee/WORKSPACE/push_swap/preprocessing.c" "CMakeFiles/push_swap.dir/preprocessing.c.o" "gcc" "CMakeFiles/push_swap.dir/preprocessing.c.o.d"

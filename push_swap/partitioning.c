@@ -6,32 +6,27 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:38 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/12 22:14:49 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/17 05:04:02 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	partitioning(t_stack *a, t_stack *b)
+void	partitioning(t_stack *a, t_stack *b, int pivot1, int pivot2)
 {
-	int	pivot1;
-	int	pivot2;
 	int	len;
 	int	i;
 
-	pivot1 = (a->size - 1) / 3;
-	pivot2 = pivot1 + (a->size - 1) / 3;
 	len = a->len;
-	while (len > 0)
+	while (len-- > 0)
 	{
 		i = front(a);
 		if (a->data[i] < pivot1)
 		{
-			if (a->len > 1 && a->data[(i + 1 + a->size) % a->size] >= pivot2)
+			if (a->len-- > 1 && a->data[(i + 1 + a->size) % a->size] >= pivot2)
 			{
 				push(a, b);
 				rotate_double(a, b);
-				len--;
 			}
 			else
 			{
@@ -43,8 +38,5 @@ void	partitioning(t_stack *a, t_stack *b)
 			push(a, b);
 		else
 			rotate(a);
-		len--;
 	}
-	while (a->len > 3)
-		push(a, b);
 }
