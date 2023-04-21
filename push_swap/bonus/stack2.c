@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   stack2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 16:46:45 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/11/14 15:43:07 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/03/28 01:41:58 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/21 21:40:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker_bonus.h"
 
-size_t	ft_strlen(const char *s)
+int	front(t_stack *stack)
 {
-	size_t	i;
+	return ((stack->front + 1 + stack->size) % stack->size);
+}
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+int	top(t_stack *stack)
+{
+	return (stack->data[front(stack)]);
+}
+
+int	bottom(t_stack *stack)
+{
+	return (stack->data[stack->rear]);
 }

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 20:33:06 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/04/18 21:39:32 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/21 23:03:12 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "./Libft/libft.h"
+# include "../Libft/libft.h"
 
 
-
-
-
-# include <stdio.h>
-
-
-
-
+#include <stdio.h>
 
 
 
@@ -40,28 +33,7 @@ typedef struct s_stack
 	int	a;
 }	t_stack;
 
-typedef struct s_move
-{
-	int	ra_cnt;
-	int	rra_cnt;
-	int	rb_cnt;
-	int	rrb_cnt;
-}	t_move;
-
-enum e_cmd
-{
-	SA,
-	SB,
-	SS,
-	PA,
-	PB,
-	RA,
-	RB,
-	RR,
-	RRA,
-	RRB,
-	RRR
-};
+char	*get_next_line(int *error);
 
 void	quick_swap(int arr[], int left, int right);
 void	ft_quick_sort(int arr[], int l, int r);
@@ -76,25 +48,6 @@ void	get_data(char **argv, int *data, int size);
 
 void	initialize_a(t_stack *a, int size, int *data);
 void	initialize_b(t_stack *b, int size, int *data);
-
-void	get_three(t_stack *a, int *first, int *second, int *third);
-void	sort_three(t_stack *a);
-void	sort_five(t_stack *a, t_stack *b);
-void	sort_big(t_stack *a, t_stack *b);
-
-void	partitioning(t_stack *a, t_stack *b, int pivot1, int pivot2);
-
-void	optimize_rotation(t_stack *a, int data);
-int		is_right_position(t_stack *a, int curr, int next, int new);
-int		count_to_top(t_stack *a, int data);
-int		count_move_in_a(t_stack *a, t_move *move, int new);
-int		count_move_in_b(t_stack *b, t_move *move, int data);
-
-int		sum_move_count(t_stack *a, t_stack *b, t_move *move, int data);
-void	select_optimal_choice(t_stack *a, t_stack *b, t_move *move);
-void	double_move(t_stack *a, t_stack *b, t_move *move);
-void	double_move_reverse(t_stack *a, t_stack *b, t_move *move);
-void	run_optimal_move(t_stack *a, t_stack *b, t_move *move);
 
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
@@ -113,8 +66,6 @@ int		pop_rear(t_stack *stack);
 int		front(t_stack *stack);
 int		top(t_stack *stack);
 int		bottom(t_stack *stack);
-
-void	print_operation(int op);
 
 void	error_exit(void);
 void	free_strs(char **strs);

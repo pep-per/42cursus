@@ -6,17 +6,18 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 04:49:06 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 22:54:22 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/21 23:03:07 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 int	count_data(char **s, char c)
 {
 	int	i;
 	int	j;
 	int	count;
+	int	is_blank;
 
 	i = 0;
 	count = 0;
@@ -25,17 +26,21 @@ int	count_data(char **s, char c)
 		j = 0;
 		if (!s[i][j])
 			error_exit();
+		is_blank = 1;
 		while (s[i][j])
 		{
 			while (s[i][j] == c)
 				j++;
-			if (ft_isdigit(s[i][j]) || s[i][j] == '-' || s[i][j] == '+')
+			if (s[i][j])
+			{
 				count++;
-			else
-				error_exit();
+				is_blank = 0;
+			}
 			while (s[i][j] != c && s[i][j])
 				j++;
 		}
+		if (is_blank)
+			error_exit();
 		i++;
 	}
 	return (count);

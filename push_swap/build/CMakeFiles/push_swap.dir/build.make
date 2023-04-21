@@ -125,24 +125,38 @@ CMakeFiles/push_swap.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/push_swap.dir/main.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/push_swap/main.c -o CMakeFiles/push_swap.dir/main.c.s
 
-CMakeFiles/push_swap.dir/operation.c.o: CMakeFiles/push_swap.dir/flags.make
-CMakeFiles/push_swap.dir/operation.c.o: /Users/jiyeolee/WORKSPACE/push_swap/operation.c
-CMakeFiles/push_swap.dir/operation.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/push_swap.dir/operation.c.o"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/operation.c.o -MF CMakeFiles/push_swap.dir/operation.c.o.d -o CMakeFiles/push_swap.dir/operation.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation.c
+CMakeFiles/push_swap.dir/operation1.c.o: CMakeFiles/push_swap.dir/flags.make
+CMakeFiles/push_swap.dir/operation1.c.o: /Users/jiyeolee/WORKSPACE/push_swap/operation1.c
+CMakeFiles/push_swap.dir/operation1.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/push_swap.dir/operation1.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/operation1.c.o -MF CMakeFiles/push_swap.dir/operation1.c.o.d -o CMakeFiles/push_swap.dir/operation1.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation1.c
 
-CMakeFiles/push_swap.dir/operation.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/push_swap.dir/operation.c.i"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jiyeolee/WORKSPACE/push_swap/operation.c > CMakeFiles/push_swap.dir/operation.c.i
+CMakeFiles/push_swap.dir/operation1.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/push_swap.dir/operation1.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jiyeolee/WORKSPACE/push_swap/operation1.c > CMakeFiles/push_swap.dir/operation1.c.i
 
-CMakeFiles/push_swap.dir/operation.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/push_swap.dir/operation.c.s"
-	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/push_swap/operation.c -o CMakeFiles/push_swap.dir/operation.c.s
+CMakeFiles/push_swap.dir/operation1.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/push_swap.dir/operation1.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/push_swap/operation1.c -o CMakeFiles/push_swap.dir/operation1.c.s
+
+CMakeFiles/push_swap.dir/operation2.c.o: CMakeFiles/push_swap.dir/flags.make
+CMakeFiles/push_swap.dir/operation2.c.o: /Users/jiyeolee/WORKSPACE/push_swap/operation2.c
+CMakeFiles/push_swap.dir/operation2.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/push_swap.dir/operation2.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/operation2.c.o -MF CMakeFiles/push_swap.dir/operation2.c.o.d -o CMakeFiles/push_swap.dir/operation2.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation2.c
+
+CMakeFiles/push_swap.dir/operation2.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/push_swap.dir/operation2.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/jiyeolee/WORKSPACE/push_swap/operation2.c > CMakeFiles/push_swap.dir/operation2.c.i
+
+CMakeFiles/push_swap.dir/operation2.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/push_swap.dir/operation2.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/jiyeolee/WORKSPACE/push_swap/operation2.c -o CMakeFiles/push_swap.dir/operation2.c.s
 
 CMakeFiles/push_swap.dir/optimization.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/optimization.c.o: /Users/jiyeolee/WORKSPACE/push_swap/optimization.c
 CMakeFiles/push_swap.dir/optimization.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/push_swap.dir/optimization.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/push_swap.dir/optimization.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/optimization.c.o -MF CMakeFiles/push_swap.dir/optimization.c.o.d -o CMakeFiles/push_swap.dir/optimization.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/optimization.c
 
 CMakeFiles/push_swap.dir/optimization.c.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/push_swap.dir/optimization.c.s: cmake_force
 CMakeFiles/push_swap.dir/parsing.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/parsing.c.o: /Users/jiyeolee/WORKSPACE/push_swap/parsing.c
 CMakeFiles/push_swap.dir/parsing.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/push_swap.dir/parsing.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/push_swap.dir/parsing.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/parsing.c.o -MF CMakeFiles/push_swap.dir/parsing.c.o.d -o CMakeFiles/push_swap.dir/parsing.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/parsing.c
 
 CMakeFiles/push_swap.dir/parsing.c.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/push_swap.dir/parsing.c.s: cmake_force
 CMakeFiles/push_swap.dir/partitioning.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/partitioning.c.o: /Users/jiyeolee/WORKSPACE/push_swap/partitioning.c
 CMakeFiles/push_swap.dir/partitioning.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/push_swap.dir/partitioning.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/push_swap.dir/partitioning.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/partitioning.c.o -MF CMakeFiles/push_swap.dir/partitioning.c.o.d -o CMakeFiles/push_swap.dir/partitioning.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/partitioning.c
 
 CMakeFiles/push_swap.dir/partitioning.c.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/push_swap.dir/partitioning.c.s: cmake_force
 CMakeFiles/push_swap.dir/preprocessing.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/preprocessing.c.o: /Users/jiyeolee/WORKSPACE/push_swap/preprocessing.c
 CMakeFiles/push_swap.dir/preprocessing.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/push_swap.dir/preprocessing.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/push_swap.dir/preprocessing.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/preprocessing.c.o -MF CMakeFiles/push_swap.dir/preprocessing.c.o.d -o CMakeFiles/push_swap.dir/preprocessing.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/preprocessing.c
 
 CMakeFiles/push_swap.dir/preprocessing.c.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/push_swap.dir/preprocessing.c.s: cmake_force
 CMakeFiles/push_swap.dir/printing.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/printing.c.o: /Users/jiyeolee/WORKSPACE/push_swap/printing.c
 CMakeFiles/push_swap.dir/printing.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/push_swap.dir/printing.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/push_swap.dir/printing.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/printing.c.o -MF CMakeFiles/push_swap.dir/printing.c.o.d -o CMakeFiles/push_swap.dir/printing.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/printing.c
 
 CMakeFiles/push_swap.dir/printing.c.i: cmake_force
@@ -212,7 +226,7 @@ CMakeFiles/push_swap.dir/printing.c.s: cmake_force
 CMakeFiles/push_swap.dir/sorting.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/sorting.c.o: /Users/jiyeolee/WORKSPACE/push_swap/sorting.c
 CMakeFiles/push_swap.dir/sorting.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/push_swap.dir/sorting.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/push_swap.dir/sorting.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/sorting.c.o -MF CMakeFiles/push_swap.dir/sorting.c.o.d -o CMakeFiles/push_swap.dir/sorting.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/sorting.c
 
 CMakeFiles/push_swap.dir/sorting.c.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/push_swap.dir/sorting.c.s: cmake_force
 CMakeFiles/push_swap.dir/stack1.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/stack1.c.o: /Users/jiyeolee/WORKSPACE/push_swap/stack1.c
 CMakeFiles/push_swap.dir/stack1.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/push_swap.dir/stack1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/push_swap.dir/stack1.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/stack1.c.o -MF CMakeFiles/push_swap.dir/stack1.c.o.d -o CMakeFiles/push_swap.dir/stack1.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/stack1.c
 
 CMakeFiles/push_swap.dir/stack1.c.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/push_swap.dir/stack1.c.s: cmake_force
 CMakeFiles/push_swap.dir/stack2.c.o: CMakeFiles/push_swap.dir/flags.make
 CMakeFiles/push_swap.dir/stack2.c.o: /Users/jiyeolee/WORKSPACE/push_swap/stack2.c
 CMakeFiles/push_swap.dir/stack2.c.o: CMakeFiles/push_swap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/push_swap.dir/stack2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/push_swap.dir/stack2.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/push_swap.dir/stack2.c.o -MF CMakeFiles/push_swap.dir/stack2.c.o.d -o CMakeFiles/push_swap.dir/stack2.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/stack2.c
 
 CMakeFiles/push_swap.dir/stack2.c.i: cmake_force
@@ -257,7 +271,8 @@ push_swap_OBJECTS = \
 "CMakeFiles/push_swap.dir/greedy.c.o" \
 "CMakeFiles/push_swap.dir/initialization.c.o" \
 "CMakeFiles/push_swap.dir/main.c.o" \
-"CMakeFiles/push_swap.dir/operation.c.o" \
+"CMakeFiles/push_swap.dir/operation1.c.o" \
+"CMakeFiles/push_swap.dir/operation2.c.o" \
 "CMakeFiles/push_swap.dir/optimization.c.o" \
 "CMakeFiles/push_swap.dir/parsing.c.o" \
 "CMakeFiles/push_swap.dir/partitioning.c.o" \
@@ -274,7 +289,8 @@ push_swap: CMakeFiles/push_swap.dir/error_handling.c.o
 push_swap: CMakeFiles/push_swap.dir/greedy.c.o
 push_swap: CMakeFiles/push_swap.dir/initialization.c.o
 push_swap: CMakeFiles/push_swap.dir/main.c.o
-push_swap: CMakeFiles/push_swap.dir/operation.c.o
+push_swap: CMakeFiles/push_swap.dir/operation1.c.o
+push_swap: CMakeFiles/push_swap.dir/operation2.c.o
 push_swap: CMakeFiles/push_swap.dir/optimization.c.o
 push_swap: CMakeFiles/push_swap.dir/parsing.c.o
 push_swap: CMakeFiles/push_swap.dir/partitioning.c.o
@@ -286,7 +302,7 @@ push_swap: CMakeFiles/push_swap.dir/stack2.c.o
 push_swap: CMakeFiles/push_swap.dir/build.make
 push_swap: /Users/jiyeolee/WORKSPACE/push_swap/Libft/libft.a
 push_swap: CMakeFiles/push_swap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking C executable push_swap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiyeolee/WORKSPACE/push_swap/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking C executable push_swap"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/push_swap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

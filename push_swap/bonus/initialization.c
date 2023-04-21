@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_free.c                                   :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 22:38:49 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/01/05 18:33:55 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/04/06 23:17:51 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/21 21:30:52 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker_bonus.h"
 
-int	ft_putstr_free(void *p, unsigned int len)
+void	initialize_a(t_stack *a, int size, int *data)
 {
-	if (write(1, (char *)p, len) == -1)
-	{
-		free(p);
-		return (-1);
-	}
-	free(p);
-	return (1);
+	a->data = data;
+	a->front = size - 1;
+	a->rear = size - 2;
+	a->len = size - 1;
+	a->size = size;
+	a->a = 1;
 }
 
-int	ft_putstr(void *p, unsigned int len)
+void	initialize_b(t_stack *b, int size, int *data)
 {
-	return (write(1, (char *)p, len));
+	b->data = (int *)malloc(sizeof(int) * size);
+	if (!b->data)
+		free_error(data);
+	b->front = 0;
+	b->rear = 0;
+	b->len = 0;
+	b->size = size;
+	b->a = 0;
 }

@@ -21,8 +21,13 @@
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
-  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/operation.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation.c",
-  "file": "/Users/jiyeolee/WORKSPACE/push_swap/operation.c"
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/operation1.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation1.c",
+  "file": "/Users/jiyeolee/WORKSPACE/push_swap/operation1.c"
+},
+{
+  "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",
+  "command": "/usr/bin/clang   -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -o CMakeFiles/push_swap.dir/operation2.c.o -c /Users/jiyeolee/WORKSPACE/push_swap/operation2.c",
+  "file": "/Users/jiyeolee/WORKSPACE/push_swap/operation2.c"
 },
 {
   "directory": "/Users/jiyeolee/WORKSPACE/push_swap/build",

@@ -619,29 +619,53 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/main.c.s
 .PHONY : main.c.s
 
-operation.o: operation.c.o
-.PHONY : operation.o
+operation1.o: operation1.c.o
+.PHONY : operation1.o
 
 # target to build an object file
-operation.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation.c.o
-.PHONY : operation.c.o
+operation1.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation1.c.o
+.PHONY : operation1.c.o
 
-operation.i: operation.c.i
-.PHONY : operation.i
+operation1.i: operation1.c.i
+.PHONY : operation1.i
 
 # target to preprocess a source file
-operation.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation.c.i
-.PHONY : operation.c.i
+operation1.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation1.c.i
+.PHONY : operation1.c.i
 
-operation.s: operation.c.s
-.PHONY : operation.s
+operation1.s: operation1.c.s
+.PHONY : operation1.s
 
 # target to generate assembly for a file
-operation.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation.c.s
-.PHONY : operation.c.s
+operation1.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation1.c.s
+.PHONY : operation1.c.s
+
+operation2.o: operation2.c.o
+.PHONY : operation2.o
+
+# target to build an object file
+operation2.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation2.c.o
+.PHONY : operation2.c.o
+
+operation2.i: operation2.c.i
+.PHONY : operation2.i
+
+# target to preprocess a source file
+operation2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation2.c.i
+.PHONY : operation2.c.i
+
+operation2.s: operation2.c.s
+.PHONY : operation2.s
+
+# target to generate assembly for a file
+operation2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/operation2.c.s
+.PHONY : operation2.c.s
 
 optimization.o: optimization.c.o
 .PHONY : optimization.o
@@ -887,9 +911,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... operation.o"
-	@echo "... operation.i"
-	@echo "... operation.s"
+	@echo "... operation1.o"
+	@echo "... operation1.i"
+	@echo "... operation1.s"
+	@echo "... operation2.o"
+	@echo "... operation2.i"
+	@echo "... operation2.s"
 	@echo "... optimization.o"
 	@echo "... optimization.i"
 	@echo "... optimization.s"

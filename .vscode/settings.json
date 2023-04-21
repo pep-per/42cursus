@@ -8,7 +8,8 @@
 		"ft_printf.h": "c",
 		"unistd.h": "c",
 		"get_next_line.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"checker_bonus.h": "c"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
 }

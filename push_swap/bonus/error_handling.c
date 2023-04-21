@@ -1,18 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 17:24:16 by jiyeolee          #+#    #+#             */
-/*   Updated: 2022/12/17 15:09:43 by jiyeolee         ###   ########.fr       */
+/*   Created: 2023/03/05 22:04:49 by jiyeolee          #+#    #+#             */
+/*   Updated: 2023/04/21 21:45:56 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker_bonus.h"
 
-int	ft_isdigit(int c)
+void	error_exit(void)
 {
-	return (c >= '0' && c <= '9');
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	free_strs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+}
+
+void	invalid_data_error(char **strs, int *data)
+{
+	free_strs(strs);
+	free(data);
+	error_exit();
+}
+
+void	free_error(int *data)
+{
+	free(data);
+	error_exit();
 }
