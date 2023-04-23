@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 01:49:05 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/17 05:28:15 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:46:18 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	count_move_in_a(t_stack *a, t_move *move, int new)
 	}
 	else
 		move->rra_cnt = cnt;
-	// printf("ra %d , rra %d\n", move->ra_cnt, move->rra_cnt);
 	return (cnt);
 }
 

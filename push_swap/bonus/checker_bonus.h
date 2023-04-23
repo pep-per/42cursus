@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 21:39:32 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 23:03:12 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:36:54 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../Libft/libft.h"
-
-
-#include <stdio.h>
-
-
-
 
 typedef struct s_stack
 {
@@ -33,6 +27,11 @@ typedef struct s_stack
 	int	a;
 }	t_stack;
 
+int		is_sorted_result(t_stack *a);
+void	check_sorting(t_stack *a, t_stack *b);
+void	execute_command(char *input, int *error, t_stack *a, t_stack *b);
+void	check_command(t_stack *a, t_stack *b);
+
 char	*get_next_line(int *error);
 
 void	quick_swap(int arr[], int left, int right);
@@ -41,6 +40,7 @@ int		*validate_data(char **argv, int size);
 void	index_data(int *data, int size, int *sorted);
 void	set_stack(t_stack *a, char **argv);
 
+void	plus_count(char *s, char c, int *count);
 int		count_data(char **s, char c);
 int		is_sorted(int *data, int size);
 int		is_duplicate(int *data, int size);

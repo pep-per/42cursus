@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/04/21 21:45:19 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/04/23 22:53:57 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,18 @@ SRCS = 	main.c \
 		error_handling.c
 BONUS_SRCS = ./bonus/checker_bonus.c \
 			 ./bonus/get_next_line_bonus.c \
-			./bonus/preprocessing.c \
-			./bonus/parsing.c \
-			./bonus/initialization.c \
-			./bonus/operation1.c \
-			./bonus/operation2.c \
-			./bonus/stack1.c \
-			./bonus/stack2.c \
-			./bonus/error_handling.c
+			./bonus/preprocessing_bonus.c \
+			./bonus/parsing_bonus.c \
+			./bonus/initialization_bonus.c \
+			./bonus/operation1_bonus.c \
+			./bonus/operation2_bonus.c \
+			./bonus/stack1_bonus.c \
+			./bonus/stack2_bonus.c \
+			./bonus/error_handling_bonus.c
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -LLibft -lft
 LIB = ./Libft
 

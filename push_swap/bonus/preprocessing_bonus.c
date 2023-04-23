@@ -6,11 +6,11 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:59:34 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/23 20:23:33 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 20:47:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 void	quick_swap(int arr[], int left, int right)
 {
@@ -59,11 +59,6 @@ int	*validate_data(char **argv, int size)
 	get_data(argv, data, size);
 	if (is_duplicate(data, size))
 		free_error(data);
-	if (is_sorted(data, size))
-	{
-		free(data);
-		exit(1);
-	}
 	return (data);
 }
 

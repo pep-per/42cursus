@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:17:03 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 20:33:06 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:47:00 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "./Libft/libft.h"
-
-
-
-
-
-# include <stdio.h>
-
-
-
-
-
-
-
 
 typedef struct s_stack
 {
@@ -69,6 +56,7 @@ int		*validate_data(char **argv, int size);
 void	index_data(int *data, int size, int *sorted);
 void	set_stack(t_stack *a, char **argv);
 
+void	plus_count(char *s, char c, int *count);
 int		count_data(char **s, char c);
 int		is_sorted(int *data, int size);
 int		is_duplicate(int *data, int size);

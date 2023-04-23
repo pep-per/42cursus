@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 21:38:28 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 22:13:46 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:52:33 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ void	execute_command(char *input, int *error, t_stack *a, t_stack *b)
 	else if (!ft_strncmp(input, "pb\n", 3))
 		push(a, b);
 	else if (!ft_strncmp(input, "ra\n", 3))
-	{
-		printf("res %d\n", ft_strncmp(input, "ra\n", 3));
 		rotate(a);
-	}
 	else if (!ft_strncmp(input, "rb\n", 3))
 		rotate(b);
 	else if (!ft_strncmp(input, "rr\n", 3))
@@ -77,11 +74,7 @@ void	check_command(t_stack *a, t_stack *b)
 	input = get_next_line(&error);
 	while (input)
 	{
-		printf("input %s\n", input);
 		execute_command(input, &error, a, b);
-		for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
-			printf("%d\n", a->data[i]);
-
 		if (error)
 			break ;
 		free(input);

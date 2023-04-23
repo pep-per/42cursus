@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 07:57:42 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/21 21:51:09 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:13:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,3 @@ char	*get_next_line(int *error)
 	}
 	return (line);
 }
-

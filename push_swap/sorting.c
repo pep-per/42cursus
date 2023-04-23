@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 22:42:00 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/18 20:47:46 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:44:25 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	sort_three(t_stack *a)
 		}
 		else if (first > second)
 			swap(a);
-
 	}
 	else if (first > second)
 		swap(a);
@@ -75,11 +74,6 @@ void	sort_big(t_stack *a, t_stack *b)
 	{
 		select_optimal_choice(a, b, &move);
 		run_optimal_move(a, b, &move);
-		// for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
-		// 	printf("%d\n", a->data[i]);
 	}
 	optimize_rotation(a, 0);
-		// for (int i = front(a); i != (a->rear + 1 + a->size) % a->size; i = (i + 1 + a->size) % a->size)
-		// 	printf("%d\n", a->data[i]);
-
 }

@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 05:06:17 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/17 05:41:33 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:49:06 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ void	select_optimal_choice(t_stack *a, t_stack *b, t_move *move)
 		i = (i + 1 + b->size) % b->size;
 	}
 	sum_move_count(a, b, move, b->data[optimal_idx]);
-	// printf("optimal data : %d\n", b->data[optimal_idx]);
-	// printf("ra %d , rb %d\n", move->ra_cnt, move->rb_cnt);
-	// printf("rra %d , rrb %d\n", move->rra_cnt, move->rrb_cnt);
-	// printf("\n");
 }
 
 void	double_move(t_stack *a, t_stack *b, t_move *move)
