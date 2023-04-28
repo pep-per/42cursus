@@ -9,7 +9,12 @@
 		"unistd.h": "c",
 		"get_next_line.h": "c",
 		"push_swap.h": "c",
-		"checker_bonus.h": "c"
+		"checker_bonus.h": "c",
+		"fractol.h": "c",
+		"math.h": "c",
+		"mlx.h": "c",
+		"cstdlib": "c",
+		"locale": "c"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
 }
