@@ -14,7 +14,19 @@
 		"math.h": "c",
 		"mlx.h": "c",
 		"cstdlib": "c",
-		"locale": "c"
+		"locale": "c",
+		"complex": "c",
+		"limits.h": "c",
+		"__config": "c",
+		"__errc": "c",
+		"__hash_table": "c",
+		"__locale": "c",
+		"__tuple": "c",
+		"bitset": "c",
+		"ios": "c",
+		"errno.h": "c",
+		"cstring": "c",
+		"cstdio": "c"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
 }

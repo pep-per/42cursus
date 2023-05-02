@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:55:38 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/04/28 21:41:41 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/05/02 20:28:04 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,40 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <errno.h>
 # include <math.h>
-# include <stdio.h>
+# include <string.h>
 # include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 
-typedef struct s_id
+# define SIZE_X 1920
+# define SIZE_Y 1080
+
+typedef struct s_data
 {
 	void	*win;
 	void	*mlx;
-}	t_id;
+	void	*img;
+	char	*addr;
+	int		type;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	double	rnum;
+	double	inum;
+}	t_data;
 
-typedef struct s_img
-{
-	double	real;
-	double	imaginary;
-}	t_img;
-
-enum e_cmd
+enum e_type
 {
 	JULIA,
 	MANDELBROT
+};
+
+enum e_hook
+{
+	ESC = 53,
+	DESTROY = 17
 };
 
 #endif
