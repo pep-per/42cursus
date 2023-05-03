@@ -26,7 +26,8 @@
 		"ios": "c",
 		"errno.h": "c",
 		"cstring": "c",
-		"cstdio": "c"
+		"cstdio": "c",
+		"string.h": "c"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
 }

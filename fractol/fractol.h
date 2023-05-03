@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:55:38 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/05/02 20:28:04 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/05/03 22:57:55 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <errno.h>
 # include <math.h>
 # include <string.h>
+# include <stdio.h>
 # include "./mlx/mlx.h"
 # include "./Libft/libft.h"
 

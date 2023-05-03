@@ -6,13 +6,13 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 20:20:02 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/05/02 23:07:19 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/05/03 23:10:48 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	set_key_hook(int key, t_data *data)
+int	key_hook(int key, t_data *data)
 {
 	if (key == ESC)
 	{
@@ -22,45 +22,74 @@ int	set_key_hook(int key, t_data *data)
 	return (0);
 }
 
-int	set_mouse_hook(t_data *data)
+// int	mouse_hook(int button, int x, int y, t_data *data)
+// {
+// 	if (button == 0)
+// 		;
+// }
+
+// 좌표에 맞는 색상 리턴
+// 수렴하면 0
+// 발산하면 depth에 따라 다른 색
+int	set_color(int n)
 {
+	int	color;
 
-}
-
-int	julia(int x, int y, t_data *data)
-{
-	int	i;
-	
-	// 좌표에 맞는 색상 리턴
-	// 수렴하면 0
-	// 발산하면 색칠, 깊이에 따라 변화.
-}
-
-int	set_color(int x, int y)
-{
-
-}
-
-int	mandelbrot(int x, int y, t_data *data)
-{
-	int		color;
-	int		depth;
-	double	a;
-	double	b;
-
-	a = data->rnum;
-	b = data->inum;
-	depth = 0;
-	while (depth < 10)
-	{
-		x = x * x - y * y + a;
-		y = 2 * x * y + b;
-		if (x * x + y * y > 2 * 2)
-			break ;
-		depth++;
-	}
-	color = set_color(x, y);
+	color = 0;
+	if (n > 80)
+		color += 100 << 8;
+	if (n > 60)
+		color += 100 << 16;
+	if (n > 40)
+		color += 100;
 	return (color);
+}
+
+// 프렉탈은 z에 대한 점화식 z(n+1) = z(n)^2 + c를 수렴시킨다.
+// x^2 + y^2 > 2^2면 발산한다.
+// z = x + yi
+// x, y는 실수
+// c = a + bi;
+// a, b는 실수
+// c를 고정하고 점화식을 수렴시키는 x, y의 집합
+// z를 그림
+int	julia(double x, double y, t_data *data)
+{
+	double	tmp_x;
+	int		n;
+
+	n = 0;
+	while (n < 100 && x * x + y * y <= 2 * 2)
+	{
+		tmp_x = x;
+		x = x * x - y * y + data->rnum;
+		y = 2 * tmp_x * y + data->inum;
+		n++;
+	}
+	return (set_color(n));
+}
+
+// 정해진 x, y에 대해 점화식을 수렴시키는 c의 집합
+// 복소수 c = a + bi;
+// c를 그림
+int	mandelbrot(double a, double b)
+{
+	double	x;
+	double	y;
+	double	tmp_x;
+	int		n;
+
+	x = 0;
+	y = 0;
+	n = 0;
+	while (n < 100 && x * x + y * y <= 2 * 2)
+	{
+		tmp_x = x;
+		x = x * x - y * y + a;
+		y = 2 * tmp_x * y + b;
+		n++;
+	}
+	return (set_color(n));
 }
 
 void	make_fractol(t_data *data)
@@ -71,7 +100,6 @@ void	make_fractol(t_data *data)
 	int		offset;
 	char	*dst;
 
-	dst = data->addr;
 	x = 0;
 	y = 0;
 	while (x < SIZE_X)
@@ -79,12 +107,12 @@ void	make_fractol(t_data *data)
 		while (y < SIZE_Y)
 		{
 			if (data->type == JULIA)
-				color = julia(x, y, data);
+				color = julia((double)x, (double)y, data);
 			else if (data->type == MANDELBROT)
-				color = mandelbrot(x, y, data);
+				color = mandelbrot((double)x, (double)y);
 			offset = y * data->line_length + x * (data->bits_per_pixel / 8);
-			dst += offset;
-			*dst = color;
+			dst = data->addr + offset;
+			*(unsigned int *)dst = color;
 			y++;
 		}
 		x++;
@@ -152,11 +180,16 @@ void	error(void)
 	exit(1);
 }
 
+int	set_exit(void)
+{
+	exit(0);
+}
+
 void	set_hook(t_data *data)
 {
-	mlx_key_hook(data->win, set_key_hook, &data); //esc key press event
-	mlx_mouse_hook(data->win, set_mouse_hook, &data);
-	mlx_hook(data->win, DESTROY, 0, exit(0), 0); //close button press event
+	mlx_key_hook(data->win, key_hook, &data); //esc key press event
+	// mlx_mouse_hook(data->win, mouse_hook, &data);
+	mlx_hook(data->win, DESTROY, 0, set_exit, 0); //close button press event
 
 }
 
@@ -164,6 +197,8 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	if (argc < 2)
+		error_option();
 	init_data(argc, argv, &data);
 	data.mlx = mlx_init(); //그래픽 시스템에 연결. 연결 식별자.
 	if (!data.mlx)
