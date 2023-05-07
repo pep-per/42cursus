@@ -27,7 +27,10 @@
 		"errno.h": "c",
 		"cstring": "c",
 		"cstdio": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"chrono": "c",
+		"cmath": "c"
 	},
-	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line"
+	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line",
+	"debug.inlineValues": "on"
 }
