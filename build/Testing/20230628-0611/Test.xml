@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Darwin-clang++"
+	BuildStamp="20230628-0611-Experimental"
+	Name="c1r5s7.42seoul.kr"
+	Generator="ctest-3.25.2"
+	CompilerName="/usr/bin/clang++"
+	CompilerVersion="12.0.0.12000032"
+	OSName="Mac OS X"
+	Hostname="c10r5s14.42seoul.kr"
+	OSRelease="10.15.7"
+	OSVersion="19H2026"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="158"
+	ProcessorCacheSize="32768"
+	NumberOfLogicalCPU="6"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="0"
+	TotalPhysicalMemory="32768"
+	LogicalProcessorsPerPhysical="8"
+	ProcessorClockFrequency="3100"
+	>
+	<Testing>
+		<StartDateTime>Jun 28 15:11 KST</StartDateTime>
+		<StartTestTime>1687932718</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 28 15:11 KST</EndDateTime>
+		<EndTestTime>1687932718</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

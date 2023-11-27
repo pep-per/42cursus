@@ -6,7 +6,7 @@
 #    By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 22:58:21 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/05/08 07:04:53 by jiyeolee         ###   ########.fr        #
+#    Updated: 2023/05/30 20:35:29 by jiyeolee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = 	main.c \
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LDLIBS = -LLibft -lft -Lmlx -lmlx 
+LDLIBS = -LLibft -lft -Lmlx -lmlx
 LDFLAGS = -framework OpenGL -framework Appkit -Imlx
 FT = ./Libft
 MLX = ./mlx

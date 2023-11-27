@@ -6,7 +6,7 @@
 /*   By: jiyeolee <jiyeolee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 20:16:55 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/05/08 06:55:34 by jiyeolee         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:21:03 by jiyeolee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	mouse_event(int button, int x, int y, t_data *data)
 	if (button == SCROLL_UP)
 	{
 		data->scale *= 1.05;
-		data->mid_x += ((double)x - data->mid_x) / 20;
-		data->mid_y += ((double)y - data->mid_y) / 20;
+		data->mid_x += ((double)x - data->mid_x) / 30;
+		data->mid_y += ((double)y - data->mid_y) / 30;
 	}
 	else if (button == SCROLL_DOWN)
 	{
 		data->scale *= 0.95;
-		data->mid_x -= ((double)x - data->mid_x) / 20;
-		data->mid_y -= ((double)y - data->mid_y) / 20;
+		data->mid_x -= ((double)x - data->mid_x) / 30;
+		data->mid_y -= ((double)y - data->mid_y) / 30;
 	}
 	return (0);
 }
