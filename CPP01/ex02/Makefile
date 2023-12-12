@@ -22,4 +22,4 @@ re		:
 			make fclean
 			make all
 
-.PHONY	:	all re clean fclean bonus
+.PHONY	:	all re clean fclean

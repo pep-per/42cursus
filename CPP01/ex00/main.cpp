@@ -3,13 +3,6 @@
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
-void leak(void) { system("leaks ex00"); }
-
-char* _test() {
-  char* temp = (char*)malloc(100);
-  return (temp);
-}
-
 int main(void) {
   Zombie* a = newZombie("Merry");
   a->announce();
@@ -24,21 +17,5 @@ int main(void) {
   delete b;
 
   randomChump("Cherry");
-  // char* str;
-  // str = (char*)malloc(100);
-  // str = _test();
-
-  // free(str);
-
-  // Zombie* bob = new Zombie("Bob");
-  // // bob->announce();
-
-  // Zombie* steve = newZombie("Steve");
-  // steve->announce();
-
-  // randomChump("Anne");
-
-  // // delete bob;
-  // delete steve;
   return 0;
 }

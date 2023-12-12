@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Account.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jiyeolee <jiyeolee@student.42seoul.kr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 20:09:54 by jiyeolee          #+#    #+#             */
-/*   Updated: 2023/12/05 19:03:19 by jiyeolee         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Account.hpp"
 
 #include <ctime>
@@ -20,10 +8,12 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit) {
-  _amount = initial_deposit;
+Account::Account(int initial_deposit)
+    : _accountIndex(_nbAccounts),
+      _amount(initial_deposit),
+      _nbDeposits(0),
+      _nbWithdrawals(0) {
   _totalAmount += initial_deposit;
-  _accountIndex = _nbAccounts;
   _nbAccounts++;
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created"

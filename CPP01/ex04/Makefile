@@ -1,10 +1,10 @@
-NAME 	=	account
-SRCS 	= 	Account.cpp \
-			tests.cpp
+NAME 	=	ex04
+SRCS 	= main.cpp \
+				Replacer.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
 CC 		= 	c++
 CFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
-INCLUDE =	-I ./Account.hpp
+INCLUDE =	-I ./Replacer.hpp
 
 all 	:	$(NAME)
 

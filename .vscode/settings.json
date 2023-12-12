@@ -87,7 +87,13 @@
 		"vector": "cpp",
 		"random": "cpp",
 		"numeric": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"__functional_base_03": "cpp",
+		"filesystem": "cpp",
+		"__functional_03": "cpp",
+		"__memory": "cpp",
+		"memory_resource": "cpp",
+		"fstream": "cpp"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line",
 	"debug.inlineValues": "on"

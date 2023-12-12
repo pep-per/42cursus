@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jiyeolee <jiyeolee@student.42seoul.kr>     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/17 15:28:38 by jiyeolee          #+#    #+#              #
-#    Updated: 2023/10/23 19:33:21 by jiyeolee         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME 	= 	megaphone
 SRCS 	= 	megaphone.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
@@ -34,4 +22,4 @@ re		:
 			make fclean
 			make all
 
-.PHONY	:	all re clean fclean bonus
+.PHONY	:	all re clean fclean
