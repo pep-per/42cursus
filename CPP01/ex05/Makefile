@@ -1,10 +1,10 @@
 NAME 	=	ex05
 SRCS 	= main.cpp \
-				Replacer.cpp
+				Harl.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
 CC 		= 	c++
 CFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
-INCLUDE =	-I ./Replacer.hpp
+INCLUDE =	-I ./Harl.hpp
 
 all 	:	$(NAME)
 
