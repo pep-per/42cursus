@@ -1,4 +1,4 @@
-NAME 	=	ex05
+NAME 	=	harl
 SRCS 	= main.cpp \
 				Harl.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
