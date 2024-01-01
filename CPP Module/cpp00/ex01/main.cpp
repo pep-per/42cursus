@@ -5,7 +5,7 @@ int main() {
   std::string cmd;
   while (1) {
     std::cout << "----------------------------------------" << std::endl;
-    std::cout << "Command [ADD] [SEARCH] : ";
+    std::cout << "Command [ADD] [SEARCH] [EXIT] : ";
     std::getline(std::cin, cmd);
     if (cmd == "ADD") {
       phonebook.addContact();

@@ -1,26 +1,26 @@
-NAME 	=	account
-SRCS 	= 	Account.cpp \
-			tests.cpp
-OBJS 	= 	$(SRCS:.cpp=.o)
-CC 		= 	c++
-CFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
+NAME 		=	account
+SRCS 		= Account.cpp \
+					tests.cpp
+OBJS 		= $(SRCS:.cpp=.o)
+CC 			= c++
+CFLAGS 	= -Wall -Wextra -Werror -std=c++98
 INCLUDE =	-I ./Account.hpp
 
-all 	:	$(NAME)
+all :	$(NAME)
 
 $(NAME)	:	$(OBJS)
-			$(CC) $(CFLAGS) $^ -o $@
+					$(CC) $(CFLAGS) $^ -o $@
 
-%.o 	:	%.c
+%.o :	%.c
 			$(CC) -c $(CFLAGS) $^ -o $@ $(INCLUDE)
 
-clean 	:
-			rm -rf $(OBJS)
+clean :
+				rm -rf $(OBJS)
 
-fclean	:	clean
-			rm -rf $(NAME)
+fclean : clean
+				rm -rf $(NAME)
 
-re		:
+re :
 			make fclean
 			make all
 

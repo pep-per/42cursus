@@ -6,8 +6,8 @@
 
 class Fixed {
  private:
-  static const int fraction_;  // 가수
-  int exponent_;               // 지수
+  static const int numOfFractionBits_;
+  int rawBits_;
 
  public:
   Fixed();
@@ -19,7 +19,9 @@ class Fixed {
   int getRawBits(void) const;
   void setRawBits(int const raw);
   float toFloat() const;
-  int toInt() const
+  int toInt() const;
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
