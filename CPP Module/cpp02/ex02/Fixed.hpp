@@ -6,8 +6,8 @@
 
 class Fixed {
  private:
-  int rawBits_;
   static const int numOfFractionBits_;
+  int rawBits_;
 
  public:
   Fixed();

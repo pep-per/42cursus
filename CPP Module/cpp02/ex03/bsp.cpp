@@ -13,7 +13,11 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
   float d2 = vectorProduct(point, b, c);
   float d3 = vectorProduct(point, c, a);
 
+  std::cout << "d1 : " << d1 << std::endl;
+  std::cout << "d2 : " << d2 << std::endl;
+  std::cout << "d3 : " << d3 << std::endl;
+
   bool is_plus = d1 > 0 || d2 > 0 || d3 > 0;
   bool is_minus = d1 < 0 || d2 < 0 || d3 < 0;
-  return !(is_plus && is_minus);
+  return !(is_plus && is_minus) && d1 && d2 && d3;
 }

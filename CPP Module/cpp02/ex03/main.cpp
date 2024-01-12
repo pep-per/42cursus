@@ -4,8 +4,8 @@ bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 int main(void) {
   Point a(5, 0);
-  Point b(1, 0);
-  Point c(3, 4);
+  Point b(3, 4);
+  Point c(1, 0);
 
   Point p1(2, 1);  // inside
   Point p2(7, 8);  // outside

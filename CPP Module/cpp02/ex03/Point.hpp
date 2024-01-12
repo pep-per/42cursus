@@ -9,15 +9,15 @@ class Point {
  private:
   const Fixed x_;
   const Fixed y_;
+  Point& operator=(const Point& pt);
 
  public:
   Point();
   Point(const float x, const float y);
   Point(const Point& pt);
   ~Point();
-  Point& operator=(const Point& pt);
-  Fixed getX() const;
-  Fixed getY() const;
+  const Fixed& getX() const;
+  const Fixed& getY() const;
 };
 
 #endif
