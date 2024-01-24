@@ -67,6 +67,9 @@
 		"__functional_03": "cpp",
 		"memory_resource": "cpp",
 		"filesystem": "cpp",
-		"__cxx_version": "cpp"
+		"__cxx_version": "cpp",
+		"random": "cpp",
+		"__functional_base_03": "cpp",
+		"numeric": "cpp"
 	}
 }

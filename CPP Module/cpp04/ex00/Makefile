@@ -7,16 +7,16 @@ SRCS 	= main.cpp \
 				WrongCat.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
 CC 		= 	c++
-CFLAGS 	= 	-Wall -Wextra -Werror -std=c++98
-INCLUDE =	-I ./Animal.hpp -I Dog.hpp -I Cat.hpp -I WrongAnimal.hpp -I WrongCat.hpp
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -I.
 
 all 	:	$(NAME)
 
 $(NAME)	:	$(OBJS)
-			$(CC) $(CFLAGS) $^ -o $@
+			$(CC) $(CXXFLAGS) $^ -o $@
 
 %.o 	:	%.c
-			$(CC) -c $(CFLAGS) $^ -o $@ $(INCLUDE)
+			$(CC) -c $(CXXFLAGS) $^ -o $@ $(CPPFLAGS)
 
 clean 	:
 			rm -rf $(OBJS)

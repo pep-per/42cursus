@@ -1,11 +1,14 @@
-NAME 	=	ex01
+NAME 	=	ex03
 SRCS 	= main.cpp \
-				Animal.cpp \
+				AAnimal.cpp \
 				Cat.cpp \
 				Dog.cpp \
 				WrongAnimal.cpp \
 				WrongCat.cpp \
-				Brain.cpp
+				Brain.cpp \
+				AMateria.cpp \
+				ICharacter.cpp \
+				IMateriaSource.cpp
 OBJS 	= 	$(SRCS:.cpp=.o)
 CC 		= 	c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
