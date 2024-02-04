@@ -2,7 +2,7 @@
 
 Intern::Intern() {}
 
-Intern::Intern(const Intern& obj) { (void)obj; }
+Intern::Intern(const Intern& obj) { *this = obj; }
 
 Intern::~Intern() {}
 

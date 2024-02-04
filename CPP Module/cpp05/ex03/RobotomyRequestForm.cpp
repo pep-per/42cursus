@@ -4,7 +4,9 @@ RobotomyRequestForm::RobotomyRequestForm()
     : AForm("RobotomyRequestForm", 72, 45, "") {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : AForm("RobotomyRequestForm", 72, 45, target) {}
+    : AForm("RobotomyRequestForm", 72, 45, target) {
+  srand((unsigned int)time(NULL));
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj)
     : AForm(obj.getName(), obj.getGradeToSign(), obj.getGradeToExecute(),
@@ -23,8 +25,7 @@ void RobotomyRequestForm::execute(Bureaucrat const& executor) const {
   try {
     AForm::checkGrade(executor);
     std::cout << "* drilling noises *" << std::endl;
-    std::random_device rd;
-    if (rd() % 2 == 0) {
+    if (rand() % 2 == 0) {
       std::cout << getTarget() << " has been robotomized successfully!"
                 << std::endl;
     } else {

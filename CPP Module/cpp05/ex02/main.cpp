@@ -20,6 +20,7 @@ int main(void) {
     RobotomyRequestForm f2("f2");
     b2.signForm(f2);
     b2.executeForm(f2);
+    b2.executeForm(f2);
   } catch (const std::exception& e) {
     std::cout << e.what() << std::endl;
   }

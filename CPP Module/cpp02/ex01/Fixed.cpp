@@ -41,6 +41,5 @@ int Fixed::toInt() const { return roundf(toFloat()); }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
   out << static_cast<float>(fixed.getRawBits()) / (1 << 8);
-  ;
   return out;
 }
