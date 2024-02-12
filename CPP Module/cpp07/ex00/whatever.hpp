@@ -1,5 +1,5 @@
-#ifndef FUNCTION_HPP
-#define FUNCTION_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 template <typename T>
 void swap(T &a, T &b) {
@@ -9,7 +9,7 @@ void swap(T &a, T &b) {
 }
 
 template <typename T>
-const T &min(const T &a, const T &b) {
+T &min(T &a, T &b) {
   if (a < b)
     return a;
   else
@@ -17,7 +17,7 @@ const T &min(const T &a, const T &b) {
 }
 
 template <typename T>
-const T &max(const T &a, const T &b) {
+T &max(T &a, T &b) {
   if (a > b)
     return a;
   else
