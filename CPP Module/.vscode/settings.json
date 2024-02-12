@@ -70,6 +70,7 @@
 		"__cxx_version": "cpp",
 		"random": "cpp",
 		"__functional_base_03": "cpp",
-		"numeric": "cpp"
+		"numeric": "cpp",
+		"*.tpp": "cpp"
 	}
 }
