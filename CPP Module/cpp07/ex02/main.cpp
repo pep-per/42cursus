@@ -4,6 +4,7 @@
 #include "Array.hpp"
 
 #define MAX_VAL 750
+
 int main(int, char**) {
   // given test
   Array<int> numbers(MAX_VAL);
@@ -40,7 +41,7 @@ int main(int, char**) {
   delete[] mirror;
 
   // my test
-  // const Array<std::string> strings(MAX_VAL);
+  // Array<std::string> strings(MAX_VAL);
   // std::string* mirror2 = new std::string[MAX_VAL];
   // for (int i = 0; i < MAX_VAL; i++) {
   //   std::ostringstream oss;

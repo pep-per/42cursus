@@ -28,7 +28,16 @@ Array<T>& Array<T>::operator=(const Array<T>& obj) {
 }
 
 template <typename T>
-T& Array<T>::operator[](unsigned int n) const {
+T& Array<T>::operator[](unsigned int n) {
+  if (n >= this->size_) {
+    throw std::out_of_range("Index out of range");
+  } else {
+    return arr_[n];
+  }
+}
+
+template <typename T>
+const T& Array<T>::operator[](unsigned int n) const {
   if (n >= this->size_) {
     throw std::out_of_range("Index out of range");
   } else {

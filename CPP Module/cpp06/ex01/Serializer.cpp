@@ -12,7 +12,7 @@ Serializer& Serializer::operator=(const Serializer& obj) {
   return *this;
 }
 
-Data* Serializer::Serializer::deserialize(uintptr_t raw) {
+Data* Serializer::deserialize(uintptr_t raw) {
   return reinterpret_cast<Data*>(raw);
 }
 

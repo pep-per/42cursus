@@ -71,6 +71,7 @@
 		"random": "cpp",
 		"__functional_base_03": "cpp",
 		"numeric": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"list": "cpp"
 	}
 }
