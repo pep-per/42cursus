@@ -3,7 +3,7 @@ SRCS			=	main.cpp
 OBJS 			=	$(SRCS:.cpp=.o)
 CC 				= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-CPPFLAGS 	= -I.
+CPPFLAGS 	= -I./easyfind.hpp
 
 all		 	:	$(NAME)
 

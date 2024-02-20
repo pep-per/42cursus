@@ -1,10 +1,9 @@
 NAME			=	ex02
-SRCS			=	main.cpp \
-						Span.cpp
+SRCS			=	main.cpp
 OBJS 			=	$(SRCS:.cpp=.o)
 CC 				= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
-CPPFLAGS 	= -I.
+CPPFLAGS 	= -I./MutantStack.hpp
 
 all		 	:	$(NAME)
 

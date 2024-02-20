@@ -6,9 +6,9 @@ class Array {
  private:
   T* arr_;
   unsigned int size_;
+  Array();
 
  public:
-  Array();
   Array(unsigned int n);
   Array(const Array& obj);
   ~Array();
