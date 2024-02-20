@@ -15,14 +15,17 @@ int main() {
   }
   try {
     unsigned int n = 10001;
-    Span sp(n);
+    Span sp1(n);
     std::vector<int> v;
     for (unsigned int i = 0; i < n; i++) {
       v.push_back(i * i);
     }
-    sp.addNumber(v);
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;
+    sp1.addNumber(v);
+    std::cout << sp1.shortestSpan() << std::endl;
+    std::cout << sp1.longestSpan() << std::endl;
+    Span sp2(sp1);
+    std::cout << sp2.shortestSpan() << std::endl;
+    std::cout << sp2.longestSpan() << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }

@@ -10,9 +10,9 @@ Span::~Span() {}
 
 Span& Span::operator=(const Span& obj) {
   if (this != &obj) {
+    this->n_ = obj.n_;
     this->v_.clear();
     addNumber(obj.v_);
-    this->n_ = obj.n_;
   }
   return *this;
 }
@@ -49,7 +49,7 @@ void Span::addNumber(int n) {
 }
 
 void Span::addNumber(const std::vector<int>& v) {
-  if (v.size() > this->n_)
+  if (v.size() > this->n_ || this->v_.size() == this->n_)
     throw std::out_of_range("Not enough space in Span");
   else
     this->v_.insert(this->v_.end(), v.begin(), v.end());
