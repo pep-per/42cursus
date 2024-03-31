@@ -5,8 +5,8 @@ WrongAnimal::WrongAnimal() : type_("WrongAnimal") {
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& obj) {
-  *this = obj;
   std::cout << "WrongAnimal Copy Constructor called" << std::endl;
+  *this = obj;
 }
 
 WrongAnimal::~WrongAnimal() {
@@ -14,10 +14,10 @@ WrongAnimal::~WrongAnimal() {
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& obj) {
+  std::cout << "WrongAnimal Copy Assignment Operator called" << std::endl;
   if (this != &obj) {
     this->type_ = obj.getType();
   }
-  std::cout << "WrongAnimal Copy Assignment Operator called" << std::endl;
   return *this;
 }
 

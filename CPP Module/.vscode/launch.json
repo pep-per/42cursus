@@ -1,0 +1,21 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/cpp09/ex02/PmergeMe",
+			"args": ["17659", "56029", "13310", "11166", "35704", "21675", "63578", "84414", "68898", "25818", "54529", "18426", "20752", "66654", "24800", "53101", "7590", "54705", "42276", "70246", "76251", "1097", "87349", "48730", "96707", "39690", "63336", "81802", "95946", "24539"],
+			"stopAtEntry": true,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		}
+
+	]
+}

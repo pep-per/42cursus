@@ -95,7 +95,10 @@
 		"memory_resource": "cpp",
 		"fstream": "cpp",
 		"deque": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"__tree": "cpp",
+		"list": "cpp",
+		"map": "cpp"
 	},
 	"cmake.sourceDirectory": "${workspaceFolder}/get_next_line",
 	"debug.inlineValues": "on"

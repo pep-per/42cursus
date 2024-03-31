@@ -5,17 +5,17 @@ Animal::Animal() : type_("Animal") {
 }
 
 Animal::Animal(const Animal& obj) {
-  *this = obj;
   std::cout << "Animal Copy Constructor called" << std::endl;
+  *this = obj;
 }
 
 Animal::~Animal() { std::cout << "Animal Destructor called" << std::endl; }
 
 Animal& Animal::operator=(const Animal& obj) {
+  std::cout << "Animal Copy Assignment Operator called" << std::endl;
   if (this != &obj) {
     this->type_ = obj.getType();
   }
-  std::cout << "Animal Copy Assignment Operator called" << std::endl;
   return *this;
 }
 

@@ -12,15 +12,17 @@ Brain::Brain(const Brain& obj) {
 Brain::~Brain() { std::cout << "Brain Destructor called" << std::endl; }
 
 Brain& Brain::operator=(const Brain& obj) {
-  if (this != &obj) {
-    for (int i = 0; i < 100; i++) {
-      this->setIdeas(obj.getIdeas(i), i);
-    }
-  }
   std::cout << "Brain Copy Assignment Operator called" << std::endl;
+  if (this != &obj) {
+    this->setIdeas(obj.getIdeas());
+  }
   return *this;
 }
 
-std::string Brain::getIdeas(int i) const { return this->ideas_[i]; }
+const std::string& Brain::getIdeas() const { return this->ideas_[0]; }
 
-void Brain::setIdeas(std::string str, int i) { this->ideas_[i] = str; }
+void Brain::setIdeas(const std::string& str) {
+  if (str.size() > 100) return;
+  this->ideas_->clear();
+  this->ideas_->append(str);
+}

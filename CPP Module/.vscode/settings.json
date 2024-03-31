@@ -73,6 +73,8 @@
 		"numeric": "cpp",
 		"*.tpp": "cpp",
 		"list": "cpp",
-		"__memory": "cpp"
+		"__memory": "cpp",
+		"__tree": "cpp",
+		"map": "cpp"
 	}
 }

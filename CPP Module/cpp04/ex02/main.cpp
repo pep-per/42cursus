@@ -29,20 +29,37 @@ int main() {
   }
   std::cout << std::endl;
 
-  std::cout << "================Check Deep Copy=================" << std::endl;
+  std::cout << "====================== Check Deep Copy ======================="
+            << std::endl;
   Cat cat1;
-  cat1.getBrain()->setIdeas("I want some milk", 0);
-  std::cout << "cat1 is thinking	->	"
-            << cat1.getBrain()->getIdeas(0) << std::endl;
+  cat1.getBrain()->setIdeas("I want some milk");
+  std::cout << "=============================================================="
+            << std::endl;
+
+  std::cout << "cat1 is thinking	->	" << cat1.getBrain()->getIdeas()
+            << std::endl;
+  std::cout << "=============================================================="
+            << std::endl;
   Cat cat2(cat1);
-  std::cout << "cat2 is thinking	->	"
-            << cat2.getBrain()->getIdeas(0) << std::endl;
+  std::cout << "=============================================================="
+            << std::endl;
+
+  std::cout << "cat2 is thinking	->	" << cat2.getBrain()->getIdeas()
+            << std::endl;
+  std::cout << "=============================================================="
+            << std::endl;
   Cat cat3;
   cat3 = cat1;
-  cat1.getBrain()->setIdeas("Don't bother me", 0);
-  std::cout << "cat3 is thinking	->	"
-            << cat3.getBrain()->getIdeas(0) << std::endl;
-  std::cout << "cat1 is thinking	->	"
-            << cat1.getBrain()->getIdeas(0) << std::endl;
+  cat1.getBrain()->setIdeas("Don't bother me");
+  std::cout << "=============================================================="
+            << std::endl;
+  std::cout << "cat3 is thinking	->	" << cat3.getBrain()->getIdeas()
+            << std::endl;
+  std::cout << "=============================================================="
+            << std::endl;
+  std::cout << "cat1 is thinking	->	" << cat1.getBrain()->getIdeas()
+            << std::endl;
+  std::cout << "=============================================================="
+            << std::endl;
   return 0;
 }

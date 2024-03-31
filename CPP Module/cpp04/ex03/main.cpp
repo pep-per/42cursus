@@ -1,48 +1,94 @@
-#include "AAnimal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Character.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
+
+void check() { system("leaks ex03"); }
 
 int main() {
-  std::cout << "================Create Instances Array - Half Cats, Half "
-               "Dogs=================";
-  const AAnimal *animals[10];
-  std::cout << std::endl;
-  for (int i = 0; i < 10; i++) {
-    if (i % 2 == 0)
-      animals[i] = new Cat();
-    else
-      animals[i] = new Dog();
-  }
-  std::cout << std::endl;
+  // atexit(check);
+  IMateriaSource* src = new MateriaSource();
+  src->learnMateria(new Ice());
+  src->learnMateria(new Cure());
 
-  std::cout
-      << "================Get Type & Destroy Instances Array================="
-      << std::endl;
-  for (int i = 0; i < 10; i++) {
+  ICharacter* me = new Character("me");
+
+  AMateria* tmp;
+  tmp = src->createMateria("ice");
+  me->equip(tmp);
+  tmp = src->createMateria("cure");
+  me->equip(tmp);
+
+  ICharacter* bob = new Character("bob");
+
+  me->use(0, *bob);
+  me->use(1, *bob);
+
+  std::cout << std::endl
+            << "======================= MY TEST ======================="
+            << std::endl;
+  try {
+    for (int i = 0; i < 5; i++) {
+      me->use(i, *bob);
+    }
+    for (int i = 0; i < 104; i++) {
+      me->equip(src->createMateria("ice"));
+      me->unequip(2);
+    }
     std::cout << std::endl
-              << "No." << i << " Animal type is " << animals[i]->getType()
+              << "================ Full Inventory Error ================"
               << std::endl;
-    animals[i]->makeSound();
-    delete animals[i];
+    me->equip(src->createMateria("ice"));
+    me->equip(src->createMateria("ice"));
+    me->equip(src->createMateria("ice"));  // full
+    AMateria* tmp1 = src->createMateria("ice");
+    me->equip(tmp1);  // full
+    me->equip(tmp1);  // invalid
+    // me->unequip(3);
+    // me->equip(tmp1);
+  } catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
   }
-  std::cout << std::endl;
+  std::cout << std::endl
+            << "========= Materia without MateriaSource Error ========="
+            << std::endl;
+  try {
+    me->equip(new Ice());
+    me->use(2, *bob);
+  } catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << std::endl
+            << "================== Null Pointer Error =================="
+            << std::endl;
+  try {
+    me->equip(NULL);
+  } catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << std::endl
+            << "================= Unequip Errror ================="
+            << std::endl;
+  try {
+    me->unequip(5);
+    me->unequip(0);  // Should be empty
+    me->unequip(0);  // No materia in this slot
+  } catch (std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << std::endl
+            << "================= MateriaSource Error ================="
+            << std::endl;
+  IMateriaSource* src1 = new MateriaSource();
+  AMateria* tmp3 = src1->createMateria("cure");  // Not learned
+  src1->learnMateria(new Ice());
+  tmp3 = src1->createMateria("ce");  // Unknown type
 
-  std::cout << "================Check Deep Copy=================" << std::endl;
-  Cat cat1;
-  cat1.getBrain()->setIdeas("I want some milk", 0);
-  std::cout << "cat1 is thinking	->	"
-            << cat1.getBrain()->getIdeas(0) << std::endl;
-  Cat cat2(cat1);
-  std::cout << "cat2 is thinking	->	"
-            << cat2.getBrain()->getIdeas(0) << std::endl;
-  Cat cat3;
-  cat3 = cat1;
-  cat1.getBrain()->setIdeas("Don't bother me", 0);
-  std::cout << "cat3 is thinking	->	"
-            << cat3.getBrain()->getIdeas(0) << std::endl;
-  std::cout << "cat1 is thinking	->	"
-            << cat1.getBrain()->getIdeas(0) << std::endl;
+  delete src1;
+  delete tmp3;
+
+  delete bob;
+  delete me;
+  delete src;
+
   return 0;
 }
