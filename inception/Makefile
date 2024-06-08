@@ -1,25 +1,25 @@
-NAME 	= 	megaphone
-SRCS 	= 	megaphone.cpp
-OBJS 	= 	$(SRCS:.cpp=.o)
-CC 		= 	c++
-CFLAGS = 	-Wall -Wextra -Werror -std=c++98
+all:
+	mkdir -p /home/jiyeolee/data/wordpress
+	mkdir -p /home/jiyeolee/data/mariadb
+	docker compose -f ./srcs/docker-compose.yml up --detach
 
-all 	:	$(NAME)
+build:
+	mkdir -p /home/jiyeolee/data/wordpress
+	mkdir -p /home/jiyeolee/data/mariadb
+	docker compose -f ./srcs/docker-compose.yml up --detach --build
 
-$(NAME)	:	$(OBJS)
-			$(CC) $(CFLAGS) $^ -o $@
+down:
+	docker compose -f ./srcs/docker-compose.yml down
 
-%.o 	:	%.cpp
-			$(CC) -c $(CFLAGS) $^ -o $@
+re: down
+	docker compose -f ./srcs/docker-compose.yml up --detach --build
 
-clean 	:
-			rm -rf $(OBJS)
+clean: down
+	docker system prune -a
 
-fclean	:	clean
-			rm -rf $(NAME)
+fclean:
+	docker compose -f ./srcs/docker-compose.yml down -v
+	docker system prune --all --force --volumes
+	sudo rm -rf /home/jiyeolee/data
 
-re		:
-			make fclean
-			make all
-
-.PHONY	:	all re clean fclean
+.PHONY	: all build down re clean fclean

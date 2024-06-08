@@ -1,1 +1,64 @@
+services:
+  mariadb:
+    build: ./requirements/mariadb/
+    image: mariadb
+    container_name: mariadb
+    pull_policy: never
+    volumes:
+      - db-volume:/var/lib/mysql
+    networks:
+      - inception
+    expose: 
+      - "3306"
+    env_file: .env
 
+  wordpress:
+    build: ./requirements/wordpress/
+    image: wordpress
+    container_name: wordpress
+    pull_policy: never
+    volumes:
+      - wordpress-volume:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    expose:
+      - "9000"
+    env_file: .env
+
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: nginx
+    pull_policy: never
+    expose:
+      - "9000"
+    volumes:
+      - wordpress-volume:/var/www/html
+    depends_on:
+      - wordpress
+      - mariadb
+    networks:
+      - inception
+    ports:
+      - "443:443"
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
+
+volumes:
+  wordpress-volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/jiyeolee/data/wordpress
+  db-volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/jiyeolee/data/mariadb
